@@ -1,0 +1,1399 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+<meta charset="utf-8">
+
+<title>Cours Génie Logiciel Licence Pro 2014, la gestion de
+	versions</title>
+
+<meta name="description"
+	content="Cours génie logiciel Licence Pro 2014, la gestion de versions">
+<meta name="author" content="Bertrand Florat, Nicolas Hernandez">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style"
+	content="black-translucent" />
+
+<!-- BF : make sure the presentation works offline 
+<link
+	href='http://fonts.googldsdeapis.com/css?family=Lato:400,700,400italic,700italic'
+	rel='stylesheet' type='text/css'>
+ -->
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+	document.write('<link rel="stylesheet" href="css/print/'
+			+ (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper')
+			+ '.css" type="text/css" media="print">');
+</script>
+
+<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<div
+					style="width: 350px; font-size: 50%; text-align: left; float: right; margin-left: 10px;">
+					<img src="images/couverture.jpg" style="width: 250px; margin: 0px" /><br/>Copyright
+					CC-BY-SA http://geek-and-poke.com
+				</div>
+				<h2>La gestion de versions</h2>
+				<p>
+					<b>Concepts / Subversion / Git</b>
+				</p>
+				<p>IUT de Nantes – Département Informatique</p>
+				<p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
+				<p>
+					<b>Cours de Licence professionnelle<br />2014</b>
+				</p>
+				<p class="sp">
+					<img style="margin-top: 5px" src="images/cc.png"> Copyright (C) 2012-2014 Bertrand
+					Florat (<a style="margin-top: 30px" href='http://www.florat.net/contact'>contact</a>)</p>
+					<p class="sp">
+					<i>Version 1.6 du 18 sept 2014</i> / <a href="http://florat.net/cours_vcs/cours.html">http://florat.net/cours_vcs/cours.html</a> / <a href='tp.html'>Feuille de TP</a>
+				</p>
+				
+			</section>
+			<section>
+				<h3>Agenda (en vert, les TP)</h3>
+				<aside class="notes">Présentation de l'intervenant /
+					connaissances actuelles des étudiants sur le sujet</aside>
+				<table>
+					<tr class="title">
+						<td>1-Concepts généraux, SVN</td>
+						<td>2-Pratique de SVN</td>
+						<td>3-Présentation de Git</td>
+						<td>4-Pratique de Git</td>
+						<td>5-Travail collaboratif avec Git</td>
+					</tr>
+					<tr class="bodytext">
+						<td>
+							<ul>
+								<li class="tp">TP1 : Motivations</li>
+								<li>Historique</li>
+								<li>Notions et terminologie</li>
+								<li>Règles de l'art</li>
+								<li>Focus sur SVN</li>
+							</ul>
+						</td>
+						<td>
+							<ul>
+								<li>Outils</li>
+								<li>Règles de l'art SVN</li>
+								<li>Présentation des commandes de base</li>
+								<li class="tp">TP2 : commandes de base</li>
+							</ul>
+						</td>
+						<td>
+							<ul>
+								<li>Présentation des concepts</li>
+							</ul>
+						</td>
+
+						<td>
+							<ul>
+								<li>Présentation des commandes de base</li>
+								<li class="tp">TP3 : commandes de base en équipe</li>
+							</ul>
+						</td>
+						<td>
+							<ul>
+								<li>Outils</li>
+								<li>Règles de l'art</li>
+								<li>Les différents types de workflow</li>
+								<li class="tp">TP4 : utilitaires Git</li>
+
+							</ul>
+						</td>
+				</table>
+			</section>
+			<section>
+				<h3>Modalités du cours</h3>
+				<table>
+					<tr>
+						<td><img src="images/cc.png" width="80px"></td>
+						<td style="vertical-align: center !important;">Ce cours est distribué en licence
+							Creative Commons Attribution-Noncommercial-Share Alike 3.0 <font
+							style="font-size: smaller;">(liberté de reproduire,
+								distribuer et communiquer cette création au public et de
+								modifier cette création sous condition de citation de la
+								paternité, d’utilisation non commerciale, de partage à
+								l’identique des conditions initiales)</font>
+						</td>
+					</tr>
+					<tr>
+						<td><img src="images/notel.png" width="80px"></td>
+						<td style="vertical-align: center !important;">Merci de
+							penser à éteindre vos téléphones portables pendant les cours</td>
+					</tr>
+					<tr>
+						<td><img src="images/waste.png" width="80px"></td>
+						<td style="vertical-align: center !important;">Luttons
+							ensemble contre le gaspillage, n'imprimer ce support que si
+							nécessaire</td>
+					</tr>
+				</table>
+
+			</section>
+			<!-- Slot 1 -->
+			<section>
+				<h3>Motivations</h3>
+				<p class="note" style="color: green">TP1 : Que serait notre vie
+					sans VCS ?</p>
+				<p>Vous faites partie d’une équipe de développement qui
+					intervient sur la réalisation d’une application</p>
+				<ul>
+					<li class="fragment">Comment conserver l’historique et revenir
+						en arrière ?</li>
+					<li class="fragment">Comment partager le développement entre
+						plusieurs personnes ? </li>
+					<ul>
+						<li class="fragment">avec des contributeurs Open Source ?</li>
+					</ul>
+					<li class="fragment">Comment gérer plusieurs versions à la
+						fois ?
+						<aside class="notes">Versions de maintenance,
+							experimentation de nouvelles fonctionnailités, plusieurs
+							clients...</aside>
+					</li>
+					<li class="fragment">Comment tracer les modifications ?</li>
+				</ul>
+				<br/>
+				<p class="fragment"><b>En utilisant un VCS !</b></p>
+
+			</section>
+			<section>
+				<h3>Usage</h3>
+				<ul>
+					<li>Utilisateurs : les développeurs et les intégrateurs</li>
+					<li>Le VCS est avec l'IDE l'outil principal du développeur</li>
+					<li>Principalement stockage de fichiers <b>texte</b>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Quels fichiers gérer en configuration ou pas ?</h4>
+				<p class="note">Le projet (et toutes ses versions) doit être
+					auto-porteur</p>
+				<ul>
+					<li>Fichiers source (.java, .c, .html, .css...)</li>
+					<li>Certains fichiers binaires non dérivés des sources, images par exemple</li>
+					<li>Fichiers IDE/build (.project, pom.xml, build.xml...)</li>
+				</ul>
+				<br />
+				<p>Pas en configuration :</p>
+				<ul>
+					<li>Fichiers temporaires, générés ou compilés</li>
+					<li>Librairies (utiliser un dépot Maven)</li>
+				</ul>
+				<br/>
+				<p>Selon les politiques :</p>
+				<ul>
+					<li>Librairies si non disponibles dans référentiel</li>
+					<li>Personnalisation et historique de l'IDE</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Modèles de gestion des accès concurrents</h3>
+				<ul>
+					<li><b>Modèle de contrôle de concurrence pessimiste</b>:
+						fichiers réservés en lecture seule</li>
+					<li><b>Modèle de contrôle de concurrence optimiste</b> :
+						conflits possibles mais possibilité de réconcilier</li>
+					<li>Quelques VCS (Clearcase, SVN etc) mixtes mais verrouillage
+						anécdotique</li>
+					<li>La plupart des VCS sont à contrôle optimiste : CVS, SVN, Git,
+						Mercurial, BitKeeper etc.</li>
+
+				</ul>
+			</section>
+
+			<section>
+				<h3>Modeles centralisés / client-serveur</h3>
+				<div
+					style="width: 300px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
+					<img src="images/modele_central.png"
+						style="width: 300px; margin: 0px" />Copyright CC-BY-NC-SA Mathieu
+					Nebra (M@teo21)
+				</div>
+				<p>Exemples : CVS, SVN, ClearCase, Perforce</p>
+				<p>Un serveur gère l'intégralité des révisions (le dépôt), les
+					développeurs récupèrent les modifications des autres et y ajoutent
+					les leurs</p>
+			</section>
+			<section>
+				<h3>Modeles distribués</h3>
+				<div
+					style="width: 400px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
+					<img src="images/modele_distribue.png"
+						style="width: 400px; margin: 0px" />Copyright CC-BY-NC-SA Mathieu
+					Nebra (M@teo21)
+				</div>
+				<p>Exemples : Git, Mercurial, Baazar, BitKeeper</p>
+				<p>Chaque développeur possède un dépôt entier mais les dépôts
+					peuvent s'échanger des modifications</p>
+			</section>
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">Historique</h4>
+				<img src="images/historique.png" width="600px">
+				<p class="note">Retour d'expérience : quels VCS dans les grands
+					comptes ?</p>
+			</section>
+
+			<section>
+				<h4>Concepts généraux</h4>
+				<table>
+					<tr>
+						<td>SCM, <b>VCS</b>, outil de versioning, GCL
+						</td>
+						<td>Source Control Management, Version Control System :
+							outils permettant de gérer plusieurs versions de sources</td>
+					</tr>
+					<tr>
+						<td><b>dépôt</b>, référentiel [repository, depot]</td>
+						<td>Un dépôt est une sortie de base de données de sources
+							contenant toutes les révisions (tout l'historique) des fichiers
+							ainsi que des données de gestion (méta-données) associées</td>
+					</tr>
+					<tr>
+						<td><b>Copie locale</b>, espace de travail [working
+							copy/directory/workspace]</td>
+						<td>Copie locale éditable du dépôt dont les modifications
+							peuvent ensuite être validées (commitées) dans le dépôt</td>
+					</tr>
+
+
+				</table>
+			</section>
+			<section>
+				<h4>Concepts généraux</h4>
+				<table>
+					<tr>
+						<td><b>Commit</b>, validation<br /> [commit,checkin]</td>
+						<td>(verbe) Enregistrer des modifications de la copie locale
+							vers dépôt. <q>mettre en conf</q><br />(nom) modifications
+							elles-mêmes.
+							<p class="note">VCS à contrôle optimiste : mise à jour avant
+								de valider</p>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section>
+				<h4>Concepts généraux</h4>
+				<table>
+					<tr>
+						<td><b>Checkout</b></td>
+						<td>Récupération dans la copie locale de la version du dépôt</td>
+					<tr>
+						<td><b>Update</b></td>
+						<td>Mise à jour dans sa copie locale d'un fichier du dépôt</td>
+					</tr>
+					<tr>
+						<td><b>Branche</b> [branch]</td>
+						<td>Une ligne de développement d'un projet. Fork : nouvelle
+							branche, merge : fusion de deux branches pour :
+							<ul>
+								<li>Gérer une version spécifique pour un client</li>
+								<li>Gérer des branches de maintenance corrective</li>
+								<li>Tester une idée, un refactoring sans risques</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section style="font-size: 25px">
+				<h4>Concepts généraux</h4>
+				<table>
+					<tr>
+						<td><b>Merge</b>, fusion [merge]</td>
+						<td>Fusion des modifications de deux branches<img
+							src="images/branches.png" style="width: 350px; margin: 0px" /></td>
+					</tr>
+					<tr>
+						<td><b>Tag</b>, étiquette [tag, label]</td>
+						<td>Photo du dépôt à un moment précis. Etiquette d'un
+							ensemble cohérent de sources.
+							<p class="note">Un tag peut présenter un aspect contractuel (signature numérique)</p>
+						</td>
+					</tr>
+
+				</table>
+			</section>
+			<section>
+				<h4>Concepts généraux</h4>
+				<table>
+
+					<tr>
+						<td><b>Modification concurrente</b></td>
+						<td>
+							<p>Tentative de mise à jour de sources ayant divergées</p>
+							<div
+								style="width: 350px; font-size: 50%; text-align: left; margin: 0px 5px 0px 5px;">
+								<img src="images/collision.png"
+									style="width: 350px; margin: 0px" />Copyright CC-BY-SA Ben
+								Collins-Sussman, Brian W. Fitzpatrick, C. Michael Pilato
+							</div>
+						</td>
+					</tr>
+				</table>
+			</section>
+			<section>
+				<h4>Concepts généraux</h4>
+				<table>
+					<tr>
+						<td><b>Conflit</b> [conflict]</td>
+						<td>
+
+							<p>Modification concurrente d'une même zone de texte. La
+								résolution est manuelle.</p>
+							<p>Exemple de conflit :</p> <pre
+								style="z-index: -1; float: hidden; margin: 0px">
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; commit A'
+int i = 0; 
+======= 
+int i = 1; 
+int j=0;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; commit A''</pre>
+						</td>
+					</tr>
+
+				</table>
+			</section>
+			<section>
+				<h5>Bonnes pratiques</h5>
+				<ul>
+					<li>Le code commité doit toujours compiler</li>
+					<li>Commiter et merger souvent, mettre à jour régulièrement</li>
+					<li>Utiliser avec un outil de gestion de tickets (Trac,
+						Bugzilla...)</li>
+					<li>Grouper les modifications en commits cohérents</li>
+					<li>Formatage coersitif des sources ASAP</li>
+					<li>Version scheme : <span class='lcode'>[X].[Y].[Z]</span>, exemple : <span class='lcode'>1.2.3</span></li>
+						<ul>
+							<li>Programme : [major (refonte complète)].[minor (évolution)].[no fix (correction) en partant de zéro]</li>
+							<li>Librairie : [compatibilite API].[évolution].[fix], voir le semantic versionning <a href="http://semver.org/">http://semver.org/</a></li>
+						</ul>
+				</ul>
+				</section>
+				
+				<section>
+				<h5>Bonnes pratiques / Convention message de commit</h5>
+					<ul>
+						<li>Une ligne de contexte (max 50 caractères)</li>
+						<li>Une ligne vide (options -m " et retour charriot)</li>
+						<li>Un paragraphe détaillé (largeur 72 caractères max), liens vers
+							numéros de tickets</li>
+						<li>Présent : "corrige", pas "a été corrigé"</li>
+						<li>Exemple :</li>
+						<br/>
+						<pre>
+							Correction bug #1456:Problème fichier bootstrap vide 
+										
+							Corrige une NPE se produisant quand le fichier bootstrap existe mais 
+							est vide. 
+							Reproduit uniquement par TU, non reporté par les utilisateurs 
+							à ce point. 
+							Voir aussi le bug #1674.
+						</pre>
+					</ul>
+			</section>
+			<!-- Slot 2 -->
+			<section>
+				<h4>Zoom sur Subversion (SVN)</h4>
+				<img src="images/Subversion_logo_hor-468x64.png" />
+				<ul>
+					<li>Open Source (licence Apache et BSD), écrit par CollabNet,
+						projet fondation Apache depuis 2010</li>
+					<li>Réécriture de CVS : SVN = sorte de "CVS++"</li>
+					<li>SVN est très populaire dans les grands comptes</li>
+					<li>Outil facile d'accès, intuitif</li>
+					<li>VCS de type centralisé (client-serveur)</li>
+					<li>VCS principalement à verrouillage optimiste (merge)</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Fonctionnement spécifique de SVN</h4>
+				<table class="noborder">
+					<tr>
+						<td>
+							<ul>
+								<li>Révision de niveau dépôt, donc no révision fichiers
+									augmente même sans modification</li>
+								<li>Branche = Tag = répertoire</li>
+								<li>Une copie locale par branche*</li>
+						   		</ul>
+							<br/>
+							<p style="font-size: small; text-align: left"><i>* il est néanmoins possible d'utiliser <span class='lcode'>svn switch</span></i></p>
+						</td>
+
+						<td>
+							<div
+								style="width: 200px; font-size: 50%; text-align: left; line-height: 0.9em; float: right; margin: 0px 5px 0px 5px;">
+								<img src="images/svn_repo_layout.png"
+									style="width: 200px; margin: 0px" />Copyright CC-BY-SA Ben
+								Collins-Sussman, Brian W. Fitzpatrick, C. Michael Pilato
+							</div>
+						</td>
+
+					</tr>
+				</table>
+			</section>
+
+			<section>
+				<h4>Outils SVN</h4>
+				<ul>
+					<li>[Tous OS] client en ligne de commande</li>
+					<li>[Tous OS] Plugins Eclipse : Subclipse ou Subversive
+					<li>[Windows] TortoiseSVN (intégration dans l'OS)</li>
+				</ul>
+				<img style="width: 300px; margin: 5px" src="images/subclipse.jpg" />
+			</section>
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">Initalisation d'un dépôt SVN</h4>
+				<ol>
+					<li>Sur le serveur SVN : <pre>
+svnadmin create <i>nom depot</i>
+mkdir trunk tags branches</pre>
+					</li>
+					<li>Si le projet existe déjà :
+						<ul>
+							<li>[soit import initial] sur le serveur SVN <pre>$ svn import</pre></li>
+							<li>[soit commit d'initialisation] sur un client SVN,
+								checkout du projet vide puis ajout des sources et commit : <pre>
+$ svn checkout <i>url</i>
+$ svn add * --force
+$ svn commit</pre>
+							</li>
+						</ul>
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">URL d’accès au référentiel</h4>
+				<ul>
+					<li>Accès direct au référentiel (par répertoire) <pre>file:///<i>répertoire</i>
+						</pre></li>
+					<li>Accès distant par le protocole HTTP (par WebDAV) <pre>http://[user@]<i>server</i>/<i>chemin</i>
+						</pre>
+					</li>
+					<li>Accès distant par le protocole https (i.e. avec SSL) <pre>https://[user@]<i>server</i>/<i>chemin</i>
+						</pre></li>
+					<li>Accès distant par un serveur svnserve (daemon lancé sur un
+						serveur, port par défaut : 3690) <pre>svn://[user@]<i>server</i>/<i>chemin</i>
+						</pre>
+					</li>
+					<li>Accès distant par un serveur svnserve (avec tunnelling
+						SSH) <pre>svn+ssh://[user@]<i>server</i>/<i>chemin</i>
+						</pre>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Commande de récupération et de mise à jour</h4>
+				<h5>Récupération</h5>
+				<pre>svn checkout <i>url</i>
+				</pre>
+				<p>Crée une copie locale des fichiers présents dans le dépôt
+					pour le chemin demandé dans l'URL</p>
+				<h5>Mise à jour</h5>
+				<pre>svn update
+				</pre>
+				<ul>
+					<li>Synchronise la version de travail avec les modifications
+						présentes dans le référentiel (si nécessaire)</li>
+					<li>Effectue un merge le cas échéant</li>
+					<li>Si le merge échoue, résolution manuelle des conflits</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Commande de commit</h4>
+				<pre>svn commit [-m "message"]</pre>
+				<ul>
+					<li>Met à jour le référentiel avec les modifications locales</li>
+					<li>Peut échouer si le référentiel a été mis à jour entre
+						temps : update obligatoire</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Commandes de manipulation des fichiers et répertoires</h4>
+				<ul>
+					<li>Ajout de fichiers ou répertoires <pre>svn add <i>fichier|répertoire</i>
+						</pre>
+					<li>Suppression de fichiers ou répertoires <pre>svn rm <i>fichier|répertoire</i>
+					</pre></li>
+					<li>Renommage/déplacement de fichiers ou répertoires <pre>svn mv <i>fichier|répertoire(source)</i> <i>nom|répertoire(cible)</i>
+					</pre></li>
+				</ul>
+				<p class="note">Il faut ensuite commiter pour intégrer ces
+					modifications dans le dépôt</p>
+			</section>
+			<section>
+				<h4>Détecter et visualiser les modifications</h4>
+				<ul>
+					<li><font style="font-family: monospace;">svn info <i>url</i></font>
+						affiche des informations de l'élement (auteur dernière
+						modification, date etc.)</li>
+
+					<li><font style="font-family: monospace;">svn status</font>
+						affiche l'état de la copie locale par rapport au dépôt<pre>
+' '   No modifications.
+'A'   Item is scheduled for addition.
+'D'   Item is scheduled for deletion.
+'M'   Item has been modified.
+'R'   Item has been replaced in your working copy.
+'C'   The contents of the item conflict with updates received from the repository.
+'I'   Item is being ignored (e.g., with the svn:ignore property).
+'?'   Item is not under version control.
+'!'   Item is missing (e.g., you moved or deleted it without using svn).</pre></li>
+					<li><font style="font-family: monospace;">svn diff</font>
+						affiche les différences entre révisions ou fichiers</li>
+				</ul>
+				<pre>
+svn diff -r7:13 toto.c 
+svn diff <i>referentiel</i>/tags/release-1-0 <i>referentiel</i>/branches/feature 
+</pre>
+			</section>
+			<section>
+				<h4>Visualisation des messages des logs et des auteurs de
+					révisions</h4>
+				<ul>
+					<li><font style="font-family: monospace;">svn log</font>
+						affiche les différents messages de commit</li>
+					<li><font style="font-family: monospace;">svn blame</font>
+						affiche l'auteur de modifications d'un fichier ligne par ligne</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Résolution de conflits</h4>
+				<ul>
+					<li><font
+						style="font-family: monospace;">svn update</font> propose de résoudre le conflit de façon interactive (forcer nos modifs, les leurs, éditer...)</li>
+					<li>Si la résolution est remise  plus tard (p=postpone), il faudra utiliser: 
+					<span class='lcode'>svn resolve --accept <i>&lt;option
+								de résolution&gt;</i></span> quand le conflit sera corrigé.
+					puis faire un <span class='lcode'>svn commit</span>.
+					</li>
+				</ul>
+				<p class='note'>
+					Options de résolution : <span class='lcode'>working</span>: version
+					résolue manuellement, <span class='lcode'>base</span>: version du
+					serveur avant modifications locales, <span class='lcode'>mine-full</span>
+					: notre version modifiée localement avant le conflit, <span
+						class='lcode'>theirs-full</span> : révision serveur
+				</p>
+				<p class='note'>
+					Note : ne pas utiliser la commande <span class='lcode'>svn resove<b>d</b></span> qui est dépréciée
+				</p>
+			</section>
+			<section>
+				<h5><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Pointeurs pour une utilisation plus avancée</h5>
+				<ul>
+					<li>Voir la commande <font style="font-family: monospace;">svn
+							propset svn:ignore <i>fichier_a_ignorer</i> .
+					</font> pour ignorer des fichiers ou répertoires
+					</li>
+					<li>Les externals <font style="font-family: monospace;">svn
+							propset svn:externals</font></li>
+					<li>Voir fonctions de branching et merge : <font
+						style="font-family: monospace;">svn copy</font>, <font
+						style="font-family: monospace;">svn switch</font> et <font
+						style="font-family: monospace;">svn merge</font>
+					<li>Voir fonctions de tagging : <font
+						style="font-family: monospace;">svn copy</font>
+					<li>Keywords comme <font style="font-family: monospace;">$$Date$$,
+							$$Author$$, $$Rev$$</font>, A éviter.
+					<li>Voir manuel SVN : <a href="#/100">[1]</a> et refcard : <a
+						href="#/100">[3]</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<h5>Bonnes pratiques (spécifiques SVN)</h5>
+				<ul>
+					<li>Convention de la structuration dépôt : <pre
+							style="z-index: -1; overflow: hidden; margin: 0px">
+/tags
+/trunk
+/branches</pre></li>
+					<li>Ne pas copier, renommer ou déplacer des fichiers ou des
+						répertoires avec les commandes systèmes. Utiliser <span
+						class='lcode'>svn (add|mv|rm)</span> et commiter à chaque
+						modification
+					</li>
+					<li>Un problème ? <span class="lcode">svn help</span> <i>commande</i></li>
+				</ul>
+			</section>
+			<section>
+				<img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png"
+				<h4>Quelles structurations pour un dépot multi-projets ?</h4>
+				<br/>
+				<img style="height: 400px; margin: 5px" src="images/svn_trees.png" />
+				<p style="font-size: small; text-align: center">
+					<i>Copyright CC BY-NC-ND  Bertrand Florat</i>
+				</p>
+			</section>
+			<section>
+				<h4>Quelques limitations</h4>
+				<ul>
+					<li>Impact du réseau : latences</li>
+					<li>Pas possible de travailler off-line ou sans le serveur</li>
+					<li>Limitations pour merges complexes (modification + déplacement)</li>
+					<li>Présence des répertoires <span class='lcode'>.svn</span>
+						dans les copies locales
+					</li>
+					<li>Impose un modèle organisationnel simple mais limité</li>
+					<li>Problème choix de structures du dépôt entre
+						branches/tags et projets</li>
+					<li>Un workflow de validation nécessite des tags ou branches</li>
+					<li>Forte utilisation espace disque des copies locales sur les
+						clients et du dépôt sur le serveur (malgré le cheap-copy)</li>
+				</ul>
+				<br/>
+				<p>-> Talk de Linus Torvalds, comparaison entre Git et SVN: <a href="#/100">[9]</a></p>
+			</section>
+
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Note sur CVS</h4>
+				<p>Ne pas utiliser CVS sauf obligation. Utiliser CVS au lieu de
+					SVN ne présente que des inconvénients :</p>
+				<ul>
+					<li>Pas de commit atomique (commit de niveau fichier
+						seulement)</li>
+					<li>Pas de renommage des fichiers (perte de l'historique après
+						déplacement)</li>
+					<li>CVS transfère les fichiers complets, SVN que le delta</li>
+				</ul>
+			</section>
+			<section>
+				<h5>TP2 Commandes SVN de base</h5>
+				<p class="note">Voir la feuille de travaux pratiques</p>
+				<br />
+			</section>
+
+			<!--  Slot 3 -->
+			<section>
+				<h4>Zoom sur Git</h4>
+				<img src="images/git-logo.svg.png" height="50px" />
+				
+				<ul><blockquote>I'm an egotistical bastard, and I name all my
+							projects after myself. First Linux, now git</blockquote>
+					<li>Linus Torvalds + 3 semaines = Git (utilisé pour le kernel
+						Linux dès avril 2005)
+					</li>
+					<li>VCS le plus puissant et le plus performant mais non
+						trivial</li>
+					<li>Open Source (licence GPL)</li>
+					<li>VCS de type distribué et contrôle optimiste uniquement</li>
+					<li>Programme "Unix-like" : commandes de haut niveau
+						(porcelain) utilisant commandes bas niveau (plumbing)</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Quand utiliser Git ?</h4>
+				<ul>
+					<li>Equipes formées</li>
+					<li>Projets Open-Source (GitHub/Gitorious)</li>
+					<li>Organisations décentralisées, développement non linéaire</li>
+					<li>Latences réseau importantes</li>
+					<li>Très grosses volumétries</li>
+				</ul>
+				<p class='note'>
+					Note : possible d'utiliser client git vers dépôt SVN (<span
+						class='lcode'>git-svn</span> mais pas recommendé)
+				</p>
+			</section>
+			<section>
+				<h4>Quelques clients Git</h4>
+				<img style="float: right; margin: 5px" src="images/egit.png"
+					width="300px" />
+				<ul>
+					<li>Tous OS
+						<ul>
+							<li>egit/jgit (plugin Eclipse)</li>
+						</ul>
+					</li>
+					<li>Gnu/Linux</li>
+						<ul>
+							<li>git (ligne de commande) + gitk (GUI pour l'historique)</li>
+							<li>tig : navigateur Git en ncurses</li>							
+						</ul>
+					<li>Microsoft Windows
+						<ul>
+							<li>Msysgit : git en ligne de commande + un éditeur
+								graphique d'historique
+							<li>TurtoiseGit : éditeur graphique intégré dans l'OS</li>
+						</ul>
+					</li>
+					<li>Mac OSX
+						<ul>
+							<li>Tower</li>
+							<li>GitBox</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Différences immédiates vis à vis de SVN</h4>
+				<ul>
+					<li>Un seul projet dans l'IDE par branche/tag</li>
+					<li>Impossible de commiter un répertoire vide</li>
+					<li>Pas de substitution de keywords</li>
+					<li>Un seul répertoire de meta-données <span class='lcode'>.git</span>
+					</li>
+					<li>L'index (staging area)</li>
+					<li>On utilise beaucoup plus les branches</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Configurer git</h4>
+				<p class='note'>Attention! ne surtout pas oublier de configurer
+					Git avant tout commit, plus possible ensuite de changer nom/e-mail
+					(sauf perte historique)</p>
+				<p>Trois niveaux de configuration :
+				<ul>
+					<li><span class='lcode'>/etc/gitconfig</span> : configuration
+						multi-dépôt pour tous les utilisateurs de la machine</li>
+					<li><span class='lcode'>~/.gitconfig</span> : configuration
+						multi-dépôt pour l'utilisateur (en général, seul ce fichier est à
+						modifié)</li>
+					<li><span class='lcode'>/<i>chemin dépôt</i>/.git/config
+					</span> : configuration du dépôt</li>
+				</ul>
+				<p>Configuration globale (multi-dépôts) de l'utilisateur courant
+					:</p>
+				<pre>
+$ git config --global user.name "John Doe"  //<i>Obligatoire !</i>
+$ git config --global user.email johndoe@example.com   //<i>Obligatoire !</i>
+$ git config --global push.default simple //<i>Mode de push</i>
+$ git config --global core.editor vim   //<i>choix de l'éditeur, vi par défaut</i>
+$ git config --global merge.tool vimdiff //<i>choix de l'outil de diff</i>
+</pre>
+			</section>
+			<section>
+				<h5>Création d'un nouveau dépôt</h5>
+				<p class='note'>Note : un seul projet par dépôt pour raison
+					d'isolation et de performances</p>
+				<pre>$ cd ~/depots/my-app
+$ git init</pre>
+				<p>Le contenu du répertoire (projet Maven/Eclipse) sera :</p>
+				<pre>
+~/depots/my-app
+                   /.git  <i>//dossier des meta-données git</i>
+                   /.project
+                   /.classpath
+                   /pom.xml
+                   /src/main/java
+                   /...                   
+</pre>
+<br/>
+				<p>Dépôt nu (sans copie locale) :</p>
+				<ul>
+					<li>Créé avec : <span class="lcode">git init --bare</span>
+					<li>Convention nommage : repertoire <span class="lcode">my-app<b>.git</b></span></li>
+				</ul>
+
+			</section>
+			<section>
+				<h5>Récupération d'un dépôt existant</h5>
+				<pre>$ git clone <i>url</i>
+				</pre>
+				<p>Format des URLs :</p>
+				<pre>
+ssh://[user@]host.xz[:port]/path/to/repo.git/
+git://host.xz[:port]/path/to/repo.git/
+http[s]://host.xz[:port]/path/to/repo.git/
+ftp[s]://host.xz[:port]/path/to/repo.git/
+rsync://host.xz/path/to/repo.git/
+file:///path/to/repo.git/  =  /path/to/repo.git/
+</pre>
+				<p>
+					Le dépôt que l'on vient de cloner est spécial : il est appelé <span
+						class='lcode'><b>origin</b></span> (<i>upstream repository</i>)
+				</p>
+			</section>
+			<section>
+				<h4>Structure de base de Git</h4>
+				<ul>
+					<li>Git stocke des : <i>trees</i>, <i>blobs</i>, <i>tags</i> et <i>commits</i>,
+						tous référencés par un hash SHA-1 unique (intégrité)
+					</li>
+					<li>Les références (refs) sont des noms symboliques des hashs</li>
+				</ul>
+				<img src="images/tree.png" width="350px" />
+				<p style="font-size: small; text-align: center">
+					<i>Copyright CC BY-SA-NC Scott Chacon</i>
+				</p>
+				<p class='note' style="font-size: 12px !important;">
+					SHA-1 transforme une suite de caractères de 1 à 2^64 bits en un nombre de 160 bits.
+					Non réversible. Exemple : <span class='lcode'>a6e757a90e389270e75428473858e04f8c71121b</span>.
+					Versions réduites : <span class='lcode'>a6e757a</span>. Risque
+					collisions infinitésimaux.
+				</p>
+			</section>
+
+			<section>
+				<h4>Les commits dans Git</h4>
+				<ul>
+					<li>Chaque commit possède [1..n] parents</li>
+					<li>Donc l'historique forme un graphe</li>
+					<li>Le commit est de niveau dépôt (pointe sur tree racine)</li>
+					<li>Notation : <span class='lcode'>ref^<i>n</i></span> (nième père) et <span
+						class='lcode'>ref~<i>n</i></span> (nième premier père)</li>
+				</ul>
+				<img
+					src="images/dag.png" width="350px" />
+				<p style="font-size: small; text-align: center">
+					<i>Copyright CC BY-SA-NC Scott Chacon</i>
+				</p>
+			</section>
+			<section>
+				<h4>Branching</h4>
+				<table>
+					<tr>
+						<td style="border-style: none !important;">
+							<ul>
+								<li>Branche = ref (pointeur) vers un commit</li>
+								<li>Branche 'HEAD' = ref vers branche courante</li>
+								<li>Créer une branche (fork) et s'y positionner : <pre>
+$ git branch mabranche
+$ git checkout mabranche
+ou : $ git checkout -b mabranche</pre></li>
+								<li>Note : si changement de branche avec des modifications non commitées, git merge les copies locales sauf si conflit detecté 
+								(dans ce cas, on peut forcer tout de même le merge avec <span class='lcode'>checkout <b>-m</b></span>).</li>
+								
+								
+								<li>Conventions :
+									<ul class="small">
+										<li><span class='lcode'>master</span> : branche par
+											défaut</li>
+										<li><span class='lcode'>develop</span> : branche de
+											développment (instable)</li>
+									</ul>
+								</li>
+							</ul>
+						</td>
+						<td style="border-style: none !important;"><img
+							src="images/git-branching.png" style="width: 300px" /></td>
+					</tr>
+				</table>
+				<p style="font-size: small; text-align: right;">
+					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
+				</p>
+			</section>
+			<section>
+				<h4>Merge de branches</h4>
+				<table>
+					<tr>
+						<td style="border-style: none !important;">
+							<ul>
+								<li>Merge branche <span class='lcode'> develop</span> dans
+									la branche <span class='lcode'> master</span> (courante): <pre>$ git merge develop</pre>
+								</li>
+								<li>Applique tous les commits de <span class='lcode'>develop</span>
+									dans <span class='lcode'>master</span> depuis le dernier merge entre ces deux branches.
+								</li>
+								<li>Plusieurs algorithmes, défaut : "three ways merge"</li>
+								<li>Si la branche courante n'a pas évolué depuis dernier
+									merge, fast-forward (ff)</li>
+								<li>Si divergence (non-ff), merge automatique. Conflits
+									possibles</li>
+							</ul>
+						</td>
+						<td style="border-style: none !important;"><img
+							src="images/branch-ff.png" style="width: 280px" /> <img
+							src="images/branch-non-ff.png" style="width: 280px" /></td>
+					</tr>
+				</table>
+				<p style="font-size: small; text-align: center;">
+					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
+				</p>
+			</section>
+
+			<section>
+				<h4>Branches remote</h4>
+				<ul style="font-size: large;">
+					<li>Branche remote (distante) : branche locale cache d'une
+						branche d'un dépôt distant</li>
+					<li>Exemples : <pre style="font-size: medium;">
+remotes/origin/HEAD -&gt; origin/master
+remotes/origin/develop
+remotes/origin/master
+remotes/bob/feature300</pre>
+					</li>
+					<li>Lecture seule, se resynchronise avec son dépôt distant
+						avec <span class='lcode'>git fetch</span> et <span class='lcode'>git
+							push</span>
+					</li>
+					<li>Par défaut, push refusé si branche distante a divergé</li>
+					<li><span class='lcode'>git pull</span> = <span class='lcode'>git
+							fetch</span> + <span class='lcode'>git merge</span></li>
+					<li>Tracking remote branch : branche remote avec refspec,
+						push/fetch/pull sans arguments<pre
+							style="font-size: medium; width: 100%">							
+[remote "origin"]  
+url=git@gitorious.org:/my-app.git 
+fetch=+refs/heads/*:refs/remotes/origin/* 
+pull=refs/heads/*:refs/remotes/origin/*</pre>
+					</li>
+					<li>Après un <span class='lcode'>git clone</span>, branches
+						tracking remote automatiquement créées : <span class='lcode'>refs/origin/<i>branche</i></span></li>
+				</ul>
+
+			</section>
+			<section>
+				<h4>Branches remote</h4>
+				<img src="images/remotes.png" width="600px" />
+			</section>
+			<section>
+				<h4>Tags</h4>
+				<ul>
+					<li>Un tag est une référence sur un commit + un auteur + un
+						message + une signature numérique optionnelle</li>
+					<li>Vrai élement du dépôt</li>
+					<li>Créer un tag (option <span class='lcode'>-a</span> :
+						"annoted"): <pre>$ git tag -a v1.0 -m 'Release 1.0'</pre></li>
+					<li>Attention, tags non poussés par défaut : <pre>$ git push --tags</pre>
+					</li>
+					<li>Lister les tags : <pre>git tag -l</pre></li>
+				</ul>
+				<p class='note'>Git supporte aussi des tags légers locaux
+					(lightweight) qui sont simplement des branches en lecture seul. Peu utiles.</p>
+
+			</section>
+			<section>
+				<h4>Cycle de vie d'un fichier dans la copie locale</h4>
+				<ul>
+					<li>Index/staging area : sas (facultatif) de "pré-commit"</li>
+					<li>Permet de sélectionner les modifications à commiter</li>
+					<li>Débrayable avec l'option <span class='lcode'>-a</span>
+						de <span class='lcode'>git commit</span></li>
+					<li>Attention : il faut obligatoirement faire <span class='lcode'>git add</span> pour un nouveau fichier</li>
+					<li>Status des fichiers : <span class='lcode'>git
+							status</span>
+					</li>
+					<li>Une fois prêt, commit : <span class='lcode'>git commit</span></li>
+					<li>Commit interactif de partie de fichier avec l'option <span class='lcode'>-p</span> (patch)
+				</ul>
+				<img src="images/lifecycle.png" width="450px" />
+			</section>
+
+			<!-- Slot 4 -->
+			<section>
+				<h4>Commandes git de base</h4>
+				<p class="note">
+					Voir aussi la cheat sheet <a href="http://ndpsoftware.com/git-cheatsheet.html">[5]</a></a>
+				</p>
+				<p class="note">
+					Référence par défaut : <span class='lcode'>HEAD</span>, branche par
+					défaut : <span class='lcode'>master</span>
+				</p>
+				<ul>
+					<li>Commandes de changement de statut de la copie locale : <span
+						class='lcode'>checkout [-m]</span>, <span class='lcode'>add</span>, <span
+						class='lcode'>rm</span>, <span class='lcode'>mv</span>, <span
+						class='lcode'>commit</span>, <span class='lcode'>stash</span></li>
+					<li>Commandes de correction : <span class='lcode'>revert</span>,
+						<span class='lcode'>reset (soft|mixed|hard)</span>, <span
+						class='lcode'>commit --amend</span></li>
+					<li>Commandes de branching : <span class='lcode'>branch</span>,
+						<span class='lcode'>merge</span>, <span class='lcode'>cherry-pick</span>,
+						<span class='lcode'>rebase</span></li>
+					<li>Commandes d'informations : <span class='lcode'>log</span>,
+						<span class='lcode'>status</span>, <span class='lcode'>diff</span>,
+						<span class='lcode'>show</span>, <span class='lcode'>blame</span>,
+						<span class='lcode'>reflog</span>
+					</li>
+					<li>Commandes de travail sur branches distantes : <span
+						class='lcode'>remote</span>, <span class='lcode'>push</span>, <span
+						class='lcode'>fetch</span>, <span class='lcode'>pull</span>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Historique avec git log</h4>
+				<ul>
+					<li>Spécifier des intervales de temps <pre>git log --since=2.weeks</pre></li>
+					<li>Voir les diff de chaque révision : option <span
+						class='lcode'>-p</span></li>
+					<li>Voir un graphe des révisions : option <span class='lcode'>--graph</span></li>
+					<li><span class='lcode'>branche1..branche2</span> : tous les
+						nouveaux commits de la branche2 depuis le fork d'avec la branche1</li>
+					<li><span class='lcode'>[--left-right]
+							branche1...branche2</span> : tous les nouveaux commits des deux branches
+						depuis le fork</li>
+				</ul>
+			</section>
+
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Comparaison avec git diff</h4>
+				<ul>
+					<li>Comparer deux références ('..' et 'HEAD' optionnels) : <pre>git diff HEAD..origin/hotfix/release-1_0
+git diff ..origin/hotfix/release-1_0
+git diff origin/hotfix/release-1_0</pre>
+					</li>
+					<li>Options <span class='lcode'>-b</span> et <span
+						class='lcode'>-w</span> pour ignorer les différences de formatage
+					</li>
+					<li>Toutes les différences entre deux branches : <pre>$ git diff branche1..branche2</pre></li>
+					<li>Seulement les différences de la branche2 avec le dernier commit commun entre branche1 et branch2 (qu'ai-je fait dans la branche2 depuis que mes deux branches ont divergées ?) : <pre>$ git diff branche1...branche2</pre>
+						<p class='note'>
+							Note : les notations '..' et '...' n'ont pas la même
+							signification que les ranges utilisés (entre autres) par <span
+								class='lcode'>git log</span>
+						</p></li>
+
+				</ul>
+				<p class='note'>
+					Attention ! <span class='lcode'>git diff</span> sans arguments
+					compare copie locale et index, pas HEAD
+				</p>
+			</section>
+			<section>
+				<h5>Merging</h5>
+				<img src="images/git-merge1.png" width="250px" /> <img
+					src="images/git-merge2.png" width="250px" />
+				<pre>
+$ git checkout master
+$ git merge iss53</pre>
+				<ul>
+
+					<li>C'est la copie locale de la branche courante qui est
+						modifiée</li>
+					<li>Si conflit, plus possible de commiter :
+						<ul>
+							<li>Soit résolution manuelle des conflits</li>
+							<li>Soit <span class='lcode'>git checkout --ours <i>fichier</i>
+							</span></li>
+							<li>Soit <span class='lcode'>git checkout --theirs <i>fichier</i>
+							</span></li>
+							<li>puis (dans les trois cas), <span class='lcode'>add</span>
+								et <span class='lcode'>commit</span>
+							<li>Revenir à l'état antérieur : <span class='lcode'>git
+									reset --merge</span></li>
+						</ul>
+					</li>
+				</ul>
+				<p style="font-size: medium !important;" class='note'>
+					Bonne pratique : option <span class='lcode'>--no-ff</span> pour
+					créer un commit de merge même en cas de FF
+				</p>
+				<p style="font-size: small;">
+					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
+				</p>
+			</section>
+			<section>
+				<h5><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Rebasing</h5>
+				<img src="images/git-rebase1.png" width="250px" /> <img
+					src="images/git-rebase2.png" width="250px" />
+				<ul>
+					<li><pre>
+$ git checkout experiment
+$ git rebase master
+</pre></li>
+					<li>Sérialise deux branches</li>
+					<li>Rend l'historique beaucoup plus lisible (linéaire)</li>
+					<li>Utiliser avec <span class='lcode'>git pull</span> : <pre>$ git pull --rebase</pre></li>
+					<li>Permet de réécrire son historique (rebase interactif)
+						<p class="note">Attention : n'utiliser rebase qu'avec ses
+							branches locales, ne jamais rebaser un commit qui a déjà été
+							pushé</p>
+					</li>
+				</ul>
+				<p style="font-size: small;">
+					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
+				</p>
+			</section>
+
+			<!-- Slot 5  -->
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">Utilitaires</h4>
+				<ul>
+					<li>Rebase interactif pour réécrire son historique local <pre>git rebase -i</pre></li>
+					<li>debugage multi-révisions avec bisect <pre>git bisect [good|bad|start|skip|run|reset]</pre></li>
+					<li>Commit partiel dans un même fichier : <pre>git add -p</pre> (option patch)</li>
+					<li>Les alias <pre>git config --global alias.co checkout</pre></li>
+					<li>L'IHM gitk</li>
+					<li>Changelog avec shortlog : <pre>$ git shortlog</pre></li>
+					<li>Fancy CLI
+						<ul>
+							<li>Coloriser : <pre>git config --global ui.color true</pre></li>
+								son <span class='lcode'>.bashrc</span></li>
+							<li>Templates de messages de commit <pre>git config --global commit.template <i>fichier</i>
+									</pre></li>
+						</ul>
+					</li>
+					<li>Recherche multi-revisions avec <span class="lcode">git
+							grep</span> : <pre>$ git grep [--name-only] <i>texte</i> <i>ref</i>
+							</pre></li>
+				</ul>
+			</section>
+			<section>
+				<h4>Ignorer des fichiers</h4>
+				<ul>
+					<li>Fichier <span class='lcode'>.gitignore</span> à la racine
+						de la copie locale (lui-même commité). Exemples : <pre>
+# a comment - this is ignored
+# no .a files
+*.a       
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a    
+# only ignore the root TODO file, not subdir/TODO
+/TODO     
+# ignore all files in the build/ directory
+build/    
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt 
+# Exemple réél :
+.metadata
+bin
+build
+.settings
+*.class
+</pre></li>
+					<li>Possible de positionner un fichier <span class='lcode'>.gitignore</span>
+						n'importe où
+					</li>
+					<li>Peut être défini au niveau utilisateur dans le fichier
+						donné par <span class='lcode'>~/.gitconfig</span> propriété <span
+						class='lcode'>core.excludesfile</span>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Bonnes pratiques Git, à faire</h4>
+				<ul>
+					<li>Configurer Git (nom et e-mail) avant tout commit</li>
+					<li>Utiliser les commandes <span class='lcode'>git rm,
+							git mv</span> au lieu des commandes sytème
+					</li>
+					<li>Bloquer les push forcés et les suppressions coté serveur
+						publique avec les options <span class='lcode'>receive.denyNonFastForwards=true</span>
+						et <span class='lcode'>receive.denyDeletes</span>=true
+					<li>Nettoyer son historique avant de le pousser si confus</li>
+					<li>Utiliser l'option merge <span class='lcode'>-no-ff</span>
+					</li>
+					<li>N'utiliser rebase que sur les branches locales</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Bonnes pratiques Git, à éviter</h4>
+				<ul>
+					<li>Pas de merge avec modifications non commitées (retour
+						arrière difficile)</li>
+					<li>Ne pas forcer les push (avec push -f ou via refspecs),
+						risque de perte de commits</li>
+					<li>Ne pas pousser des branches privées</li>
+					<li>Ne pas modifier un commit publié</li>
+				</ul>
+			</section>
+			
+			<section>
+				<h5>TP3 Commandes Git de base</h5>
+				<p class="note">Voir la feuille de travaux pratiques</p>
+			</section>
+
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Le coding social</h4>
+				<div
+					style="width: 400px; font-size: 50%; text-align: left; float: right; margin: 5px">
+					<img src="images/Jajuk_gitorious.png" style="width: 400px;" />Copyright
+					The Jajuk project
+				</div>
+
+				<ul>
+					<li>Réseaux sociaux de code comme
+						<ul>
+							<li>GitHub</li>
+							<li>Gitorious</li>
+						</ul>
+					</li>
+					<li>"Zone grise" entre l'équipe et les utilisateurs</li>
+					<li>Discussions sur le code (mode wiki)</li>
+					<li>Exemple de politique "grise" :</li>
+
+				</ul>
+			</section>
+			
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Les types d'organisations</h4>
+				<ol>
+					<li>Centralisé (SVN/CVS like) avec un "blessed server"</li>
+					<li>Hiérarchisé, par exemple à 3 grades : contributeur,
+						vérificateur, intégrateur</li>
+					<li>Patch/pull request : un projet + des contributeurs
+						externes</li>
+				</ol>
+				<p>Voir <a href="#/100">[12]</a></p>
+			</section>
+			
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Worflows avec Git, comment gérer ses branches ?</h4>
+				<ul>
+					<li>Forker, commiter et merger souvent</li>
+					<li>Historique flexible sur les branches privées, stable en
+						public</li>
+					<li>Branches privées (topic, experimentation) ou publiques</li>
+					<li>Branches "Short life" (topic, maintenance) ou "long run" (master)</li>
+					<li>Structuration des branches dépend du nombre de versions
+						maintenues</li>
+					<li>Graduation : de plus en plus stable (voir git-flow)</li>
+				</ul>
+				<p class='note'>
+					Voir aussi <span class='lcode'>man gitworkflows</span>
+				</p>
+			</section>
+
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Un worflow pré-cablé très populaire : git-flow</h4>
+				<div
+					style="width: 400px; font-size: 50%; text-align: left; margin: 5px">
+					<img src="images/git-flow.png" style="width: 400px;" />Copyright
+					CC-BY-SA Vincent Driessen
+				</div>
+				<p>
+					Voir <a href="#/100">[8]</a>
+				</p>
+			</section>
+
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Non abordé dans ce cours</h4>
+				<p class="note">
+					Voir <a href="#/100">[4]</a> pour approfondir
+				</p>
+				<ul>
+					<li>Détail des différents types de protocoles</li>
+					<li>Les commandes plumbing</li>
+					<li>L'administration server-side (gitolite, gitweb etc.)</li>
+					<li>Les hooks client et serveur</li>
+					<li>La gestion des contributions exterieures (<span
+						class='lcode'>git format-patch</span>, <span class='lcode'>git
+							request-pull</span> et <span class='lcode'>git am</span>)
+					</li>
+					<li>Les attributs (comportement spécifique par chemin)</li>
+					<li>Les sous-modules</li>
+					<li>L'adaptateur <span class='lcode'>git-svn</span></li>
+					<li>...</li>
+				</ul>
+			</section>
+			<section>
+				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				Un Dropbox-like basé sur git : Sparkleshare</h4>
+				<img src="images/spakleshare1.png" style="width: 250px; margin: 5px" /><img
+					src="images/spakleshare2.png" style="width: 250px; margin: 5px" />
+			</section>
+			<section>
+				<h5><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
+				TP4 Utilitaires Git</h5>
+				<p class="note">Voir la feuille de travaux pratiques</p>
+				<br />
+			</section>
+
+			<!-- References, doit être la dernière page pour que les ancres fonctionnent -->
+			<section>
+				<h4>Références</h4>
+				<ul class="sp">
+					<li>[1] Manuel SVN : <a href="http://svnbook.red-bean.com">http://svnbook.red-bean.com</a></li>
+					<li>[3] Refcard SVN : <a
+						href="http://www.open.collab.net/community/subversion/articles/CollabNet_SVNQuickReferenceCard.pdf">http://www.open.collab.net/community/subversion/articles/CollabNet_SVNQuickReferenceCard.pdf</a>
+					<li>[4] Pro-git : <a href="http://git-scm.com/book">http://git-scm.com/book</a>.
+						Version fr : <a href="http://git-scm.com/book/fr">http://git-scm.com/book/fr/</a>.
+					</li>
+					<li>[5] Git cheat sheet : <a
+						href="http://ndpsoftware.com/git-cheatsheet.html">http://ndpsoftware.com/git-cheatsheet.html</a>
+					<li>[7] Script d'autocomplétion git : <a
+						href="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash">https://raw.github.com/git/git/master/contrib/completion/git-completion.bash</a></li>
+					<li>[8] Git-flow : <a href="https://github.com/nvie/gitflow">https://github.com/nvie/gitflow</a></li>
+					<li>[9] Talk Linux Torvalds Google : <a
+						href="http://www.youtube.com/watch?v=4XpnKHJAok8">http://www.youtube.com/watch?v=4XpnKHJAok8</a></li>
+					<li>[10] A Visual Git Reference : <a href="http://marklodato.github.io/visual-git-guide/index-en.html">http://marklodato.github.io/visual-git-guide/index-en.html</a></li>
+					<li>[11] Git Ready (astuces et références vers docs) : <a href="http://gitready.com/">http://gitready.com/</a></li>
+					<li>[12] Typologies de workfow par Atlassian : <a href="https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch">https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch</a></li>
+					<li>[13] Tutorial interactif sur les branches avec Git : <a href="http://pcottle.github.io/learnGitBranching/">http://pcottle.github.io/learnGitBranching/</a></li>
+				</ul>
+			</section>
+		</div>
+	</div>
+
+
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
+
+	<script>
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls : false,
+			progress : true,
+			history : false,
+
+			theme : Reveal.getQueryHash().theme || 'simple', // available themes are in /css/theme
+			transition : Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/linear(2d)
+
+			// Optional libraries used to extend on reveal.js
+			dependencies : [ {
+				src : 'lib/js/highlight.js',
+				async : true,
+				callback : function() {
+					window.hljs.initHighlightingOnLoad();
+				}
+			}, {
+				src : 'lib/js/classList.js',
+				condition : function() {
+					return !document.body.classList;
+				}
+			}, {
+				src : 'lib/js/showdown.js',
+				condition : function() {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src : 'lib/js/data-markdown.js',
+				condition : function() {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src : '/socket.io/socket.io.js',
+				async : true,
+				condition : function() {
+					return window.location.host === 'localhost:1947';
+				}
+			}, {
+				src : 'plugin/speakernotes/client.js',
+				async : true,
+				condition : function() {
+					return window.location.host === 'localhost:1947';
+				}
+			} ]
+		});
+	</script>
+
+</body>
+</html>
