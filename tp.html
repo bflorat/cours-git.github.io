@@ -95,21 +95,25 @@
 			</section>
 
 			<section>
-				<h5>TP2 Commandes SVN de base</h5>
+				<h4>TP2 Commandes SVN de base</h4>
 				<h6>Préparation de l'environnement</h6>
 				<p><b>A faire par A et B</b></p>
 				<p>Fixer cette variable d'environnement :</p>
 				<pre>export SVN_EDITOR=vim
 						</pre>
 				<p>Créer un repertoire <span class='lcode'>~/projets</span> qui contiendra les projets sur lesquels nous travaillerons et toutes leurs branches</p>		
-					
+			</section>
+			<section>		
 				<h6>Exercice 2.1 : Import initial de code existant</h6>
 				<p><b>Cet exercice est fait uniquement par A</b></p>
 				<ul>
 					<li>Récupérer le dépot (vide) : </li>
 					<pre style="font-size: medium;">https://subversion.iut-nantes.univ-nantes.fr/~licpro-2015-b&lt;<i>code_binôme</i>&gt;/</pre>
 					<li>Télécharger le <a href='http://florat.net/cours_vcs/my-app.tar.gz'>fichier my-app.tar.gz</a></li>
-					<li>Decompresser ce fichier (commande <span class='lcode'>tar xzpvf &lt;fichier&gt;</span> ) dans le répertoire <span class='lcode'>~/projets/~licpro-2015-b&lt;<i>code_binôme</i>&gt;</span>
+					<li>Decompresser ce fichier dans le répertoire <span class='lcode'>~/projets/~licpro-2015-b&lt;<i>code_binôme</i>&gt;</span> :
+						<pre>cd ~/projects
+tar xzpvf &lt;fichier&gt;.tar.gz
+						</pre>
 					<li>Ajouter et commiter le repertoire <span class='lcode'>my-app</span> 
 				</ul>
 			</section>
@@ -122,9 +126,11 @@
 				</p>				
 				<pre style="font-size: medium;">https://subversion.iut-nantes.univ-nantes.fr/~licpro-2015-b&lt;<i>code_binôme</i>&gt;/my-app/</pre>
 				<br />
-				<p>Parcourez les repertoires créés dans votre copie locale, que constatez vous ?</p>
+				<p>Parcourez les repertoires créés dans votre copie locale, voyez vous des répertoires <span style="font-size: medium;">.svn</span> ? les consulter</p>
 				
 				<br />
+			</section>
+			<section>
 				<h6>Exercice 2.3 : Commit d'une modification</h6>
 				<p><b>Cet exercice est fait par A uniquement</b></p>
 				<ol>
@@ -133,17 +139,18 @@
 						dans le même package
 					</li>
 					<li>Afficher le statut de la copie locale à ce stade</li>
-					<li>Valider <b>ensemble</b> cette modification et cet ajout
-						de nouveau fichier en utilisant un message de commit dans les
+					<li>Valider cette modification de fichier et cet ajout
+						d'un nouveau fichier <b>en un seul commit</b>  en utilisant un message de commit dans les
 						règles de l'art</li>
 					<li>Afficher le commit dans l'historique et les différences
-						qu'il a introduit (attention : svn doit récupérer l'historique depuis le dépôts même si les commits 
-						ont été faits sur le poste qui a effectué les commits).</li>
+						qu'il a introduit </li>
+						<p class="note">Attention : svn doit récupérer l'historique depuis le dépôts même si les commits 
+						ont été faits sur le poste qui a effectué les commits).</p>
 				</ol>
 			</section>
 
 			<section>
-				<h5>Exercice 2.4 : Résolution d'une mise à jour concurrente sans conflit</h5>
+				<h6>Exercice 2.4 : Résolution d'une mise à jour concurrente sans conflit</h6>
 				<p><b>Cet exercice est fait simultanément par A et B</b></p>
 				<ol>
 					<li>A et B modifient simultanément le fichier <span
@@ -158,7 +165,9 @@
 						son tour sa modification.</li>
 					<li>A prend en compte la modification de B</li>
 				</ol>
-			<h5>Exercice 2.5 : Résolution d'un conflit</h5>
+			</section>
+			<section>
+			<h6>Exercice 2.5 : Résolution d'un conflit</h6>
 				<p><b>Cet exercice est fait simultanément par A et B</b></p>
 					<p>Modifier (toujours simultanément) une nouvelle fois le
 						fichier <span class='lcode'>pom.xml</span>. Cette fois, A et B
@@ -278,7 +287,7 @@ $ git remote show origin</pre>
 			</section>
 			
 			<section>
-				<h5>TP4 Utilitaires Git</h5>
+				<h4>TP4 Utilitaires Git</h4>
 				<p class="note">Ce TP a comme prérequis le TP3</p>
 				<h5>Exercice 4.1 : Ignorer des fichiers</h5>
 				<ol>
@@ -291,6 +300,8 @@ $ git remote show origin</pre>
 						vérifier l'opération avant et après
 					</li>
 				</ol>
+			</section>
+			<section>
 				<h5>Exercice 4.2 : Réécrire son historique</h5>
 				<ol>
 					<li>Effectuez trois commits</li>
@@ -303,6 +314,8 @@ $ git remote show origin</pre>
 				Recherchez une expression de votre choix dans les différentes
 				révisions du dépôt avec la commande <span class='lcode'>git
 					grep &lt;expression&gt; &lt;reference&gt;</span>
+			</section>
+			<section>
 				<h5>Exercice 4.4 : Utilisation de git-flow</h5>
 				<ol>
 					<li>Initialiser git-flow sur votre dépôt local</li>
