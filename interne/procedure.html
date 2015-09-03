@@ -45,6 +45,7 @@ $ git commit -m "Import initial par le responsable technique du projet"
 $ cd  /var/lib/git/repos<année YYYY>
 $ for i in {1..<nombre de binomes>}; do mkdir -p b$i/my-app.git; cd b$i/my-app.git; git init --bare; cd ../..; done
 - Supprimer les remotes de l'années precedente :
+$ cd  /var/lib/git/repo_source/my-app
 $ for i in {1..30}; do git remote rm remote_$i; done
 - Ajouter des remotes du depot source vers tous les depots bare puis pousser master vers tous les remotes :
 for i in {1..30}; do git remote add remote_$i file:///var/lib/git/repos<année YYYY>/b$i/my-app.git; 
