@@ -192,6 +192,7 @@
 					<li>Fichiers source (.java, .c, .html, .css...)</li>
 					<li>Certains fichiers binaires non dérivés des sources, images par exemple</li>
 					<li>Fichiers IDE/build (.project, pom.xml, build.xml...)</li>
+					<li>Configurations des lanceurs (.launch)</li>
 				</ul>
 				<br />
 				<p>Pas en configuration :</p>
@@ -213,10 +214,10 @@
 						fichiers réservés en lecture seule</li>
 					<li><b>Modèle de contrôle de concurrence optimiste</b> :
 						conflits possibles mais possibilité de réconcilier</li>
-					<li>Quelques VCS (Clearcase, SVN etc) mixtes mais verrouillage
-						anécdotique</li>
+					<li>Quelques VCS (Clearcase, SVN etc) mixtes</li>
 					<li>La plupart des VCS sont à contrôle optimiste : CVS, SVN, Git,
 						Mercurial, BitKeeper etc.</li>
+					<li>Le modèle pessismiste est obsolète et pousse à de mauvaises pratiques de développement, à éviter !</li>
 
 				</ul>
 			</section>
@@ -271,7 +272,7 @@
 					<tr>
 						<td><b>Copie locale</b>, espace de travail [working
 							copy/directory/workspace]</td>
-						<td>Copie locale éditable du dépôt dont les modifications
+						<td>Copie locale éditable d'une partie du dépôt et dont les modifications
 							peuvent ensuite être validées (commitées) dans le dépôt</td>
 					</tr>
 
@@ -282,20 +283,14 @@
 				<h4>Concepts généraux</h4>
 				<table>
 					<tr>
-						<td><b>Commit</b>, validation<br /> [commit,checkin]</td>
+						<td><b>Commit</b>, validation,<br />"mettre en conf", [commit,checkin]</td>
 						<td>(verbe) Enregistrer des modifications de la copie locale
-							vers dépôt. <q>mettre en conf</q><br />(nom) modifications
+							vers dépôt. <br />(nom) modifications
 							elles-mêmes.
 							<p class="note">VCS à contrôle optimiste : mise à jour avant
 								de valider</p>
 						</td>
 					</tr>
-				</table>
-			</section>
-
-			<section>
-				<h4>Concepts généraux</h4>
-				<table>
 					<tr>
 						<td><b>Checkout</b></td>
 						<td>Récupération dans la copie locale de la version du dépôt</td>
@@ -303,10 +298,20 @@
 						<td><b>Update</b></td>
 						<td>Mise à jour dans sa copie locale d'un fichier du dépôt</td>
 					</tr>
+					
+				</table>
+			</section>
+
+			<section>
+				<h4>Concepts généraux</h4>
+				<table>
+					<tr>
+						<td><b>Fork</b> [fork]</td>
+						<td>Créer une nouvelle branche</td>
+					</tr>
 					<tr>
 						<td><b>Branche</b> [branch]</td>
-						<td>Une ligne de développement d'un projet. Fork : nouvelle
-							branche, merge : fusion de deux branches pour :
+						<td>Une ligne de développement d'un projet. Sert par exemple à :
 							<ul>
 								<li>Gérer une version spécifique pour un client</li>
 								<li>Gérer des branches de maintenance corrective</li>
@@ -586,7 +591,7 @@ svn diff <i>referentiel</i>/tags/release-1-0 <i>referentiel</i>/branches/feature
 						style="font-family: monospace;">svn update</font> propose de résoudre le conflit de façon interactive (forcer nos modifs, les leurs, éditer...)</li>
 					<li>Si la résolution est remise  plus tard (p=postpone), il faudra utiliser: 
 					<span class='lcode'>svn resolve --accept <i>&lt;option
-								de résolution&gt;</i></span> quand le conflit sera corrigé.
+								de résolution&gt;</i> <i>&lt;fichier&gt;</i></span> quand le conflit sera corrigé.
 					puis faire un <span class='lcode'>svn commit</span>.
 					</li>
 				</ul>
@@ -618,7 +623,7 @@ svn diff <i>referentiel</i>/tags/release-1-0 <i>referentiel</i>/branches/feature
 					<li>Voir fonctions de tagging : <font
 						style="font-family: monospace;">svn copy</font>
 					<li>Keywords comme <font style="font-family: monospace;">$$Date$$,
-							$$Author$$, $$Rev$$</font>, A éviter.
+							$$Author$$, $$Rev$$</font>, à éviter.
 					<li>Voir manuel SVN : <a href="#/100">[1]</a> et refcard : <a
 						href="#/100">[3]</a></li>
 				</ul>
@@ -655,12 +660,8 @@ svn diff <i>referentiel</i>/tags/release-1-0 <i>referentiel</i>/branches/feature
 					<li>Impact du réseau : latences</li>
 					<li>Pas possible de travailler off-line ou sans le serveur</li>
 					<li>Limitations pour merges complexes (modification + déplacement)</li>
-					<li>Présence des répertoires <span class='lcode'>.svn</span>
-						dans les copies locales
-					</li>
 					<li>Impose un modèle organisationnel simple mais limité</li>
-					<li>Problème choix de structures du dépôt entre
-						branches/tags et projets</li>
+					<li>Problème du choix de structures du dépôt : par branches/tags ou par projets ?</li>
 					<li>Un workflow de validation nécessite des tags ou branches</li>
 					<li>Forte utilisation espace disque des copies locales sur les
 						clients et du dépôt sur le serveur (malgré le cheap-copy)</li>
@@ -710,7 +711,7 @@ svn diff <i>referentiel</i>/tags/release-1-0 <i>referentiel</i>/branches/feature
 				<h4>Quand utiliser Git ?</h4>
 				<ul>
 					<li>Equipes formées</li>
-					<li>Projets Open-Source (GitHub/Gitorious)</li>
+					<li>Projets Open-Source (GitHub/Bitbucket)</li>
 					<li>Organisations décentralisées, développement non linéaire</li>
 					<li>Latences réseau importantes</li>
 					<li>Très grosses volumétries</li>
@@ -1227,7 +1228,7 @@ build
 					<li>Réseaux sociaux de code comme
 						<ul>
 							<li>GitHub</li>
-							<li>Gitorious</li>
+							<li>Bitbucket</li>
 						</ul>
 					</li>
 					<li>"Zone grise" entre l'équipe et les utilisateurs</li>
