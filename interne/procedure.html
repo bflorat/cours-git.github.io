@@ -61,9 +61,9 @@ Le binome doit ensuite se répartir le rôle A ou B.
 
 = Apres le cours =
 * [Enseignant] Récupération des logs pour eval : git@gitinfo:/var/lib/git/repos2015$ for i in {1..30}; do cd b$i/my-app.git; git log > /tmp/b$i.log;cd ..; done
-	Puis (sur son poste) : scp git@gitinfo/tmp/b*.log .
+	Puis (sur son poste) : scp git@gitinfo:/tmp/b*.log .
 
-* [Enseignant] Changer /etc/passwd serveur Git, passer git en /usr/bin/git-shell pour éviter que des éleves puissent se loguer en ssh sur le serveur
+* [Enseignant] Se loguer ssh root@gitinfo puis changer /etc/passwd serveur Git, passer git en /usr/bin/git-shell pour éviter que des éleves puissent se loguer en ssh sur le serveur
 
 * [Eleves] Supprimer les mots de passe Subversion stockés en clair dans chaque ~/.subversion/auth 
 
