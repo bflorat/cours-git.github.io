@@ -238,7 +238,7 @@ ssh-copy-id git@gitinfo.iut-nantes.univ-nantes.prive [tapez entrer puis le mot d
 				</ol>
 			</section>
 			<section>
-				<h5>Exercice 3.3 : Manipulation d'une branche</h5>
+				<h5>Exercice 3.3.1 : Merge fast-forward</h5>
 				<p class="note">Cet exercice se fait simultanément par A et B</p>
 				<ol>
 					<li>Créer une branche nommée <span class='lcode'>bug42</span> et s'y positionner
@@ -246,8 +246,28 @@ ssh-copy-id git@gitinfo.iut-nantes.univ-nantes.prive [tapez entrer puis le mot d
 					<li>Effectuer des modifications sur <span
 						class='lcode'>Calcul.java</span> et les valider
 					</li>
-					<li>Positionnez vous à nouveau dans la branche <span
+					<li>Positionnez vous dans la branche <span
 						class='lcode'>master</span></li>
+					<li>Fusionner (par merge) les modifications de la branche
+						<span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de
+						merge ?</li>
+					<li>Supprimer cette branche</li>
+				</ol>
+			</section>
+			<section>
+				<h5>Exercice 3.3.2 : Merge non fast-forward</h5>
+				<p class="note">Cet exercice se fait simultanément par A et B</p>
+				<ol>
+					<li>Créer une branche nommée <span class='lcode'>bug42</span> et s'y positionner
+					</li>
+					<li>Effectuer des modifications <b>au début</b> du fichier <span
+						class='lcode'>Calcul.java</span> et les valider
+					</li>
+					<li>Positionnez vous dans la branche <span
+						class='lcode'>master</span></li>
+					<li>Effectuer des modifications <b>à la fin</b> du fichier <span
+						class='lcode'>Calcul.java</span> et les valider
+					</li>
 					<li>Fusionner (par merge) les modifications de la branche
 						<span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de
 						merge ?</li>
@@ -263,7 +283,7 @@ ssh-copy-id git@gitinfo.iut-nantes.univ-nantes.prive [tapez entrer puis le mot d
 				<p class="note">Cet exercice se fait simultanément par A et B</p>
 				<p><i>Voir <a href="cours.html">cours</a> slide "Merge" </i></p>
 				<ol>
-					<li>Refaire l'exercice 3.3 mais cette fois en créant un
+					<li>Refaire l'exercice 3.3.2 mais cette fois en créant un
 						conflit sur le fichier <span class='lcode'>Calcul.java</span>
 						entre les branches <span class='lcode'>master</span> et <span
 						class='lcode'>bug42</span> (modifier de façon différente les mêmes
