@@ -197,9 +197,8 @@
 					auto-porteur</p>
 				<ul>
 					<li>Fichiers source (.java, .c, .html, .css...)</li>
-					<li>Certains fichiers binaires non dérivés des sources, images par exemple</li>
-					<li>Fichiers IDE/build (.project, pom.xml, build.xml...)</li>
-					<li>Configurations des lanceurs (.launch)</li>
+					<li>Fichiers binaires non dérivés des sources, images par exemple</li>
+					<li>Fichiers de build (maven: pom.xml, npm: package.json ...)</li>
 				</ul>
 				<br />
 				<p>Pas en configuration :</p>
@@ -210,8 +209,9 @@
 				<br/>
 				<p>Selon les politiques :</p>
 				<ul>
-					<li>Librairies si non disponibles dans référentiel</li>
+					<li>Fichiers projets de l'IDE (.project, .idea ...)</li>
 					<li>Personnalisation et historique de l'IDE</li>
+					<li>Librairies si non disponibles dans référentiel</li>
 				</ul>
 			</section>
 			<section>
@@ -294,8 +294,6 @@
 						<td>(verbe) Enregistrer des modifications de la copie locale
 							vers dépôt. <br />(nom) modifications
 							elles-mêmes.
-							<p class="note">VCS à contrôle optimiste : mise à jour avant
-								de valider</p>
 						</td>
 					</tr>
 					<tr>
@@ -313,10 +311,6 @@
 				<h4>Concepts généraux</h4>
 				<table>
 					<tr>
-						<td><b>Fork</b> [fork]</td>
-						<td>Créer une nouvelle branche</td>
-					</tr>
-					<tr>
 						<td><b>Branche</b> [branch]</td>
 						<td>Une ligne de développement d'un projet. Sert par exemple à :
 							<ul>
@@ -325,6 +319,10 @@
 								<li>Tester une idée, un refactoring sans risques</li>
 							</ul>
 						</td>
+					</tr>
+					<tr>
+						<td><b>Fork</b> [fork]</td>
+						<td>Créer une nouvelle branche</td>
 					</tr>
 				</table>
 			</section>
@@ -393,7 +391,7 @@ int j=0;
 					<li>Le code commité doit toujours compiler</li>
 					<li>Commiter et merger souvent, mettre à jour régulièrement</li>
 					<li>Utiliser avec un outil de gestion de tickets (Trac,
-						Bugzilla...)</li>
+						Mantis, GitHub...)</li>
 					<li>Grouper les modifications en commits cohérents</li>
 					<li>Formatage coersitif des sources ASAP</li>
 					<li>Version scheme : <span class='lcode'>[X].[Y].[Z]</span>, exemple : <span class='lcode'>1.2.3</span></li>
@@ -745,7 +743,7 @@ svn diff <i>referentiel</i>/tags/release-1-0 <i>referentiel</i>/branches/feature
 						</ul>
 					<li>Microsoft Windows
 						<ul>
-							<li>Msysgit : git en ligne de commande + un éditeur
+							<li>Git for Windows : git en ligne de commande + un éditeur
 								graphique d'historique
 							<li>TurtoiseGit : éditeur graphique intégré dans l'OS</li>
 						</ul>
@@ -761,9 +759,9 @@ svn diff <i>referentiel</i>/tags/release-1-0 <i>referentiel</i>/branches/feature
 			<section>
 				<h4>Différences immédiates vis à vis de SVN</h4>
 				<ul>
+					<li>Tout est beaucoup plus rapide :-)))</li>
 					<li>Un seul projet dans l'IDE par branche/tag</li>
 					<li>Impossible de commiter un répertoire vide</li>
-					<li>Pas de substitution de keywords</li>
 					<li>L'index (staging area)</li>
 					<li>On utilise beaucoup plus les branches</li>
 				</ul>
@@ -860,7 +858,7 @@ file:///path/to/repo.git/  =  /path/to/repo.git/
 				<ul>
 					<li>Chaque commit possède [1..n] parents</li>
 					<li>Donc l'historique forme un graphe</li>
-					<li>Le commit est de niveau dépôt (pointe sur tree racine)</li>
+					<li>Le commit est de niveau dépôt (pointe sur le tree racine)</li>
 					<li>Notation : <span class='lcode'>ref^<i>n</i></span> (nième père) et <span
 						class='lcode'>ref~<i>n</i></span> (nième premier père)</li>
 				</ul>
@@ -952,12 +950,13 @@ remotes/bob/feature300</pre>
 					<li><span class='lcode'>git pull</span> = <span class='lcode'>git
 							fetch</span> + <span class='lcode'>git merge</span></li>
 					<li>Tracking remote branch : branche remote avec refspec,
-						push/fetch/pull sans arguments<pre
+						push/fetch/pull sans arguments (le '+' signifie qu'on met à jour la référence même si ce n'est pas un ff)<pre
 							style="font-size: medium; width: 100%">							
 [remote "origin"]  
 url=git@gitorious.org:/my-app.git 
 fetch=+refs/heads/*:refs/remotes/origin/* 
-pull=refs/heads/*:refs/remotes/origin/*</pre>
+pull=refs/heads/*:refs/remotes/origin/*
+push = refs/heads/master:refs/heads/qa/master</pre>
 					</li>
 					<li>Après un <span class='lcode'>git clone</span>, branches
 						tracking remote automatiquement créées : <span class='lcode'>refs/origin/<i>branche</i></span></li>
@@ -981,7 +980,7 @@ pull=refs/heads/*:refs/remotes/origin/*</pre>
 					<li>Lister les tags : <pre>git tag -l</pre></li>
 				</ul>
 				<p class='note'>Git supporte aussi des tags légers locaux
-					(lightweight) qui sont simplement des branches en lecture seul. Peu utiles.</p>
+					(lightweight) qui sont simplement des branches en lecture seule. Peu utiles.</p>
 
 			</section>
 			<section>
@@ -1058,7 +1057,7 @@ pull=refs/heads/*:refs/remotes/origin/*</pre>
 git diff ..origin/hotfix/release-1_0
 git diff origin/hotfix/release-1_0</pre>
 					</li>
-					<li>Options <span class='lcode'>-b</span> et <span
+					<li>Options <span
 						class='lcode'>-w</span> pour ignorer les différences de formatage
 					</li>
 					<li>Toutes les différences entre deux branches : <pre>$ git diff branche1..branche2</pre></li>
