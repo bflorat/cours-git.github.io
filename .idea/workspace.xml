@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="420d518d-ee64-402c-b5bd-4127b44901ff" name="Default" comment="Diverses précisions, typo">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cours.html" afterPath="$PROJECT_DIR$/cours.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tp.html" afterPath="$PROJECT_DIR$/tp.html" />
     </list>
     <ignored path="supports.iws" />
@@ -449,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1473106104503</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Mise en page">
+      <created>1473106180918</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1473106180918</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -482,6 +488,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <MESSAGE value="Ajout section sur l'usine logicielle" />
     <MESSAGE value="Ajout conf projet IDEA" />
     <MESSAGE value="SCM -&gt; VCS" />
@@ -489,7 +496,8 @@
     <MESSAGE value="Diverses précisions, typo" />
     <MESSAGE value="Nouvelle couverture" />
     <MESSAGE value="Centralisation des exercices du soir dans tp.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Centralisation des exercices du soir dans tp.html" />
+    <MESSAGE value="Mise en page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mise en page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

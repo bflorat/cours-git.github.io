@@ -2,390 +2,216 @@
 <html lang="fr">
 
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
 
-<title>Feuille de travaux pratiques - Gestion de version</title>
+    <title>Feuille de travaux pratiques - Gestion de version</title>
 
-<meta name="description"
-	content="Feuille de travaux pratiques génie logiciel Licence Pro 2015, la gestion de versions">
-<meta name="author" content="Bertrand Florat, Nicolas Hernandez">
+    <meta name="description"
+          content="Feuille de travaux pratiques génie logiciel Licence Pro 2015, la gestion de versions">
+    <meta name="author" content="Bertrand Florat, Nicolas Hernandez">
 
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style"
-	content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"/>
 
-<link rel="stylesheet" href="css/reveal.css">
-<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
 
-<!-- For syntax highlighting -->
-<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-<script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
 	document.write('<link rel="stylesheet" href="css/print/'
 			+ (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper')
 			+ '.css" type="text/css" media="print">');
-</script>
 
-<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
 </head>
 
 <body>
 
-	<div class="reveal">
+<div class="reveal">
 
-		<!-- Any section element inside of this container is displayed as a slide -->
-		<div class="slides">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
 
-			<section>
-				<h2 style="text-align: left;">Feuille de travaux pratiques -
-					Gestion de version</h2>
-				<p>
-					<b>Concepts/ Subversion/ Git</b>
-				</p>
-				<p>IUT de Nantes – Département Informatique</p>
-				<p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
-				<p><b>Cours de Licence professionnelle 2015</b></p>
-				<p class="sp">
-					<img style="margin-top: 5px" src="images/cc.png"> Copyright (C) 2015 Bertrand
-					FLORAT (bertrand@florat.net)
-				</p>
-				<p class="sp">
-					<i>Version 1.6 du 17 septembre 2015</i> / <a href="http://florat.net/cours_vcs/tp.html">http://florat.net/cours_vcs/tp.html</a> / <a href='cours.html'>Cours</a>
-				</p>
-				<p>Naviguer avec les fléches ou la molette de la souris</p>
-			</section>
-			<section>
-				<h5>Notes importantes</h5>
-				<ul>
-					<li>Le travail se fera en binôme. Chaque binôme possède un
-						dépôt SVN et Git distant et dédié. 'A' et 'B' désignent respectivement
-						l'un et l'autre membre du binôme. <b>Si un étudiant est seul, il
-						devra simuler A et B dans deux consoles différentes et dans 
-						les répertoires <span class='lcode'>~/projets_A</span> et 
-						<span class='lcode'>~/projets_B.</span></b></li>
-					<li>Il est possible d'utiliser Subversion ou Git dans Eclipse
-						via des plugins, néanmoins dans le cadre de ce TP, il vous est
-						demandé de n'utiliser que la ligne de commande</li>
-					<li>Vous êtes responsable des données présentes sur vos deux
-						dépôts. Ne stocker que des données relatives à votre travail à
-						l’IUT et uniquement des sources</li>
-					<li>Veuillez vous référer aux pages 'man' et aux documents
-						référencés à la fin du support de cours</li>
-					<li>Tous les exercices se feront sous Gnu/Linux avec vi (vim)
-						comme éditeur de texte.
-						<p style="font-size: small !important;" class="note">
-							Commandes de base: <span class='lcode'>:i</span> insérer, <span
-								class='lcode'>:o</span> insérer à la ligne, <span class='lcode'>:q!</span>
-							quitter sans enregistrer, <span class='lcode'>:x</span> quitter
-							en enregistrant, <span class='lcode'>shift J</span> (ligne n) :
-							remonte la ligne n+1, <span class='lcode'>y</span> : copier, <span
-								class='lcode'>p</span> : coller, <span class='lcode'>dd</span> :
-							supprimer toute une ligne, <span class='lcode'>u</span> : undo .
-							Voir [6] au besoin.
-						</p>
-					</li>
-					<li>Si malgré tout, vous éditez les fichiers avec un GUI comme gedit, attention
-					à désactiver les fonctions de backup automatique sinon des fichiers intempestifs comme .java~ 
-					seront créés et risquent de créer des problèmes lors du TP.</li>
-				</ul>
-				<br />
-				</section>
-				
-				<section>
-				<h4>TP1 Motivations gestion de configuration</h4>
-					<p><i>Echanges en séance</i></p>
-				</section>
+        <section>
+            <h2 style="text-align: left;">Feuille de travaux pratiques -
+                Gestion de version</h2>
+            <p>
+                <b>Concepts/ Subversion/ Git</b>
+            </p>
+            <p>IUT de Nantes – Département Informatique</p>
+            <p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
+            <p><b>Cours de Licence professionnelle 2016</b></p>
+            <p class="sp">
+                <img style="margin-top: 5px" src="images/cc.png"> Copyright (C) 2016 Bertrand
+                FLORAT (bertrand@florat.net)
+            </p>
+            <p class="sp">
+                <i>Version 1.6 du 17 septembre 2016</i> / <a href="http://florat.net/cours_vcs/tp.html">http://florat.net/cours_vcs/tp.html</a>
+                / <a href='cours.html'>Cours</a>
+            </p>
+            <p>Naviguer avec les fléches ou la molette de la souris</p>
+        </section>
+        <section>
+            <h5>Notes importantes</h5>
+            <ul>
+                <li>Le travail se fera en binôme. Chaque binôme possède un
+                    dépôt SVN et Git distant et dédié. 'A' et 'B' désignent respectivement
+                    l'un et l'autre membre du binôme. <b>Si un étudiant est seul, il
+                        devra simuler A et B dans deux consoles différentes et dans
+                        les répertoires <span class='lcode'>~/projets_A</span> et
+                        <span class='lcode'>~/projets_B.</span></b></li>
+                <li>Il est possible d'utiliser Subversion ou Git dans Eclipse
+                    via des plugins, néanmoins dans le cadre de ce TP, il vous est
+                    demandé de n'utiliser que la ligne de commande
+                </li>
+                <li>Vous êtes responsable des données présentes sur vos deux
+                    dépôts. Ne stocker que des données relatives à votre travail à
+                    l’IUT et uniquement des sources
+                </li>
+                <li>Veuillez vous référer aux pages 'man' et aux documents
+                    référencés à la fin du support de cours
+                </li>
+                <li>Tous les exercices se feront sous Gnu/Linux avec vi (vim)
+                    comme éditeur de texte.
+                    <p style="font-size: small !important;" class="note">
+                        Commandes de base: <span class='lcode'>:i</span> insérer, <span
+                            class='lcode'>:o</span> insérer à la ligne, <span class='lcode'>:q!</span>
+                        quitter sans enregistrer, <span class='lcode'>:x</span> quitter
+                        en enregistrant, <span class='lcode'>shift J</span> (ligne n) :
+                        remonte la ligne n+1, <span class='lcode'>y</span> : copier, <span
+                            class='lcode'>p</span> : coller, <span class='lcode'>dd</span> :
+                        supprimer toute une ligne, <span class='lcode'>u</span> : undo .
+                        Voir [6] au besoin.
+                    </p>
+                </li>
+            </ul>
+            <br/>
+        </section>
 
-			</section>
+        <section>
+            <h4>TP1 Motivations gestion de configuration</h4>
+            <p><i>Echanges en séance</i></p>
+        </section>
 
-			<section>
-				<h4>TP2 Commandes SVN de base</h4>
-				<h6>Préparation de l'environnement</h6>
-				<p><b>A faire par A et B</b></p>
-				<p>Créer un repertoire <span class='lcode'>~/projets</span> qui contiendra les projets sur lesquels nous travaillerons et toutes leurs branches</p>
-				<p>Si un étudiant est seul, il
-						devra simuler A et B dans deux consoles différentes et créer 
-						les répertoires <span class='lcode'>~/projets_A</span> et 
-						<span class='lcode'>~/projets_B.</span></p>		
-			</section>
-			<section>		
-				<h6>Exercice 2.1 : Import initial de code existant</h6>
-				<p><b>Cet exercice est fait uniquement par A</b>. A represente un intégrateur qui amorce un projet.</p>
-				<ul>
-					<li>Récupérer le dépot (vide) : </li>
-					<pre style="font-size: medium;">https://subversion.iut-nantes.univ-nantes.fr/~licpro-2015-b&lt;<i>code_binôme</i>&gt;/</pre>
-					<li>Télécharger le <a href='http://florat.net/cours_vcs/my-app.tar.gz'>fichier my-app.tar.gz</a></li>
-					<li>Decompresser ce fichier dans le répertoire <span class='lcode'>~/projets/~licpro-2015-b&lt;<i>code_binôme</i>&gt;</span> :
-						<pre>cd ~/projects/~licpro-2015-b&lt;<i>code_binôme</i>&gt;
+        </section>
+
+        <section>
+            <h4>TP2 Commandes SVN de base</h4>
+            <h6>Préparation de l'environnement</h6>
+            <p><b>A faire par A et B</b></p>
+            <p>Créer un repertoire <span class='lcode'>~/dev</span> qui contiendra les projets sur lesquels nous
+                travaillerons et toutes leurs branches</p>
+            <p>Si un étudiant est seul, il
+                devra simuler A et B dans deux consoles différentes et créer
+                les répertoires <span class='lcode'>~/dev_a</span> et
+                <span class='lcode'>~/dev_b</span></p>
+        </section>
+        <section>
+            <h6>Exercice 2.1 : Import initial de code existant</h6>
+            <p><b>Cet exercice est fait uniquement par A</b> (A figure un intégrateur qui amorce un projet)</p>
+            <ul>
+                <li>Récupérer le dépot (vide) à cette url:</li>
+                <pre style="font-size: medium;">file:///var/cours/depots_svn/b&lt;<i>code_binôme</i>&gt;/</pre>
+                <li>Télécharger avec wget le <a href='http://florat.net/cours_vcs/my-app.tar.gz'>fichier
+                    my-app.tar.gz</a></li>
+                <li>Decompresser ce fichier dans le répertoire <span class='lcode'>~/dev/b&lt;<i>code_binôme</i>&gt;</span> :
+						<pre>cd ~/dev
 tar xzpvf &lt;fichier&gt;.tar.gz
 						</pre>
-					<li>Ajouter et commiter le repertoire <span class='lcode'>my-app</span> 
-				</ul>
-			</section>
-			<section>
-				<h6>Exercice 2.2 : Récupération d'une copie locale</h6>
-				<p><b>Cet exercice n'est fait que par B</b>. B représente un developpeur arrivant sur un projet existant.</p>
-				<p>
-					Récupérer dans le répertoire <span class='lcode'> ~/projets</span>
-					le projet qui vient d'être créé par A et situé à cette adresse :
-				</p>				
-				<pre style="font-size: medium;">https://subversion.iut-nantes.univ-nantes.fr/~licpro-2015-b&lt;<i>code_binôme</i>&gt;/my-app/</pre>
-				<br />
-				<p>Consulter le répertoire <span class="lcode">.svn</span> à la racine de votre copie locale</p>
-				
-				<br />
-			</section>
-			<section>
-				<h6>Exercice 2.3 : Commit d'une modification</h6>
-				<p><b>Cet exercice est fait par A uniquement</b></p>
-				<ol>
-					<li>Modifier le source <span class='lcode'>Calcul.java</span>
-						et ajouter un fichier Source <span class='lcode'>CalculAlternatif.java</span>
-						dans le même package
-					</li>
-					<li>Afficher le statut de la copie locale à ce stade</li>
-					<li>Valider cette modification de fichier et cet ajout
-						d'un nouveau fichier <b>en un seul commit</b>  en utilisant un message de commit dans les
-						règles de l'art</li>
-					<li>Afficher le commit dans l'historique et les différences
-						qu'il a introduit </li>
-						<p class="note">Attention : svn doit récupérer l'historique depuis le dépôts même si les commits 
-						ont été faits sur le poste qui a effectué les commits).</p>
-				</ol>
-			</section>
+                <li>Ajouter et commiter le repertoire <span class='lcode'>my-app</span>
+            </ul>
+            <p class="note">Note : nous avons ici une URL de type <span class='lcode'>file://</span> car le dépôt et les copies
+                locales sont sur la même machine. En général, les url sont de type <span class='lcode'>https://monsite/monchemin</span>
+            </p>
 
-			<section>
-				<h6>Exercice 2.4 : Résolution d'une mise à jour concurrente sans conflit</h6>
-				<p><b>Cet exercice est fait simultanément par A et B</b></p>
-				<ol>
-					<li>A et B modifient simultanément le fichier <span
-						class='lcode'>pom.xml</span>: A modifie le groupId, B modifie
-						l'artifactId.
-					</li>
-					<li>A et B consultent le status de leurs copies locales respectives.
-					</li>
-					<li>A valide</li>
-					<li>B tente de valider. Que se passe-t-il ? que faut-il faire
-						? Une fois le problème résolu, B affiche le statut puis valide à
-						son tour sa modification.</li>
-					<li>A prend en compte la modification de B</li>
-				</ol>
-			</section>
-			<section>
-			<h6>Exercice 2.5 : Résolution d'un conflit</h6>
-				<p><b>Cet exercice est fait simultanément par A et B</b></p>
-					<p>Modifier (toujours simultanément) une nouvelle fois le
-						fichier <span class='lcode'>pom.xml</span>. Cette fois, A et B
-						modifient la même zone (par exemple la version du projet). A
-						valide d’abord ces modifications. Puis c’est au tour de B. Que se
-						passe-t-il ? Résoudre le problème.
-					</p>
-				</ol>
-			</section>
-			<section>
-			<h5>Exercice du soir no 1 (SVN)</h5>
-				<p>Expliquer la BD en premiere page du cours en un paragraphe. Que cette situation révelle-t-elle sur la gestion de ce projet ?</p> 
-				<p>M'envoyer une (courte) réponse par e-mail à bertrand@florat.net</p>
-				<p>Indices : 
-				<ul>
-				<li>ce n'est pas une question de conflits ;</li> 
-				<li>la question 'Problems?' pourrait être remplacée par 'Bugs ?';</li>
-				<li>le personnage en vert est un nouveau sur le projet.</li>
-				</ul>
-				</p>				
-			</section>
-			<section>
-				<h4>TP3 Commandes Git de base</h4>
-				<h5>Exercice 3.1 : Clonage d'un dépot</h5>
-				<p>Chaque binôme dispose d'un dépôt Git accessible en ssh et
-					situé à l'URL</p>
-				<pre>ssh://git@gitinfo.iut-nantes.univ-nantes.prive/var/lib/git/repos2015/b<i>&lt;code_binôme&gt;</i>/my-app.git</pre>
-				<ul>
-				    <li>Publier sa clé publique sur le serveur git via les commandes :
-					<pre>
-ssh-keygen [taper entrée] [ne pas entrer de mot de passe, taper entrer deux fois]
-ssh-copy-id git@gitinfo.iut-nantes.univ-nantes.prive [tapez entrer puis le mot de passe git qui vous est fourni]</pre></li>	
-					<li>A et B clonent dans leur répertoire <span class='lcode'>~/projets</span> le dépôt distant affecté au binôme</li>
-					<li>Afficher les branches avec <span class='lcode'>git
-							branch -a</span></li>
-					<li>Consultez votre répertoire <span class='lcode'>.git</span></li>
-				</ul>
-			</section>
-			<section>
-				<h5>Exercice 3.2 : Commit d'une modification</h5>
-				<p class="note">Cet exercice se fait simultanément par A et B</p>
-				<ol>
-					<li>Configurer correctement son nom et e-mail Git (voir support
-					de cours)</li>
-					<li>Vérifier que vous vous trouvez dans la branche <span
-						class='lcode'>master</span>, s'y positionner si ce n'est pas le
-						cas.
-					</li>
-					<li>Modifier le source <span class='lcode'>Calcul.java</span>
-						et ajouter un fichier source <span class='lcode'>CalculAlternatif.java</span>
-						dans le même package
-					</li>
-					<li>Afficher le statut de la copie locale à ce stade</li>
-					<li>Valider dans le même commit cette modification et cet ajout
-						de nouveau fichier en utilisant un message de commit dans les
-						règles de l'art.</li>
-					<li>Afficher le commit dans l'historique et les différences
-						qu'il a introduites (commande <span
-						class='lcode'>git show</span>).</li>
-				</ol>
-			</section>
-			<section>
-				<h5>Exercice 3.3.1 : Merge fast-forward</h5>
-				<p class="note">Cet exercice se fait simultanément par A et B</p>
-				<ol>
-					<li>Créer une branche nommée <span class='lcode'>bug42</span> et s'y positionner
-					</li>
-					<li>Effectuer des modifications sur <span
-						class='lcode'>Calcul.java</span> et les valider
-					</li>
-					<li>Positionnez vous dans la branche <span
-						class='lcode'>master</span></li>
-					<li>Fusionner (par merge) les modifications de la branche
-						<span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de
-						merge ?</li>
-					<li>Supprimer cette branche</li>
-				</ol>
-			</section>
-			<section>
-				<h5>Exercice 3.3.2 : Merge non fast-forward</h5>
-				<p class="note">Cet exercice se fait simultanément par A et B</p>
-				<ol>
-					<li>Créer une branche nommée <span class='lcode'>bug42</span> et s'y positionner
-					</li>
-					<li>Effectuer des modifications <b>au début</b> du fichier <span
-						class='lcode'>Calcul.java</span> et les valider
-					</li>
-					<li>Positionnez vous dans la branche <span
-						class='lcode'>master</span></li>
-					<li>Effectuer des modifications <b>à la fin</b> du fichier <span
-						class='lcode'>Calcul.java</span> et les valider
-					</li>
-					<li>Fusionner (par merge) les modifications de la branche
-						<span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de
-						merge ?</li>
-					<li>Supprimer cette branche</li>
-					<li>Refaire l'exercice mais cette fois en ayant modifié puis commité en parallèle et sans conflit (par exemple, en ajoutant une nouvelle méthode) le
-						fichier <span class='lcode'>Calcul.java</span> dans les deux branches. Comment Git qualifie ce type de merge
-						?
-					</li>
-				</ol>
-			</section>
-			<section>
-				<h5>Exercice 3.4 : Gestion d'un conflit</h5>
-				<p class="note">Cet exercice se fait simultanément par A et B</p>
-				<p><i>Voir <a href="cours.html">cours</a> slide "Merge" </i></p>
-				<ol>
-					<li>Refaire l'exercice 3.3.2 mais cette fois en créant un
-						conflit sur le fichier <span class='lcode'>Calcul.java</span>
-						entre les branches <span class='lcode'>master</span> et <span
-						class='lcode'>bug42</span> (modifier de façon différente les mêmes
-						lignes de code)
-					</li>
-					<li>Que vous reporte Git ? Un commit a-t-il été créé ?
-						afficher le statut de la copie locale.</li>
-					<li>Résoudre le conflit manuellement et le valider</li>
-					<li>Refaire l'exercice, cette fois en ignorant les
-						modifications de la branche <span class='lcode'>bug42</span>
-					</li>
-					<li>Refaire l'exercice, cette fois en ignorant les
-						modifications de la branche courante (<span class='lcode'>master</span>)
-					</li>
-				</ol>
-			</section>
-			<section>
-				<h5>Exercice 3.5 : Manipulation des branches distantes</h5>
-				<p class='note'>A sauvegarde (commande <span class='lcode'>mv ~/projets/my-app ~/projets/my-app~</span>) son dépôt local puis le
-					réinitialise en le clonnant à nouveau (voir TP3) depuis le repertoire 
-					<span class='lcode'>~/projets</span></p>
-				<ol>
-					<li>Afficher le détail du dépôt <span class='lcode'>origin</span>
-						et des branches remote via les commandes suivantes : <pre>$ git branch -r
-$ git remote show origin</pre>
-					</li>
-					<li>B pousse ses commits des exercices précédents dans la
-						branche <span class='lcode'>origin/master</span>
-					</li>
-					<li>A compare sa branche <span class='lcode'>master</span> à
-						la branche <span class='lcode'>origin/master</span>. Il y-a-t-il
-						des différences? Pourquoi ?
-					</li>
-					<li>A intégre les modifications distantes soit via <span
-						class='lcode'>fetch + merge</span> soit par un <span class='lcode'>pull</span>.
-						Quelle est la différence ? quel est la méthode la plus prudente ?
-					</li>
-				</ol>
-			</section>
-			
-			<section>
-				<h4>TP4 Utilitaires Git</h4>
-				<p class="note">Ce TP a comme prérequis le TP3</p>
-				<h5>Exercice 4.1 : Ignorer des fichiers</h5>
-				<ol>
-					<li>Créer un fichier (fictif) <span class='lcode'>.class</span>
-						avec les fichier java
-					</li>
-					<li>Configurer git pour qu'il ignore recurvivement tous les <span
-						class='lcode'>.class</span></li>
-					<li>Utiliser <span class='lcode'>git status</span> pour
-						vérifier l'opération avant et après
-					</li>
-				</ol>
-			</section>
-			<section>
-				<h5>Exercice 4.2 : Réécrire son historique</h5>
-				<ol>
-					<li>Effectuez trois commits</li>
-					<li>Renommez le premier commit</li>
-					<li>Fusionnez le second et le troisième</li>
-				</ol>
-			</section>
-			<section>
-				<h5>Exercice 4.3 : Rechercher une expression</h5>
-				Recherchez une expression de votre choix dans les différentes
-				révisions du dépôt avec la commande <span class='lcode'>git
-					grep &lt;expression&gt; &lt;reference&gt;</span>
-			</section>
-			<section>
-				<h5>Exercice 4.4 : Utilisation de git-flow</h5>
-				<ol>
-					<li>Initialiser git-flow sur votre dépôt local</li>
-					<li>Démarrer une release</li>
-					<li>Créer puis fermer une branche topic de fonctionnailité</li>
-					<li>Créer puis fermer une branche topic hotfix</li>
-					<li>Finaliser la release</li>
-				</ol>
-			</section>
-			<section>
-				<h5>Exercice du soir no 2 (Git)</h5>
-				<ul>
-					<li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
-					<li> Faire un commit sur <span class='lcode'>master</span></li>
-					<li> Poser un tag <span	class='lcode'>V1</span> sur ce commit</li>
-					<li> Créer depuis ce commit une branche <span class='lcode'>maintv1</span>, y faire deux commits, tagger ce dernier commit <span class='lcode'>V1Fix1</span></li> 
-					<li> Faire un commit sur master puis tagger <span class='lcode'>V2</span></li>
-					<li> Créer depuis ce commit une branche <span class='lcode'>maintv2</span>, y faire deux commits puis y merger le commit <span
-						class='lcode'>V1Fix1</span></li>
-					<li> Faire un dernier commit dans la branche <span class='lcode'>maintv2</span>, puis le tagger par votre nom de famille</li>
-					<li> Faire une capture d'écrans et me l'envoyer par e-mail à bertrand@florat.net</li>
-				</ul>
-			</section>
-		</div>
-	</div>
+        </section>
+        <section>
+            <h6>Exercice 2.2 : Récupération d'une copie locale</h6>
+            <p><b>Cet exercice n'est fait que par B</b> (B représente un developpeur arrivant sur un projet existant).
+            </p>
+            <p>
+                Récupérer dans le répertoire <span class='lcode'> ~/dev/<b>my-app-trunk</b></span>
+                la branche trunk du projet qui vient d'être créé par A et situé à cette adresse :
+            </p>
+            <pre style="font-size: medium;">file:///var/cours/depots_svn/b&lt;<i>code_binôme</i>&gt;/my-app/trunk</pre>
+            <br/>
+            <p>Consulter le répertoire <span class="lcode">.svn</span> à la racine de votre copie locale</p>
+
+            <br/>
+        </section>
+        <section>
+            <h6>Exercice 2.3 : Commit d'une modification</h6>
+            <p><b>Cet exercice est fait par A uniquement</b></p>
+            <ol>
+                <li>Modifier le source <span class='lcode'>Calcul.java</span>
+                    et ajouter un nouveau fichier <span class='lcode'>CalculAlternatif.java</span>
+                    dans le même package
+                </li>
+                <li>Afficher le statut de la copie locale à ce stade</li>
+                <li>Valider cette modification de fichier et cet ajout
+                    d'un nouveau fichier <b>en un seul commit</b> en utilisant un message de commit dans les
+                    règles de l'art
+                </li>
+                <li>Afficher le commit dans l'historique et les différences
+                    qu'il a introduit
+                </li>
+                <p class="note">Attention : svn doit récupérer l'historique depuis le dépôts même si les commits
+                    ont été faits sur le poste qui a effectué les commits).</p>
+            </ol>
+        </section>
+
+        <section>
+            <h6>Exercice 2.4 : Résolution d'une mise à jour concurrente sans conflit</h6>
+            <p><b>Cet exercice est fait simultanément par A et B</b></p>
+            <ol>
+                <li>A et B modifient simultanément le fichier <span
+                        class='lcode'>pom.xml</span>: A modifie le groupId, B modifie
+                    l'artifactId.
+                </li>
+                <li>A et B consultent le status de leurs copies locales respectives.
+                </li>
+                <li>A valide</li>
+                <li>B tente de valider. Que se passe-t-il ? que faut-il faire
+                    ? Une fois le problème résolu, B affiche le statut puis valide à
+                    son tour sa modification.
+                </li>
+                <li>A prend en compte la modification de B</li>
+            </ol>
+        </section>
+        <section>
+            <h6>Exercice 2.5 : Résolution d'un conflit</h6>
+            <p><b>Cet exercice est fait simultanément par A et B</b></p>
+            <p>Modifier (toujours simultanément) une nouvelle fois le
+                fichier <span class='lcode'>pom.xml</span>. Cette fois, A et B
+                modifient la même zone (par exemple la version du projet). A
+                valide d’abord ces modifications. Puis c’est au tour de B. Que se
+                passe-t-il ? Résoudre le problème.
+            </p>
+            </ol>
+        </section>
+        <section>
+            <h5>Exercice du soir no 1 (SVN)</h5>
+            <p>Expliquer en moins de 200 mots les différences majeures entre Git
+                et SVN et dans quel cas utiliser l'un ou l'autre</p>
+            <p>Laisser le texte sur le serveur cours.florat.net en tant que ~/soir1.txt</p>
+        </section>
+
+    </div>
+</div>
 
 
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
 
-	<script src="lib/js/head.min.js"></script>
-	<script src="js/reveal.min.js"></script>
-
-	<script>
+<script>
 		// Full list of configuration options available here:
 		// https://github.com/hakimel/reveal.js#configuration
 		Reveal.initialize({
@@ -432,7 +258,8 @@ $ git remote show origin</pre>
 				}
 			} ]
 		});
-	</script>
+
+</script>
 
 </body>
 </html>
