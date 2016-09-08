@@ -206,7 +206,183 @@ tar xzpvf &lt;fichier&gt;.tar.gz
                 et SVN et dans quel cas utiliser l'un ou l'autre ;</b></p>
             <p>Laisser le texte sur le serveur cours.florat.net en tant que ~/soir1.txt</p>
         </section>
+        <section>
+            <h4>TP3 Commandes Git de base</h4>
+            <h5>Exercice 3.1 : Clonage d'un dépot</h5>
+            <p>Chaque binôme dispose d'un dépôt Git accessible en ssh et
+                situé à l'URL</p>
+            <pre>file:///var/cours/depots_git/b<i>&lt;code_binôme&gt;</i>/my-app.git</pre>
+            <ul>
+                <li>A et B clonent dans leur répertoire <span class='lcode'>~/dev</span> le dépôt distant affecté au binôme</li>
+                <li>Afficher les branches avec <span class='lcode'>git
+							branch -a</span></li>
+                <li>Consultez votre répertoire <span class='lcode'>.git</span></li>
+            </ul>
+        </section>
+        <section>
+            <h5>Exercice 3.2 : Commit d'une modification</h5>
+            <p class="note">Cet exercice se fait simultanément par A et B</p>
+            <ol>
+                <li>Configurer correctement son nom et e-mail Git (voir support
+                    de cours)</li>
+                <li>Vérifier que vous vous trouvez dans la branche <span
+                        class='lcode'>master</span>, s'y positionner si ce n'est pas le
+                    cas.
+                </li>
+                <li>Modifier le source <span class='lcode'>Calcul.java</span>
+                    et ajouter un fichier source <span class='lcode'>CalculAlternatif.java</span>
+                    dans le même package
+                </li>
+                <li>Afficher le statut de la copie locale à ce stade</li>
+                <li>Valider dans le même commit cette modification et cet ajout
+                    de nouveau fichier en utilisant un message de commit dans les
+                    règles de l'art.</li>
+                <li>Afficher le commit dans l'historique et les différences
+                    qu'il a introduites (commande <span
+                            class='lcode'>git show</span>).</li>
+            </ol>
+        </section>
+        <section>
+            <h5>Exercice 3.3.1 : Merge fast-forward</h5>
+            <p class="note">Cet exercice se fait simultanément par A et B</p>
+            <ol>
+                <li>Créer une branche nommée <span class='lcode'>bug42</span> et s'y positionner
+                </li>
+                <li>Effectuer des modifications sur <span
+                        class='lcode'>Calcul.java</span> et les valider
+                </li>
+                <li>Positionnez vous dans la branche <span
+                        class='lcode'>master</span></li>
+                <li>Fusionner (par merge) les modifications de la branche
+                    <span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de
+                    merge ?</li>
+                <li>Supprimer cette branche</li>
+            </ol>
+        </section>
+        <section>
+            <h5>Exercice 3.3.2 : Merge non fast-forward</h5>
+            <p class="note">Cet exercice se fait simultanément par A et B</p>
+            <ol>
+                <li>Créer une branche nommée <span class='lcode'>bug42</span> et s'y positionner
+                </li>
+                <li>Effectuer des modifications <b>au début</b> du fichier <span
+                        class='lcode'>Calcul.java</span> et les valider
+                </li>
+                <li>Positionnez vous dans la branche <span
+                        class='lcode'>master</span></li>
+                <li>Effectuer des modifications <b>à la fin</b> du fichier <span
+                        class='lcode'>Calcul.java</span> et les valider
+                </li>
+                <li>Fusionner (par merge) les modifications de la branche
+                    <span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de
+                    merge ?</li>
+                <li>Supprimer cette branche</li>
+                <li>Refaire l'exercice mais cette fois en ayant modifié puis commité en parallèle et sans conflit (par exemple, en ajoutant une nouvelle méthode) le
+                    fichier <span class='lcode'>Calcul.java</span> dans les deux branches. Comment Git qualifie ce type de merge
+                    ?
+                </li>
+            </ol>
+        </section>
+        <section>
+            <h5>Exercice 3.4 : Gestion d'un conflit</h5>
+            <p class="note">Cet exercice se fait simultanément par A et B</p>
+            <p><i>Voir <a href="cours.html">cours</a> slide "Merge" </i></p>
+            <ol>
+                <li>Refaire l'exercice 3.3.2 mais cette fois en créant un
+                    conflit sur le fichier <span class='lcode'>Calcul.java</span>
+                    entre les branches <span class='lcode'>master</span> et <span
+                            class='lcode'>bug42</span> (modifier de façon différente les mêmes
+                    lignes de code)
+                </li>
+                <li>Que vous reporte Git ? Un commit a-t-il été créé ?
+                    afficher le statut de la copie locale.</li>
+                <li>Résoudre le conflit manuellement et le valider</li>
+                <li>Refaire l'exercice, cette fois en ignorant les
+                    modifications de la branche <span class='lcode'>bug42</span>
+                </li>
+                <li>Refaire l'exercice, cette fois en ignorant les
+                    modifications de la branche courante (<span class='lcode'>master</span>)
+                </li>
+            </ol>
+        </section>
+        <section>
+            <h5>Exercice 3.5 : Manipulation des branches distantes</h5>
+            <p class='note'>A sauvegarde (commande <span class='lcode'>mv ~/dev/my-app ~/dev/my-app~</span>) son dépôt local puis le
+                réinitialise en le clonnant à nouveau (voir TP3) depuis le repertoire
+                <span class='lcode'>~/dev</span></p>
+            <ol>
+                <li>Afficher le détail du dépôt <span class='lcode'>origin</span>
+                    et des branches remote via les commandes suivantes : <pre>$ git branch -r
+$ git remote show origin</pre>
+                </li>
+                <li>B pousse ses commits des exercices précédents dans la
+                    branche <span class='lcode'>origin/master</span>
+                </li>
+                <li>A compare sa branche <span class='lcode'>master</span> à
+                    la branche <span class='lcode'>origin/master</span>. Il y-a-t-il
+                    des différences? Pourquoi ?
+                </li>
+                <li>A intégre les modifications distantes soit via <span
+                        class='lcode'>fetch + merge</span> soit par un <span class='lcode'>pull</span>.
+                    Quelle est la différence ? quel est la méthode la plus prudente ?
+                </li>
+            </ol>
+        </section>
 
+        <section>
+            <h4>TP4 Utilitaires Git</h4>
+            <p class="note">Ce TP a comme prérequis le TP3</p>
+            <h5>Exercice 4.1 : Ignorer des fichiers</h5>
+            <ol>
+                <li>Créer un fichier (fictif) <span class='lcode'>.class</span>
+                    avec les fichier java
+                </li>
+                <li>Configurer git pour qu'il ignore recurvivement tous les <span
+                        class='lcode'>.class</span></li>
+                <li>Utiliser <span class='lcode'>git status</span> pour
+                    vérifier l'opération avant et après
+                </li>
+            </ol>
+        </section>
+        <section>
+            <h5>Exercice 4.2 : Réécrire son historique</h5>
+            <ol>
+                <li>Effectuez trois commits</li>
+                <li>Renommez le premier commit</li>
+                <li>Fusionnez le second et le troisième</li>
+            </ol>
+        </section>
+        <section>
+            <h5>Exercice 4.3 : Rechercher une expression</h5>
+            Recherchez une expression de votre choix dans les différentes
+            révisions du dépôt avec la commande <span class='lcode'>git
+					grep &lt;expression&gt; &lt;reference&gt;</span>
+        </section>
+        <section>
+            <h5>Exercice 4.4 : Utilisation de git-flow</h5>
+            <ol>
+                <li>Initialiser git-flow sur votre dépôt local</li>
+                <li>Démarrer une release</li>
+                <li>Créer puis fermer une branche topic de fonctionnailité</li>
+                <li>Créer puis fermer une branche topic hotfix</li>
+                <li>Finaliser la release</li>
+            </ol>
+        </section>
+        <section>
+            <h5>Exercice du soir no 2 (Git)</h5>
+            <p>Attentation: c'est un travail individuel à faire par chaque étudiant, délais : une semaine</p>
+            <ul>
+                <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
+                <li> Faire un commit sur <span class='lcode'>master</span></li>
+                <li> Poser un tag <span	class='lcode'>V1</span> sur ce commit</li>
+                <li> Créer depuis ce commit une branche <span class='lcode'>maintv1</span>, y faire deux commits, tagger ce dernier commit <span class='lcode'>V1Fix1</span></li>
+                <li> Faire un commit sur master puis tagger <span class='lcode'>V2</span></li>
+                <li> Créer depuis ce commit une branche <span class='lcode'>maintv2</span>, y faire deux commits puis y merger le commit <span
+                        class='lcode'>V1Fix1</span></li>
+                <li> Faire un dernier commit dans la branche <span class='lcode'>maintv2</span>, puis le tagger par votre nom de famille</li>
+                <li> Faire une capture d'écrans au format png et la déposer sur le serveur cours.florat.net dans ~/soir2.png</li>
+            </ul>
+        </section>
     </div>
 </div>
 
