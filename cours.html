@@ -184,7 +184,6 @@
 				<ul>
 					<li>Fichiers projets de l'IDE (.project, .idea ...)</li>
 					<li>Personnalisation et historique de l'IDE</li>
-					<li>Librairies si non disponibles dans référentiel</li>
 				</ul>
 			</section>
 			<section>
@@ -366,6 +365,7 @@ int j=0;
 					<li>Utiliser avec un outil de gestion de tickets (Trac,
 						Mantis, GitHub...)</li>
 					<li>Grouper les modifications en commits cohérents</li>
+					<li>Ne jamais commiter du code mort (en commentaire ou pas)</li>
 					<li>Formatage coersitif des sources ASAP</li>
 					<li>Version scheme : <span class='lcode'>[X].[Y].[Z]</span>, exemple : <span class='lcode'>1.2.3</span></li>
 						<ul>
@@ -648,19 +648,6 @@ svn diff <i>referentiel</i>/tags/release-1-0 <i>referentiel</i>/branches/feature
 				<p>-> Talk de Linus Torvalds, comparaison entre Git et SVN: <a href="#/100">[9]</a></p>
 			</section>
 
-			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Note sur CVS</h4>
-				<p>Ne pas utiliser CVS sauf obligation. Utiliser CVS au lieu de
-					SVN ne présente que des inconvénients :</p>
-				<ul>
-					<li>Pas de commit atomique (commit de niveau fichier
-						seulement)</li>
-					<li>Pas de renommage des fichiers (perte de l'historique après
-						déplacement)</li>
-					<li>CVS transfère les fichiers complets, SVN que le delta</li>
-				</ul>
-			</section>
 			<section>
 				<h5>TP2 Commandes SVN de base</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
