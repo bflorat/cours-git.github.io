@@ -111,28 +111,8 @@
                 devra simuler A et B dans deux consoles différentes et avec deux utilisateurs différents</p>
         </section>
         <section>
-            <h6>Exercice 2.1 : Import initial de code existant</h6>
-            <p><b>Cet exercice est fait uniquement par A</b> (A figure un intégrateur qui amorce un projet)</p>
-            <ul>
-                <li>Faire un checkout du dépot (vide) à cette url:</li>
-                <pre style="font-size: medium;">file:///var/cours/depots_svn/b&lt;<i>code_binôme</i>&gt;/</pre>
-                <li>Télécharger les sources existantes par :
-                    <pre>wget http://florat.net/cours_vcs/my-app.tar.gz</pre>
-                </li>
-                <li>Decompresser ce fichier dans le répertoire <span class='lcode'>~/dev/b&lt;<i>code_binôme</i>&gt;</span> :
-						<pre>cd ~/dev
-tar xzpvf &lt;fichier&gt;.tar.gz
-						</pre>
-                <li>Ajouter et commiter le repertoire <span class='lcode'>my-app</span>
-            </ul>
-            <p class="note">Note : nous avons ici une URL de type <span class='lcode'>file://</span> car le dépôt et les copies
-                locales sont sur la même machine. En général, les url sont de type <span class='lcode'>https://monsite/monchemin</span>
-            </p>
-
-        </section>
-        <section>
-            <h6>Exercice 2.2 : Récupération d'une copie locale</h6>
-            <p><b>Cet exercice n'est fait que par B</b> (B représente un developpeur arrivant sur un projet existant).
+            <h6>Exercice 2.1 : Récupération d'une copie locale</h6>
+            <p><b>Cet exercice est fait par A et B</b>
             </p>
             <p>
                 Récupérer dans le répertoire <span class='lcode'> ~/dev/<b>my-app-trunk</b></span>
@@ -141,11 +121,9 @@ tar xzpvf &lt;fichier&gt;.tar.gz
             <pre style="font-size: medium;">file:///var/cours/depots_svn/b&lt;<i>code_binôme</i>&gt;/my-app/trunk</pre>
             <br/>
             <p>Vous pouvez consulter le répertoire <span class="lcode">.svn</span> à la racine de votre copie locale, que contient-il ?</p>
-
-            <br/>
         </section>
         <section>
-            <h6>Exercice 2.3 : Commit d'une modification</h6>
+            <h6>Exercice 2.2 : Commit d'une modification</h6>
             <p><b>Cet exercice est fait par A uniquement</b></p>
             <ol>
                 <li>Modifier le source <span class='lcode'>Calcul.java</span>
@@ -166,7 +144,7 @@ tar xzpvf &lt;fichier&gt;.tar.gz
         </section>
 
         <section>
-            <h6>Exercice 2.4 : Résolution d'une mise à jour concurrente sans conflit</h6>
+            <h6>Exercice 2.3 : Résolution d'une mise à jour concurrente sans conflit</h6>
             <p><b>Cet exercice est fait simultanément par A et B</b></p>
             <ol>
                 <li>A et B modifient simultanément le fichier <span
@@ -184,7 +162,7 @@ tar xzpvf &lt;fichier&gt;.tar.gz
             </ol>
         </section>
         <section>
-            <h6>Exercice 2.5 : Résolution d'un conflit</h6>
+            <h6>Exercice 2.4 : Résolution d'un conflit</h6>
             <p><b>Cet exercice est fait simultanément par A et B</b></p>
             <p>Modifier (toujours simultanément) une nouvelle fois le
                 fichier <span class='lcode'>pom.xml</span>. Cette fois, A et B
