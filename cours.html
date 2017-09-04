@@ -723,14 +723,17 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 
 			<section>
 				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Historique avec git log</h4>
+				Historique</h4>
 				<ul>
+					<li>Commande de base: <span
+						class='lcode'>git log</span>
+					<li>Voir les diff de chaque révision : option <span
 					<li>Spécifier des intervales de temps <pre>git log --since=2.weeks</pre></li>
 					<li>Voir les diff de chaque révision : option <span
-						class='lcode'>-p</span></li>
-					<li>Voir un graphe des révisions : option <span class='lcode'>--graph</span></li>
-					<li><span class='lcode'>branche1..branche2</span> : tous les
-						nouveaux commits de la branche2 depuis le fork d'avec la branche1</li>
+						class='lcode'>git show</span></li>
+					<li>Voir un graphe des révisions : option <span class='lcode'>git log --graph</span></li>
+					<li><span class='lcode'>gir log branche1..branche2</span> : tous les
+						nouveaux commits de la branche2 uniquement</li>
 				</ul>
 			</section>
 
@@ -747,7 +750,6 @@ git diff origin/hotfix/release-1_0</pre>
 					</li>
 					<li>Toutes les différences entre deux branches : <pre>$ git diff branche1..branche2</pre></li>
 					<li>Seulement les différences de la branche2 avec le dernier commit commun entre branche1 et branch2 (qu'ai-je fait dans la branche2 depuis que mes deux branches ont divergées ?) : <pre>$ git diff branche1...branche2</pre>
-
 				</ul>
 				<p class='note'>
 					Attention ! <span class='lcode'>git diff</span> sans arguments
