@@ -473,6 +473,23 @@ $ git config --global core.editor vim   //<i>choix de l'éditeur, vi par défaut
 $ git config --global merge.tool vimdiff //<i>choix de l'outil de diff</i>
 </pre>
 			</section>
+			
+			<section>
+				<h5>Les alias</h5>
+				<pre>git config --global alias.co checkout</pre>
+				<p>A mettre dans la section <span class='lcode'>[alias]</span> de <span class='lcode'>~/.gitconfig</span> 
+				<p>Les plus courants :</p>
+				<pre> 
+cp = cherry-pick
+st = status -s
+cl = clone
+ci = commit
+co = checkout
+br = branch 
+po = push origin
+</pre> 
+			</section>
+			
 			<section>
 				<h5>Création d'un nouveau dépôt</h5>
 				<p class='note'>Note : un seul projet par dépôt pour raison

@@ -7,8 +7,8 @@
     <title>Feuille de travaux pratiques - Gestion de version</title>
 
     <meta name="description"
-          content="Feuille de travaux pratiques génie logiciel Licence Pro 2015, la gestion de versions">
-    <meta name="author" content="Bertrand Florat, Nicolas Hernandez">
+          content="Feuille de travaux pratiques génie logiciel Licence Pro 2017, la gestion de versions">
+    <meta name="author" content="Bertrand Florat">
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style"
@@ -44,7 +44,7 @@
             <h2 style="text-align: left;">Feuille de travaux pratiques -
                 Gestion de version</h2>
             <p>
-                <b>Concepts/ Subversion/ Git</b>
+                <b>Concepts/ Git</b>
             </p>
             <p>IUT de Nantes – Département Informatique</p>
             <p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
@@ -62,11 +62,13 @@
         <section>
             <h5>Notes importantes</h5>
             <ul>
-                <li>Le travail se fera en binôme. Chaque binôme possède un
-                    dépôt SVN et Git distant et dédié. 'A' et 'B' désignent respectivement
+                <li>Le travail se fera en binôme. Les présentiels se grouperont en binômes <span class='lcode'>preXX</span> et 
+                les alternants en binômes  <span class='lcode'>altXX</span>. Chaque binôme est doté d'un
+                    dépôt Git dédié. 'A' et 'B' désignent respectivement
                     l'un et l'autre membre du binôme. Si un étudiant est seul, il
-                        devra simuler A et B dans deux consoles différentes et avec deux utilisateurs différents</li>
-                <li>Il est possible d'utiliser Subversion ou Git dans Eclipse
+                        devra simuler A et B dans deux consoles différentes et avec deux utilisateurs 
+                        différents, ex : pre12a et pre12b</li>
+                <li>On utilise en général Git depuis un IDE comme IDEA, Atom ou Eclipse
                     via des plugins, néanmoins dans le cadre de ce TP, il vous est
                     demandé de n'utiliser que la ligne de commande
                 </li>
@@ -99,94 +101,35 @@
             <p><i>Echanges en séance</i></p>
         </section>
 
+		<section>
+             <h4>TP2: Exercice concepts Git</h4>
+             <ul>
+                <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
+                <li> Faire un commit sur <span class='lcode'>master</span></li>
+                <li> Poser un tag <span	class='lcode'>V1</span> sur ce commit</li>
+                <li> Créer depuis ce commit une branche <span class='lcode'>maintv1</span>, y faire deux commits, tagger ce dernier commit <span class='lcode'>V1Fix1</span></li>
+                <li> Faire un commit sur master puis tagger <span class='lcode'>V2</span></li>
+                <li> Créer depuis ce commit une branche <span class='lcode'>maintv2</span>, y faire deux commits puis y merger le commit <span
+                        class='lcode'>V1Fix1</span></li>
+                <li> Faire un dernier commit dans la branche <span class='lcode'>maintv2</span>, puis le tagger V2.1</li>
+            </ul>
         </section>
 
         <section>
-            <h4>TP2 Commandes SVN de base</h4>
-            <h6>Préparation de l'environnement</h6>
-            <p><b>A faire par A et B</b></p>
-            <p>Créer un repertoire <span class='lcode'>~/dev</span> qui contiendra les projets sur lesquels nous
-                travaillerons et toutes leurs branches</p>
-            <p>Si un étudiant est seul, il
-                devra simuler A et B dans deux consoles différentes et avec deux utilisateurs différents</p>
-        </section>
-        <section>
-            <h6>Exercice 2.1 : Récupération d'une copie locale</h6>
-            <p><b>Cet exercice est fait par A et B</b>
-            </p>
-            <p>
-                Récupérer dans le répertoire <span class='lcode'> ~/dev/<b>my-app-trunk</b></span>
-                la branche trunk du projet qui vient d'être créé par A et situé à cette adresse :
-            </p>
-            <pre style="font-size: medium;">file:///var/cours/depots_svn/b&lt;<i>code_binôme</i>&gt;/my-app/trunk</pre>
-            <br/>
-            <p>Vous pouvez consulter le répertoire <span class="lcode">.svn</span> à la racine de votre copie locale, que contient-il ?</p>
-        </section>
-        <section>
-            <h6>Exercice 2.2 : Commit d'une modification</h6>
-            <p><b>Cet exercice est fait par A uniquement</b></p>
-            <ol>
-                <li>Modifier le source <span class='lcode'>Calcul.java</span>
-                    et ajouter un nouveau fichier <span class='lcode'>CalculAlternatif.java</span>
-                    dans le même package
-                </li>
-                <li>Afficher le statut de la copie locale à ce stade</li>
-                <li>Commiter cette modification de fichier et cet ajout
-                    d'un nouveau fichier <b>en un seul commit</b> en utilisant un message de commit dans les
-                    règles de l'art
-                </li>
-                <li>Afficher le commit dans l'historique et les différences
-                    qu'il a introduit
-                </li>
-                <p class="note">Attention : svn doit récupérer l'historique depuis le dépôts même si les commits
-                    ont été faits sur le poste qui a effectué les commits).</p>
-            </ol>
-        </section>
-
-        <section>
-            <h6>Exercice 2.3 : Résolution d'une mise à jour concurrente sans conflit</h6>
-            <p><b>Cet exercice est fait simultanément par A et B</b></p>
-            <ol>
-                <li>A et B modifient simultanément le fichier <span
-                        class='lcode'>pom.xml</span>: A modifie le groupId, B modifie
-                    l'artifactId.
-                </li>
-                <li>A et B consultent le status de leurs copies locales respectives.
-                </li>
-                <li>A commite</li>
-                <li>B tente de commiter. Que se passe-t-il ? que faut-il faire
-                    ? Une fois le problème résolu, B affiche le statut puis commite à
-                    son tour sa modification.
-                </li>
-                <li>A prend en compte la modification de B</li>
-            </ol>
-        </section>
-        <section>
-            <h6>Exercice 2.4 : Résolution d'un conflit</h6>
-            <p><b>Cet exercice est fait simultanément par A et B</b></p>
-            <p>Modifier (toujours simultanément) une nouvelle fois le
-                fichier <span class='lcode'>pom.xml</span>. Cette fois, A et B
-                modifient la même zone (par exemple la version du projet). A
-                commite d’abord ces modifications. Puis c’est au tour de B. Que se
-                passe-t-il ? Résoudre le problème.
-            </p>
-            </ol>
-        </section>
-        <section>
-            <h5>Exercice du soir no 1 (SVN)</h5>
+            <h5>Exercice du soir no 1 (concepts)</h5>
             <p>A faire avant le prochain cours ;</p>
             <p>Exercice individuel ;</p>
-            <p><b>Expliquer en moins de 200 mots les différences majeures entre Git
-                et SVN et dans quel cas utiliser l'un ou l'autre ;</b></p>
-            <p>Laisser le texte sur le serveur <span class='lcode'>https://cours.florat.net</span>
+            <p><b>Présenter Git en 200 mots max : ses caractristiques, son fonctionnement, ses avantages</b></p>
+            <p>Laisser le texte sur le serveur <span class='lcode'>http://cours.florat.net</span>
                 dans le fichier <span class='lcode'>~/soir1.txt</span></p>
         </section>
+        
         <section>
             <h4>TP3 Commandes Git de base</h4>
             <h5>Exercice 3.1 : Clonage d'un dépot</h5>
             <p>Chaque binôme dispose d'un dépôt Git accessible en ssh et
                 situé à l'URL</p>
-            <pre>file:///var/cours/depots_git/b<i>&lt;code_binôme&gt;</i>/my-app.git</pre>
+            <pre>/var/cours/depots_git/b<i>&lt;code_binôme&gt;</i>/my-app.git</pre>
             <ul>
                 <li>A et B clonent dans leur répertoire <span class='lcode'>~/dev</span> le dépôt distant affecté au binôme</li>
                 <li>Afficher les branches avec <span class='lcode'>git
@@ -200,6 +143,7 @@
             <ol>
                 <li>Configurer correctement son nom et e-mail Git (voir support
                     de cours)</li>
+                <li>Créez quelques alias, au moins 'ci' pour commit et 'st' pour status</li>
                 <li>Vérifier que vous vous trouvez dans la branche <span
                         class='lcode'>master</span>, s'y positionner si ce n'est pas le
                     cas.
@@ -335,6 +279,7 @@ $ git remote show origin</pre>
         </section>
         <section>
             <h5>Exercice du soir no 2 (Git)</h5>
+            <p>TODO : faire nouvel exercice</p>
             <p>Attentation: c'est un travail individuel à faire par chaque étudiant, délai: une semaine</p>
             <ul>
                 <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
