@@ -73,10 +73,10 @@
 					connaissances actuelles des étudiants sur le sujet</aside>
 				<table>
 					<tr class="title">
-						<td>1-Concepts généraux</td>
-						<td>2-Présentation de Git</td>
-						<td>3-Pratique de Git</td>
-						<td>4-Travail collaboratif avec Git</td>
+						<td>1- Concepts généraux gestion de version</td>
+						<td>2- Présentation de Git</td>
+						<td>3- Pratique de Git</td>
+						<td>4- Travail collaboratif avec Git</td>
 					</tr>
 					<tr class="bodytext">
 						<td>
@@ -115,7 +115,7 @@
 			<!-- Slot 1 -->
 			<section>
 				<h3>Note sur Subversion</h3>
-				<p>Ce cours a présenté SVN en plus de Git de 2012 à 2016. 
+				<p>Ce cours a intégré SVN en plus de Git de 2012 à 2016. 
 				En cas de besoin, <a href='https://florat.net/cours_vcs_2016/cours.html'>l'ancien cours</a> est toujours disponible</p>
 			</section>
 
@@ -147,6 +147,12 @@
 				<p class="fragment"><b>En utilisant un VCS !</b></p>
 
 			</section>
+
+			<section>
+				<h3>Le VCS au sein de l'usine logicielle</h3>
+				<img src="images/UsineLogicielle.png" width="1000px">
+			</section>
+			
 			<section>
 				<h3>Usage</h3>
 				<ul>
@@ -158,18 +164,13 @@
 			</section>
 
 			<section>
-				<h3>Le VCS au sein de l'usine logicielle</h3>
-				<img src="images/UsineLogicielle.png" width="1000px">
-			</section>
-
-			<section>
 				<h4>Quels fichiers gérer en configuration ou pas ?</h4>
 				<p class="note">Le projet (et toutes ses versions) doit être
 					auto-porteur</p>
 				<ul>
 					<li>Fichiers source (.java, .c, .html, .css...)</li>
 					<li>Fichiers binaires non dérivés des sources, images par exemple</li>
-					<li>Fichiers de build (maven: pom.xml, npm: package.json ...)</li>
+					<li>Fichiers de build (maven: pom.xml, npm: package.json, Jenkinsfile ...)</li>
 				</ul>
 				<br />
 				<p>Pas en configuration :</p>
@@ -648,7 +649,7 @@ remotes/bob/feature300</pre>
 			<section>
 				<h4>Branches remote (suite)</h4>
 				<ul style="font-size: large;">
-					<li>Par défaut, push refusé si branche distante a divergé</li>
+					<li>Par défaut, push refusé si la branche distante a divergé</li>
 					<li><span class='lcode'>git pull</span> = <span class='lcode'>git
 							fetch</span> + <span class='lcode'>git merge</span></li>
 					<li>Tracking remote branch : branche remote avec refspec,
