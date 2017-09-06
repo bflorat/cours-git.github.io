@@ -141,6 +141,7 @@
 							clients...</aside>
 					</li>
 					<li class="fragment">Comment tracer les modifications ?</li>
+					<li class="fragment">Comment fusionner les modifications ?</li>
 				</ul>
 				<br/>
 				<p class="fragment"><b>En utilisant un VCS !</b></p>
@@ -158,7 +159,7 @@
 
 			<section>
 				<h3>Le VCS au sein de l'usine logicielle</h3>
-				<img src="images/UsineLogicielle.png" >
+				<img src="images/UsineLogicielle.png" width="1000px">
 			</section>
 
 			<section>
@@ -538,7 +539,7 @@ file:///path/to/repo.git/  =  /path/to/repo.git/
 					<li>Git stocke des : <i>trees</i>, <i>blobs</i>, <i>tags</i> et <i>commits</i>,
 						tous référencés par un hash SHA-1 unique (intégrité)
 					</li>
-					<li>Les références (refs) sont des noms symboliques des hashs</li>
+					<li>Les références (refs) sont des noms symboliques (signets) des hashs des commits</li>
 				</ul>
 				<img src="images/tree.png" width="350px" />
 				<p style="font-size: small; text-align: center">
@@ -556,7 +557,7 @@ file:///path/to/repo.git/  =  /path/to/repo.git/
 				<h4>Les commits dans Git</h4>
 				<ul>
 					<li>Chaque commit possède [1..n] parents</li>
-					<li>Donc l'historique forme un graphe</li>
+					<li>Donc l'historique forme un graphe (orienté et acyclique ou 'DAG')</li>
 					<li>Le commit est de niveau dépôt (pointe sur le tree racine)</li>
 					<li>Notation : <span class='lcode'>ref^<i>n</i></span> (nième père) et <span
 						class='lcode'>ref~<i>n</i></span> (nième premier père)</li>
