@@ -178,7 +178,7 @@
             <h5>Exercice 3.3.2 : Merge non fast-forward</h5>
             <p class="note">Cet exercice se fait simultanément par A et B</p>
             <ol>
-                <li>Créer une branche nommée <span class='lcode'>bug42</span> et s'y positionner
+                <li>Créer une branche nommée <span class='lcode'>bug43</span> et s'y positionner
                 </li>
                 <li>Effectuer des modifications <b>au début</b> du fichier <span
                         class='lcode'>Calcul.java</span> et les commiter
@@ -189,7 +189,7 @@
                         class='lcode'>Calcul.java</span> et les commiter
                 </li>
                 <li>Fusionner (par merge) les modifications de la branche
-                    <span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de
+                    <span class='lcode'>bug43</span> dans la branche master. Comment git qualifie ce type de
                     merge ?</li>
                 <li>Supprimer cette branche</li>
             </ol>
@@ -197,26 +197,32 @@
         <section>
             <h5>Exercice 3.4 : Gestion d'un conflit</h5>
             <p class="note">Cet exercice se fait simultanément par A et B</p>
-            <p><i>Voir <a href="cours.html">cours</a> slide "Merge" </i></p>
             <ol>
-                <li>Refaire l'exercice 3.3.2 mais cette fois en créant un
-                    conflit sur le fichier <span class='lcode'>Calcul.java</span>
-                    entre les branches <span class='lcode'>master</span> et <span
-                            class='lcode'>bug42</span> (modifier de façon différente les mêmes
-                    lignes de code)
+                <li>Créer une branche nommée <span class='lcode'>bug44</span> et s'y positionner
                 </li>
-                <li>Que vous reporte Git ? Un commit a-t-il été créé ?
-                    afficher le statut de la copie locale.</li>
-                <li>Résoudre le conflit manuellement et le commiter</li>
+                <li>Effectuer des modifications dans le fichier <span
+                        class='lcode'>Calcul.java</span> et les commiter
+                </li>
+                <li>Positionnez vous dans la branche <span
+                        class='lcode'>master</span></li>
+                <li>Effectuer des modifications (differentes) <b>sur les mêmes lignes</b> du fichier <span
+                        class='lcode'>Calcul.java</span> et les commiter
+                </li>
+                <li>Fusionner (par merge) les modifications de la branche
+                    <span class='lcode'>bug44</span> dans la branche master. Que se produit-il ?</li>
+                <li>Ouvrir le fichier, que remarquez vous à l'emplacement des modifications ?</li>
+                <li>Afficher le statut de la copie locale.</li>
+                <li>Resoudre le problème en ne gardant que les modifications de la branche <span class='lcode'>master</span></li>
+                <li>Supprimer cette branche</li>
             </ol>
         </section>
+      
         <section>
             <h5>Exercice 3.5 : Manipulation des branches distantes</h5>
-            <p class='note'>A sauvegarde (commande <span class='lcode'>mv ~/dev/my-app ~/dev/my-app~</span>) son dépôt local puis le
-                réinitialise en le clonnant à nouveau (voir ex 3.1) depuis le repertoire
-                <span class='lcode'>~/dev</span></p>
             <ol>
-                <li>Afficher le détail du dépôt <span class='lcode'>origin</span>
+                <li>A sauvegarde ses exercices précedents par la commande :   <span class='lcode'>mv ~/my-app ~/my-app~</span>)</li>
+                <li>A réinitialise son dépot en le clonnant à nouveau (il refait l'ex 3.1)</li>
+                <li>A et B affichent le détail du dépôt <span class='lcode'>origin</span>
                     et des branches remote via les commandes suivantes : <pre>$ git branch -r
 $ git remote show origin</pre>
                 </li>
