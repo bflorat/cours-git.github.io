@@ -366,15 +366,15 @@ int j=0;
 				<section>
 				<h5>Bonnes pratiques / Convention message de commit</h5>
 					<ul>
-						<li>Une ligne de contexte (max 50 caractères)</li>
+						<li>Une ligne de contexte (max 50 caractères) commencant par une majuscule. Pas de point. Réference le numéro de ticket s'il existe.</li>
 						<li>Une ligne vide (options -m " et retour charriot)</li>
-						<li>Un paragraphe détaillé (largeur 72 caractères max), liens vers
-							numéros de tickets</li>
+						<li>Un paragraphe détaillé (largeur 72 caractères max)</li>
 						<li>Présent : "corrige", pas "a été corrigé"</li>
+						<li>Donner toute information importante à destination d'un futur mainteneur</li>
 						<li>Exemple :</li>
 						<br/>
 						<pre>
-Correction bug #1456:Problème fichier bootstrap vide 
+Corrige #1456 problème fichier bootstrap vide 
 								
 Corrige une NPE se produisant quand le fichier bootstrap existe mais est vide. 
 Reproduit uniquement par TU, non reporté par les utilisateurs à ce point. 
