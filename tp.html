@@ -102,13 +102,18 @@
              <h4>TP2: Exercice concepts Git</h4>
              <ul>
                 <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
-                <li> Faire un commit sur <span class='lcode'>master</span></li>
-                <li> Poser un tag <span	class='lcode'>V1</span> sur ce commit</li>
-                <li> Créer depuis ce commit une branche <span class='lcode'>maintv1</span>, y faire deux commits, tagger ce dernier commit <span class='lcode'>V1Fix1</span></li>
-                <li> Faire un commit sur master puis tagger <span class='lcode'>V2</span></li>
-                <li> Créer depuis ce commit une branche <span class='lcode'>maintv2</span>, y faire deux commits puis y merger le commit <span
-                        class='lcode'>V1Fix1</span></li>
-                <li> Faire un dernier commit dans la branche <span class='lcode'>maintv2</span>, puis le tagger V2.1</li>
+                <li><i>Commandes utiles : <span	class='lcode'>undo</span>,<span	class='lcode'>reset</span></i></li>
+      		    <li>Créer une branche <span class='lcode'>develop</span> et y faire un commit</li>
+                <li>Fusionner ce commit dans la branche <span class='lcode'>master</span>
+                <li>Poser un tag <span	class='lcode'>1.0.0</span> sur la branche master</li>
+                <li>Depuis la branche <span	class='lcode'>master</span>, créer une branche <span class='lcode'>1.0</span>, 
+                y faire deux commits, tagger ce dernier commit <span class='lcode'>1.0.1</span></li>
+                <li>Faire deux commits sur develop</li>
+                <li>Fusionner ces deux commits dans la branche <span class='lcode'>master</span> puis tagger <span class='lcode'>2.0.0</span></li>
+                <li>Créer depuis <span	class='lcode'>develop</span> une branche <span class='lcode'>bug123</span>, 
+                	y faire un commit puis fusionner le commit dans la branche <span class='lcode'>develop</span></li>
+                <li>Supprimer la branche bug123</li>
+                <li>Fusionner develop dans master puis tagger <span class='lcode'>2.0.1</span></li>
             </ul>
         </section>
 
