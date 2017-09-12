@@ -104,16 +104,16 @@
                 <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
                 <li><i>Commandes utiles : <span	class='lcode'>undo</span>,<span	class='lcode'>reset</span></i></li>
       		    <li>Créer une branche <span class='lcode'>develop</span> et y faire un commit</li>
-                <li>Fusionner ce commit dans la branche <span class='lcode'>master</span>
-                <li>Poser un tag <span	class='lcode'>1.0.0</span> sur la branche master</li>
-                <li>Depuis la branche <span	class='lcode'>master</span>, créer une branche <span class='lcode'>1.0</span>, 
-                y faire deux commits, tagger ce dernier commit <span class='lcode'>1.0.1</span></li>
+                <li>Fusionner ce commit dans la branche <span class='lcode'>master</span></li>
+                <li>Poser un tag <span	class='lcode'>V1.0.0</span> sur la branche master</li>
+                <li>Depuis la branche <span	class='lcode'>master</span>, créer une branche <span class='lcode'>V1.0</span>, 
+                y faire deux commits, tagger ce dernier commit <span class='lcode'>V1.0.1</span></li>
                 <li>Faire deux commits sur develop</li>
-                <li>Fusionner ces deux commits dans la branche <span class='lcode'>master</span> puis tagger <span class='lcode'>2.0.0</span></li>
+                <li>Fusionner ces deux commits dans la branche <span class='lcode'>master</span> puis tagger <span class='lcode'>V2.0.0</span></li>
                 <li>Créer depuis <span	class='lcode'>develop</span> une branche <span class='lcode'>bug123</span>, 
                 	y faire un commit puis fusionner le commit dans la branche <span class='lcode'>develop</span></li>
                 <li>Supprimer la branche bug123</li>
-                <li>Fusionner develop dans master puis tagger <span class='lcode'>2.0.1</span></li>
+                <li>Fusionner develop dans master puis tagger <span class='lcode'>V2.0.1</span></li>
             </ul>
         </section>
 
@@ -290,19 +290,19 @@ $ git remote show origin</pre>
         </section>
         <section>
             <h5>Exercice du soir no 2 (Git)</h5>
-            <p>TODO </p>
             <p>Attentation: c'est un travail individuel à faire par chaque étudiant, délai: une semaine</p>
-            <ul>
+             <ul>
                 <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
-                <li> Faire un commit sur <span class='lcode'>master</span></li>
-                <li> Poser un tag <span	class='lcode'>V1</span> sur ce commit</li>
-                <li> Créer depuis ce commit une branche <span class='lcode'>maintv1</span>, y faire deux commits, tagger ce dernier commit <span class='lcode'>V1Fix1</span></li>
-                <li> Faire un commit sur master puis tagger <span class='lcode'>V2</span></li>
-                <li> Créer depuis ce commit une branche <span class='lcode'>maintv2</span>, y faire deux commits puis y merger le commit <span
-                        class='lcode'>V1Fix1</span></li>
-                <li> Faire un dernier commit dans la branche <span class='lcode'>maintv2</span>, puis le tagger par votre nom de famille</li>
-                <li> Faire une capture d'écrans et l'envoyer par mail en piece jointe à <a href="http://florat.net/contact">http://florat.net/contact</a></li>
-            </ul>
+                <li><i>Commandes utiles : <span	class='lcode'>undo</span>,<span	class='lcode'>reset</span></i></li>
+      		    <li>Créer une branche <span class='lcode'>develop</span> et y faire un commit</li>
+                <li>Créer une branche <span class='lcode'>evol1</span> depuis <span class='lcode'>develop</span> et y faire deux commits</li>
+                <li>Créer une branche <span class='lcode'>evol2</span> depuis <span class='lcode'>develop</span> et y faire deux commits</li>
+                <li>Dans la branche <span class='lcode'>develop</span>, ne récupérer que le premier commit de la branche <span class='lcode'>evol1</span></li>
+                <li>Dans la branche <span class='lcode'>develop</span>, récupérer les deux commits de la branche <span class='lcode'>evol2</span> mais en les inversant</li>
+                <li>Poser un tag <spanclass='lcode'>V1.0.0</span> sur la branche develop</li>
+              </ul>
+              <p>Copier les commandes effectuées dans le simulateur et les coller dans un fichier <span	class='lcode'>~/soir2.txt</span> (merci de respecter le nom du fichier)</p>
+        	 <p>Note : en cas de difficuluté, faire les exercices d'entrainement à  <a href='http://pcottle.github.io/learnGitBranching'>http://pcottle.github.io/learnGitBranching</a></p>
         </section>
     </div>
 </div>
