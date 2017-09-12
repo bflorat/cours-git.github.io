@@ -223,7 +223,7 @@
 					peuvent s'échanger des modifications</p>
 			</section>
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">Historique</h4>
+				<h4>Historique</h4>
 				<img src="images/historique.png" width="600px">
 				<p class="note">Retour d'expérience : quels VCS dans les grands
 					comptes ?</p>
@@ -739,8 +739,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 			</section>
 
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Historique</h4>
+				<h4>Historique</h4>
 				<ul>
 					<li>Commande de base: <span
 						class='lcode'>git log</span>
@@ -755,8 +754,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 			</section>
 
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Comparaison de branches</h4>
+				<h4>Comparaison de branches</h4>
 				<ul>
 					<li>Comparer deux références ('..' et 'HEAD' optionnels) : <pre>git diff HEAD..origin/hotfix/release-1_0
 git diff ..origin/hotfix/release-1_0
@@ -808,8 +806,7 @@ $ git merge iss53</pre>
 				</p>
 			</section>
 			<section>
-				<h5><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Rebasing</h5>
+				<h5>Rebasing</h5>
 				<img src="images/git-rebase1.png" width="250px" /> <img
 					src="images/git-rebase2.png" width="250px" />
 				<ul>
@@ -817,13 +814,14 @@ $ git merge iss53</pre>
 $ git checkout experiment
 $ git rebase master
 </pre></li>
-					<li>Sérialise deux branches, nos commits à la fin</li>
-					<li>Rend l'historique beaucoup plus lisible (linéaire)</li>
+					<li>Sérialise deux branches, nos commits à la fin, rend l'historique beaucoup plus lisible (linéaire)</li>
+					<li>Se "rebase" sur une référence, c'est à dire part de cette ref</li>
+					<li>Se positionne sur la branche cible puis applique chez commit de notre branche comme un patch</li>
+					<li><span class='lcode'>rebase -i</span> : rebase interactif, permet au passage de modifier l'historique (squashing, spliting, modification messages, changement d'ordre ...)
 					<li>Utiliser avec <span class='lcode'>git pull</span> : <pre>$ git pull --rebase</pre></li>
 					<li>Permet de réécrire son historique (rebase interactif)
 						<p class="note">Attention : n'utiliser rebase qu'avec ses
-							branches locales, ne jamais rebaser un commit qui a déjà été
-							pushé</p>
+							branches locales, ne jamais rebaser un commit qui a déjà été poussé</p>
 					</li>
 				</ul>
 				<p style="font-size: small;">
@@ -831,9 +829,19 @@ $ git rebase master
 				</p>
 			</section>
 
+			<section>
+				<h5>Cherry-picking</h5>
+				<ul>
+					<li><span class='lcode'>git cherry-pick commit1 commit2...<.span></li>
+					<li>Applique les commits selectionnés comme des patchs sur la branche courante</li>
+				</ul>
+				
+			</section>
+			
+
 			<!-- Slot 5  -->
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">Utilitaires</h4>
+				<h4>Utilitaires</h4>
 				<ul>
 					<li>Rebase interactif pour réécrire son historique local <pre>git rebase -i</pre></li>
 					<li>debugage multi-révisions avec bisect <pre>git bisect [good|bad|start|skip|run|reset]</pre></li>
@@ -920,8 +928,7 @@ build
 			</section>
 
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Le coding social</h4>
+				<h4>Le coding social</h4>
 				<div
 					style="width: 400px; font-size: 50%; text-align: left; float: right; margin: 5px">
 					<img src="images/Jajuk_gitorious.png" style="width: 400px;" />Copyright
@@ -944,8 +951,7 @@ build
 			</section>
 			
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Les types d'organisations</h4>
+				<h4>Les types d'organisations</h4>
 				<ol>
 					<li>Centralisé (SVN/CVS like) avec un "blessed server"</li>
 					<li>Hiérarchisé, par exemple à 3 grades : contributeur,
@@ -956,8 +962,7 @@ build
 			</section>
 			
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Worflows avec Git, comment gérer ses branches ?</h4>
+				<h4>Worflows avec Git, comment gérer ses branches ?</h4>
 				<ul>
 					<li>Forker, commiter et merger souvent</li>
 					<li>Historique flexible sur les branches privées, stable en
@@ -974,8 +979,7 @@ build
 			</section>
 
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Un worflow pré-cablé très populaire : git-flow</h4>
+				<h4>Un worflow pré-cablé très populaire : git-flow</h4>
 				<div
 					style="width: 400px; font-size: 50%; text-align: left; float:left; margin: 5px">
 					<img src="images/git-flow.png" style="width: 400px;" />Copyright
@@ -995,8 +999,7 @@ git flow hotfix [start|finish|publish|pull] bug123
 			</section>
 
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-					Les forges Git</h4>
+				<h4>Les forges Git</h4>
 				<ul>
 					<li>GitHub (<a href="https://github.com/">https://github.com/</a>)</li>
 					<li>BitBucket (<a href="https://bitbucket.org/">https://bitbucket.org/</a>)</li>
@@ -1009,8 +1012,7 @@ git flow hotfix [start|finish|publish|pull] bug123
 			</section>
 
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Non abordé dans ce cours</h4>
+				<h4>Non abordé dans ce cours</h4>
 				<p class="note">
 					Voir <a href="#/100">[4]</a> pour approfondir
 				</p>
@@ -1030,14 +1032,12 @@ git flow hotfix [start|finish|publish|pull] bug123
 				</ul>
 			</section>
 			<section>
-				<h4><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				Un Dropbox-like basé sur git : Sparkleshare</h4>
+				<h4>Un Dropbox-like basé sur git : Sparkleshare</h4>
 				<img src="images/spakleshare1.png" style="width: 250px; margin: 5px" /><img
 					src="images/spakleshare2.png" style="width: 250px; margin: 5px" />
 			</section>
 			<section>
-				<h5><img style="margin-top: 5px;margin-right:5px;border-style:none" src="images/bonus.png">
-				TP4 Utilitaires Git</h5>
+				<h5>TP4 Utilitaires Git</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
 				<br />
 			</section>
