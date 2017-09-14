@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-status-bar-style"
 	content="black-translucent" />
 
-<!-- BF : make sure the presentation works offline 
+<!-- BF : make sure the presentation works offline
 <link
 	href='http://fonts.googldsdeapis.com/css?family=Lato:400,700,400italic,700italic'
 	rel='stylesheet' type='text/css'>
@@ -64,7 +64,7 @@
 					<i>Version 2.0 du 03 septembre 2017</i> / <a href="http://florat.net/cours_vcs/cours.html">http://florat.net/cours_vcs/cours.html</a> / <a href='tp.html'>Feuille de TP</a>
 				</p>
 				<p>Naviguer avec les fléches ou la molette de la souris</p>
-				
+
 			</section>
 			<section>
 				<h3>Agenda (en vert, les TP)</h3>
@@ -114,7 +114,7 @@
 			<!-- Slot 1 -->
 			<section>
 				<h3>Note sur Subversion</h3>
-				<p>Ce cours a intégré SVN en plus de Git de 2012 à 2016. 
+				<p>Ce cours a intégré SVN en plus de Git de 2012 à 2016.
 				En cas de besoin, <a href='https://florat.net/cours_vcs_2016/cours.html'>l'ancien cours</a> est toujours disponible</p>
 			</section>
 
@@ -150,7 +150,7 @@
 				<h3>Le VCS au sein de l'usine logicielle</h3>
 				<img src="images/UsineLogicielle.png" width="1000px">
 			</section>
-			
+
 			<section>
 				<h3>Usage</h3>
 				<ul>
@@ -242,7 +242,7 @@
 						<td><b>dépôt</b>, référentiel [repository, depot]</td>
 						<td>Un dépôt est une sortie de base de données de sources
 							contenant toutes les révisions (tout l'historique) des fichiers
-							ainsi que des données de gestion (méta-données) associées. 
+							ainsi que des données de gestion (méta-données) associées.
 							<b>On ne peut rien perdre dans un dépot.</b></td>
 					</tr>
 				</table>
@@ -263,7 +263,7 @@
 							elles-mêmes.
 						</td>
 					</tr>
-									
+
 				</table>
 			</section>
 
@@ -335,9 +335,9 @@
 							<p>Exemple de conflit :</p> <pre
 								style="z-index: -1; float: hidden; margin: 0px">
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; commit A'
-int i = 0; 
-======= 
-int i = 1; 
+int i = 0;
+=======
+int i = 1;
 int j=0;
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; commit A''</pre>
 						</td>
@@ -362,7 +362,7 @@ int j=0;
 						</ul>
 				</ul>
 				</section>
-				
+
 				<section>
 				<h5>Bonnes pratiques / Convention message de commit</h5>
 					<ul>
@@ -374,20 +374,20 @@ int j=0;
 						<li>Exemple :</li>
 						<br/>
 						<pre>
-Corrige #1456 problème fichier bootstrap vide 
-								
-Corrige une NPE se produisant quand le fichier bootstrap existe mais est vide. 
-Reproduit uniquement par TU, non reporté par les utilisateurs à ce point. 
+Corrige #1456 problème fichier bootstrap vide
+
+Corrige une NPE se produisant quand le fichier bootstrap existe mais est vide.
+Reproduit uniquement par TU, non reporté par les utilisateurs à ce point.
 Voir aussi le bug #1674.
 						</pre>
 					</ul>
 			</section>
-			
+
 			<!--  Slot 3 -->
 			<section>
 				<h4>Zoom sur Git</h4>
 				<img src="images/git-logo.svg.png" height="50px" />
-				
+
 				<ul><blockquote>I'm an egotistical bastard, and I name all my
 							projects after myself. First Linux, now git</blockquote>
 					<li>Linus Torvalds + 3 semaines = Git (utilisé pour le kernel
@@ -431,7 +431,7 @@ Voir aussi le bug #1674.
 					<li>Gnu/Linux</li>
 						<ul>
 							<li>git (ligne de commande) + gitk (GUI pour l'historique)</li>
-							<li>tig : navigateur Git en ncurses</li>							
+							<li>tig : navigateur Git en ncurses</li>
 						</ul>
 					<li>Microsoft Windows
 						<ul>
@@ -473,23 +473,23 @@ $ git config --global core.editor vim   //<i>choix de l'éditeur, vi par défaut
 $ git config --global merge.tool vimdiff //<i>choix de l'outil de diff</i>
 </pre>
 			</section>
-			
+
 			<section>
 				<h5>Les alias</h5>
 				<pre>git config --global alias.co checkout</pre>
-				<p>A mettre dans la section <span class='lcode'>[alias]</span> de <span class='lcode'>~/.gitconfig</span> 
+				<p>A mettre dans la section <span class='lcode'>[alias]</span> de <span class='lcode'>~/.gitconfig</span>
 				<p>Les plus courants :</p>
-				<pre> 
+				<pre>
 cp = cherry-pick
 st = status -s
 cl = clone
 ci = commit
 co = checkout
-br = branch 
+br = branch
 po = push origin
-</pre> 
+</pre>
 			</section>
-			
+
 			<section>
 				<h5>Création d'un nouveau dépôt</h5>
 				<p class='note'>Note : un seul projet par dépôt pour raison
@@ -504,7 +504,7 @@ $ git init</pre>
                    /.classpath
                    /pom.xml
                    /src/main/java
-                   /...                   
+                   /...
 </pre>
 <br/>
 				<p>Dépôt nu (sans copie locale) :</p>
@@ -652,10 +652,10 @@ remotes/bob/feature300</pre>
 							fetch</span> + <span class='lcode'>git merge</span></li>
 					<li>Tracking remote branch : branche remote avec refspec,
 						push/fetch/pull sans arguments (le '+' signifie qu'on met à jour la référence même si ce n'est pas un ff)<pre
-							style="font-size: medium; width: 100%">							
-[remote "origin"]  
-url=git@gitorious.org:/my-app.git 
-fetch=+refs/heads/*:refs/remotes/origin/* 
+							style="font-size: medium; width: 100%">
+[remote "origin"]
+url=git@gitorious.org:/my-app.git
+fetch=+refs/heads/*:refs/remotes/origin/*
 pull=refs/heads/*:refs/remotes/origin/*
 push = refs/heads/master:refs/heads/qa/master</pre>
 					</li>
@@ -750,6 +750,8 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 					<li>Voir un graphe des révisions : option <span class='lcode'>git log --graph</span></li>
 					<li><span class='lcode'>git log branche1..branche2</span> : tous les
 						nouveaux commits de la branche2 uniquement</li>
+					<li>Recherche multi-revisions : <span class="lcode">git
+								log -G [regexp]</span></li>
 				</ul>
 			</section>
 
@@ -835,9 +837,8 @@ $ git rebase master
 					<li><span class='lcode'>git cherry-pick commit1 commit2...<.span></li>
 					<li>Applique les commits selectionnés comme des patchs sur la branche courante</li>
 				</ul>
-				
 			</section>
-			
+
 
 			<!-- Slot 5  -->
 			<section>
@@ -857,9 +858,6 @@ $ git rebase master
 									</pre></li>
 						</ul>
 					</li>
-					<li>Recherche multi-revisions avec <span class="lcode">git
-							grep</span> : <pre>$ git grep [--name-only] <i>texte</i> <i>ref</i>
-							</pre></li>
 				</ul>
 			</section>
 			<section>
@@ -869,15 +867,15 @@ $ git rebase master
 						de la copie locale (lui-même commité). Exemples : <pre>
 # a comment - this is ignored
 # no .a files
-*.a       
+*.a
 # but do track lib.a, even though you're ignoring .a files above
-!lib.a    
+!lib.a
 # only ignore the root TODO file, not subdir/TODO
-/TODO     
+/TODO
 # ignore all files in the build/ directory
-build/    
+build/
 # ignore doc/notes.txt, but not doc/server/arch.txt
-doc/*.txt 
+doc/*.txt
 # Exemple réél :
 .metadata
 bin
@@ -921,7 +919,7 @@ build
 					<li>Ne pas modifier un commit publié</li>
 				</ul>
 			</section>
-			
+
 			<section>
 				<h5>TP3 Commandes Git de base</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
@@ -949,7 +947,7 @@ build
 
 				</ul>
 			</section>
-			
+
 			<section>
 				<h4>Les types d'organisations</h4>
 				<ol>
@@ -960,7 +958,7 @@ build
 				</ol>
 				<p>Voir <a href="#/100">[12]</a></p>
 			</section>
-			
+
 			<section>
 				<h4>Worflows avec Git, comment gérer ses branches ?</h4>
 				<ul>
