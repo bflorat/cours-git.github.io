@@ -278,16 +278,18 @@ $ git remote show origin</pre>
             <h5>Exercice 4.3 : Rechercher une expression</h5>
             Recherchez une expression de votre choix dans les différentes
             révisions du dépôt avec la commande <span class='lcode'>git
-					grep &lt;expression&gt; &lt;reference&gt;</span>
+					log -G &lt;expression&gt;</span>
         </section>
         <section>
             <h5>Exercice 4.4 : Utilisation de git-flow</h5>
             <ol>
                 <li>Initialiser git-flow sur votre dépôt local</li>
-                <li>Démarrer une release</li>
-                <li>Créer puis fermer une branche topic de fonctionnailité</li>
-                <li>Créer puis fermer une branche topic hotfix</li>
-                <li>Finaliser la release</li>
+                <li>Créer une branche de fonctionnalité et y faire un commit</li>
+                <li>Finaliser la branche de fonctionnalité</li>
+                <li>Démarrer une release et y faire un commit, la publier</li>
+                <li>Finaliser la release en version 1.0.0</li>
+                <li>Créer puis fermer une branche hotfix</li>
+                <li>Créer une branche de maintenance 1.x</li>
             </ol>
         </section>
         <section>
@@ -296,7 +298,7 @@ $ git remote show origin</pre>
              <ul>
                 <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
                 <li><i>Commandes utiles : <span	class='lcode'>undo</span>,<span	class='lcode'>reset</span></i></li>
-      		    <li>Créer une branche <span class='lcode'>develop</span> et y faire un commit</li>
+      		      <li>Créer une branche <span class='lcode'>develop</span> et y faire un commit</li>
                 <li>Créer une branche <span class='lcode'>evol1</span> depuis <span class='lcode'>develop</span> et y faire deux commits</li>
                 <li>Créer une branche <span class='lcode'>evol2</span> depuis <span class='lcode'>develop</span> et y faire deux commits</li>
                 <li>Dans la branche <span class='lcode'>develop</span>, ne récupérer que le premier commit de la branche <span class='lcode'>evol1</span></li>

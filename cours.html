@@ -782,7 +782,6 @@ git diff origin/hotfix/release-1_0</pre>
 $ git checkout master
 $ git merge iss53</pre>
 				<ul>
-
 					<li>C'est la copie locale de la branche courante qui est
 						modifiée</li>
 					<li>Si conflit, plus possible de commiter :
@@ -813,17 +812,18 @@ $ git merge iss53</pre>
 					src="images/git-rebase2.png" width="250px" />
 				<ul>
 					<li><pre>
-$ git checkout experiment
-$ git rebase master
+$ git checkout experiment; git rebase master
+$ git checkout master; git merge experiment (ff)
 </pre></li>
 					<li>Sérialise deux branches, nos commits à la fin, rend l'historique beaucoup plus lisible (linéaire)</li>
-					<li>Se "rebase" sur une référence, c'est à dire part de cette ref</li>
+					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>
 					<li>Se positionne sur la branche cible puis applique chez commit de notre branche comme un patch</li>
 					<li><span class='lcode'>rebase -i</span> : rebase interactif, permet au passage de modifier l'historique (squashing, spliting, modification messages, changement d'ordre ...)
 					<li>Utiliser avec <span class='lcode'>git pull</span> : <pre>$ git pull --rebase</pre></li>
 					<li>Permet de réécrire son historique (rebase interactif)
 						<p class="note">Attention : n'utiliser rebase qu'avec ses
-							branches locales, ne jamais rebaser un commit qui a déjà été poussé</p>
+							branches locales, ne jamais rebaser un commit qui a déjà été poussé.
+							Rebaser depuis des branches feature ou hotfix <b>vers</b> <span class='lcode'>master</span> ou <span class='lcode'>develop</span> uniquement, pas depuis.</p>
 					</li>
 				</ul>
 				<p style="font-size: small;">
@@ -969,7 +969,6 @@ build
 					<li>Branches "Short life" (topic, maintenance) ou "long run" (master)</li>
 					<li>Structuration des branches dépend du nombre de versions
 						maintenues</li>
-					<li>Graduation : de plus en plus stable (voir git-flow)</li>
 				</ul>
 				<p class='note'>
 					Voir aussi <span class='lcode'>man gitworkflows</span>
