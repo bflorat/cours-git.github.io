@@ -76,9 +76,8 @@
                     référencés à la fin du support de cours
                 </li>
                 <li>Inutile d'écrire du vrai code Java pour les exemples</li>
-                <li>Pour répondre aux questions du TP, écrivez dans un fichier <span class='lcode'>~reponses.txt</span> (étudiant A uniquement)</li>
-                <li>Tous les exercices se feront sous Gnu/Linux avec vi (vim)
-                    comme éditeur de texte.
+                <li>Pour répondre aux questions du TP, écrivez dans un (unique) fichier <span class='lcode'>~/reponses.txt</span> (un seul étudiant du binôme)</li>
+                <li>Tous les exercices se feront sous Gnu/Linux avec vi comme éditeur de texte.
                     <p style="font-size: small !important;" class="note">
                         Commandes de base: <span class='lcode'>:i</span> insérer, <span
                             class='lcode'>:o</span> insérer à la ligne, <span class='lcode'>:q!</span>
@@ -106,15 +105,15 @@
                 <li><i>Commandes utiles : <span	class='lcode'>undo</span>,<span	class='lcode'>reset</span></i></li>
       		    <li>Créer une branche <span class='lcode'>develop</span> et y faire un commit</li>
                 <li>Fusionner ce commit dans la branche <span class='lcode'>master</span></li>
-                <li>Poser un tag <span	class='lcode'>V1.0.0</span> sur la branche master</li>
-                <li>Depuis la branche <span	class='lcode'>master</span>, créer une branche <span class='lcode'>V1.0</span>,
-                y faire deux commits, tagger ce dernier commit <span class='lcode'>V1.0.1</span></li>
+                <li>Poser un tag <span	class='lcode'>1.0.0</span> sur la branche master</li>
+                <li>Depuis la branche <span	class='lcode'>master</span>, créer une branche <span class='lcode'>1.0</span>,
+                y faire deux commits, tagger ce dernier commit <span class='lcode'>1.0.1</span></li>
                 <li>Faire deux commits sur develop</li>
-                <li>Fusionner ces deux commits dans la branche <span class='lcode'>master</span> puis tagger <span class='lcode'>V2.0.0</span></li>
+                <li>Fusionner ces deux commits dans la branche <span class='lcode'>master</span> puis tagger <span class='lcode'>2.0.0</span></li>
                 <li>Créer depuis <span	class='lcode'>develop</span> une branche <span class='lcode'>bug123</span>,
                 	y faire un commit puis fusionner le commit dans la branche <span class='lcode'>develop</span></li>
                 <li>Supprimer la branche bug123</li>
-                <li>Fusionner develop dans master puis tagger <span class='lcode'>V2.0.1</span></li>
+                <li>Fusionner develop dans master puis tagger <span class='lcode'>2.0.1</span></li>
             </ul>
         </section>
 
@@ -217,7 +216,7 @@
         <section>
             <h5>Exercice 3.5 : Manipulation des branches distantes</h5>
             <ol>
-                <li><b>A sauvegarde ses exercices précedents par la commande :   <span class='lcode'>mv ~/my-app ~/my-app~</span>) (ne pas oublier !)</b></li>
+                <li><b>A sauvegarde ses exercices précedents par la commande :   <span class='lcode'>mv ~/my-app ~/my-app~</span> (ne pas oublier !)</b></li>
                 <li>A réinitialise son dépot en le clonnant à nouveau (il refait l'ex 3.1)</li>
                 <li>A et B affichent le détail du dépôt <span class='lcode'>origin</span>
                     et des branches remote via les commandes suivantes : <pre>$ git branch -r
@@ -243,7 +242,7 @@ $ git remote show origin</pre>
             <h5>Exercice du soir no 1 (concepts)</h5>
             <p>A faire avant le prochain cours ;</p>
             <p>Exercice individuel ;</p>
-            <p><b>Présenter Git en 200 mots max : ses spécificités, son fonctionnement, ses avantages</b></p>
+            <p><b>Présenter succinctement Git: ses spécificités, son fonctionnement, ses avantages</b></p>
             <p>Laisser le texte sur le serveur <a href="https://cours.florat.net">https://cours.florat.net</a>
                 dans le fichier <span class='lcode'>~/soir1.txt</span></p>
             <p>(merci de respecter le nom du fichier)</p>
@@ -263,7 +262,8 @@ $ git remote show origin</pre>
                 <li>Utiliser <span class='lcode'>git status</span> pour
                     vérifier l'opération avant et après
                 </li>
-                <li>Commiter le fichier .gitignore pour que le reste de l'équipe en profite
+                <li>Commiter le fichier <span
+                        class='lcode'>.gitignore</span> pour que le reste de l'équipe en profite
                 </li>
             </ol>
         </section>
@@ -304,7 +304,7 @@ $ git remote show origin</pre>
                 <li>Créer une branche <span class='lcode'>evol2</span> depuis <span class='lcode'>develop</span> et y faire deux commits</li>
                 <li>Dans la branche <span class='lcode'>develop</span>, ne récupérer que le premier commit de la branche <span class='lcode'>evol1</span></li>
                 <li>Dans la branche <span class='lcode'>develop</span>, récupérer les deux commits de la branche <span class='lcode'>evol2</span> mais en les inversant</li>
-                <li>Poser un tag <spanclass='lcode'>V1.0.0</span> sur la branche develop</li>
+                <li>Poser un tag <spanclass='lcode'>1.0.0</span> sur la branche develop</li>
               </ul>
               <p>Copier les commandes effectuées dans le simulateur et les coller dans un fichier <span	class='lcode'>~/soir2.txt</span> (merci de respecter le nom du fichier)</p>
         	 <p>Note : en cas de difficuluté, faire les exercices d'entrainement à  <a href='http://pcottle.github.io/learnGitBranching'>http://pcottle.github.io/learnGitBranching</a></p>
