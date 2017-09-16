@@ -161,8 +161,8 @@
 
 			<section>
 				<h4>Quels fichiers gérer en configuration ou pas ?</h4>
-				<p class="note">Le projet (et toutes ses versions) doit être
-					auto-porteur</p>
+				<p><b>Regle no 1 : le projet doit être auto-porteur</b></p>
+					<p><b>Regle no 2 : on ne commit pas de fichiers dérivés</b></p>
 				<ul>
 					<li>Fichiers source (.java, .c, .html, .css...)</li>
 					<li>Fichiers binaires non dérivés des sources, images par exemple</li>
@@ -179,19 +179,6 @@
 				<ul>
 					<li>Fichiers projets de l'IDE (.project, .idea ...)</li>
 					<li>Personnalisation et historique de l'IDE</li>
-				</ul>
-			</section>
-			<section>
-				<h3>Modèles de gestion des accès concurrents</h3>
-				<ul>
-					<li><b>Modèle de contrôle de concurrence pessimiste</b>:
-						fichiers réservés en lecture seule</li>
-					<li><b>Modèle de contrôle de concurrence optimiste</b> :
-						conflits possibles mais possibilité de réconcilier</li>
-					<li>Quelques VCS (Clearcase, SVN etc) mixtes</li>
-					<li>La plupart des VCS sont à contrôle optimiste : CVS, SVN, Git,
-						Mercurial, BitKeeper etc.</li>
-					<li>Le modèle pessismiste est obsolète et pousse à de mauvaises pratiques de développement, à éviter !</li>
 				</ul>
 			</section>
 
@@ -219,12 +206,6 @@
 				<p>Exemples : Git, Mercurial, Baazar, BitKeeper</p>
 				<p>Chaque développeur possède un dépôt entier mais les dépôts
 					peuvent s'échanger des modifications</p>
-			</section>
-			<section>
-				<h4>Historique</h4>
-				<img src="images/historique.png" width="600px">
-				<p class="note">Retour d'expérience : quels VCS dans les grands
-					comptes ?</p>
 			</section>
 
 			<section>
@@ -306,7 +287,6 @@
 			<section>
 				<h4>Concepts généraux</h4>
 				<table>
-
 					<tr>
 						<td><b>Modification concurrente</b></td>
 						<td>
@@ -466,10 +446,9 @@ Voir aussi le bug #1674.
 				<pre>
 $ git config --global user.name "John Doe"  //<i>Obligatoire !</i>
 $ git config --global user.email johndoe@example.com   //<i>Obligatoire !</i>
-$ git config --global push.default simple //<i>Mode de push</i>
-$ git config --global core.editor vim   //<i>choix de l'éditeur, vi par défaut</i>
-$ git config --global merge.tool vimdiff //<i>choix de l'outil de diff</i>
 </pre>
+
+<p class='note'>Autres exemples de confifuration : <span class="lcode">core.editor</span> ou <span class="lcode">merge.tool</span></p>
 			</section>
 
 			<section>
@@ -628,7 +607,9 @@ ou : $ git checkout -b mabranche</pre></li>
 				<h4>Branches remote</h4>
 				<ul style="font-size: large;">
 					<li>Branche remote (distante) : branche locale cache d'une
-						branche d'un dépôt distant</li>
+						branche d'un dépôt distant
+						<p><b>Attention ! ce n'est qu'une <i>image</i>, un <i>proxy</i> de la branche distante,
+							 elle n'est pas rafraichie tant qu'on n'a pas fait un <span class='lcode'>git fetch</span></b></li>
 					<li>Exemples : <pre style="font-size: medium;">
 remotes/origin/HEAD -&gt; origin/master
 remotes/origin/develop
@@ -879,6 +860,7 @@ doc/*.txt
 bin
 build
 .settings
+# Ignore recursively all .class files
 *.class
 </pre></li>
 					<li>Possible de positionner un fichier <span class='lcode'>.gitignore</span>
@@ -924,13 +906,7 @@ build
 			</section>
 
 			<section>
-				<h4>Le coding social</h4>
-				<div
-					style="width: 400px; font-size: 50%; text-align: left; float: right; margin: 5px">
-					<img src="images/Jajuk_gitorious.png" style="width: 400px;" />Copyright
-					The Jajuk project
-				</div>
-
+				<h4>Le coding social avec les Pull Request</h4>
 				<ul>
 					<li>Réseaux sociaux de code comme
 						<ul>
@@ -941,7 +917,7 @@ build
 					<li>"Zone grise" entre l'équipe et les utilisateurs</li>
 					<li>Discussions sur le code (mode wiki)</li>
 					<li>Les PR (Pull Requests)</li>
-					<li>Exemple de politique "grise" :</li>
+					<img src="images/pr.png" />
 
 				</ul>
 			</section>
@@ -952,25 +928,9 @@ build
 					<li>Centralisé (SVN/CVS like) avec un "blessed server"</li>
 					<li>Hiérarchisé, par exemple à 3 grades : contributeur,
 						vérificateur, intégrateur</li>
-					<li>PR : un projet + des contributeurs externes</li>
+					<li>Open Source classique : un dépot de référence  + des contributeurs externes par PR</li>
 				</ol>
 				<p>Voir <a href="#/100">[12]</a></p>
-			</section>
-
-			<section>
-				<h4>Worflows avec Git, comment gérer ses branches ?</h4>
-				<ul>
-					<li>Forker, commiter et merger souvent</li>
-					<li>Historique flexible sur les branches privées, stable en
-						public</li>
-					<li>Branches privées (topic, experimentation) ou publiques</li>
-					<li>Branches "Short life" (topic, maintenance) ou "long run" (master)</li>
-					<li>Structuration des branches dépend du nombre de versions
-						maintenues</li>
-				</ul>
-				<p class='note'>
-					Voir aussi <span class='lcode'>man gitworkflows</span>
-				</p>
 			</section>
 
 			<section>
@@ -990,6 +950,9 @@ git flow hotfix [start|finish|publish|pull] bug123
 						</pre>
 						<br/>
 						<p>Voir <a href="#/100">[1]</a></p>
+						<p class='note'>
+							Voir aussi <span class='lcode'>man gitworkflows</span>
+						</p>
 				</div>
 			</section>
 
@@ -1025,11 +988,6 @@ git flow hotfix [start|finish|publish|pull] bug123
 					<li>L'adaptateur <span class='lcode'>git-svn</span></li>
 					<li>...</li>
 				</ul>
-			</section>
-			<section>
-				<h4>Un Dropbox-like basé sur git : Sparkleshare</h4>
-				<img src="images/spakleshare1.png" style="width: 250px; margin: 5px" /><img
-					src="images/spakleshare2.png" style="width: 250px; margin: 5px" />
 			</section>
 			<section>
 				<h5>TP4 Utilitaires Git</h5>
