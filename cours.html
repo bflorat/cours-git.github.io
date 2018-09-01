@@ -1038,25 +1038,33 @@ build
 
 			<section>
 				<h4>Un worflow pré-cablé très populaire : git-flow</h4>
-				<div style="width: 400px; font-size: 50%; text-align: left; float:left; margin: 5px">
-					<img src="images/git-flow.png" style="width: 400px;" />Copyright CC-BY-SA Vincent Driessen
-				</div>
-				<div style="width: 400px; text-align: left; float:right; margin: 40px,0px,0px,10px">
-					<pre>
+				<table>
+					<tr>
+						<td>
+							<div>
+								<img src="images/git-flow.png" style="width: 400px; margin: 5px" />
+								<p style="font-size:0.5em">Copyright CC-BY-SA Vincent Driessen</p>
+							</div>
+						</td>
+						<td style="vertical-align: top">
+							<div style="margin:10px;">
+								<pre>
 git flow init
 git flow feature [start|finish|publish|pull] panierachat
 git flow release [start|finish|publish|pull] 1.2.0
 git flow hotfix [start|finish|publish|pull] bug123
 						</pre>
-					<br/>
-					<p>Voir
-						<a href="#/100">[1]</a>
-					</p>
-					<p class='note'>
-						Voir aussi
-						<span class='lcode'>man gitworkflows</span>
-					</p>
-				</div>
+								<br/>
+								<p>Voir
+									<a href="#/100">[1]</a>
+								</p>
+								<p class='note'>
+									Voir aussi
+									<span class='lcode'>man gitworkflows</span>
+								</p>
+						</td>
+					</tr>
+				</table>
 			</section>
 
 			<section>
@@ -1069,8 +1077,9 @@ git flow hotfix [start|finish|publish|pull] bug123
 					<li>Forge privée : GitLab (
 						<a href="https://gitlab.com/">https://gitlab.com/</a>)</li>
 				</ul>
-				<div style="width: 400px; font-size: 50%; text-align: left; margin: 5px">
-					<img src="images/gitlab.png" style="width: 400px;" />GitLab
+				<div>
+					<img src="images/gitlab.png" />
+					<figcaption>GitLab</figcaption>
 				</div>
 			</section>
 
@@ -1135,27 +1144,17 @@ git flow hotfix [start|finish|publish|pull] bug123
 							</li>
 				</ul>
 			</section>
+			</div>
 		</div>
-	</div>
 
 
 
-	<script src="js/reveal.js"></script>
+		<script src="js/reveal.js"></script>
 
-	<script>
-		// Full list of configuration options available here:
-		// https://github.com/hakimel/reveal.js#configuration
-		Reveal.initialize({
-			progress: true,
-			loop: true,
-			mouseWheel: false,
-			theme: 'simple', // available themes are in /css/theme
-			transition: 'fade',
-			width: '100%',
-			height: '100%',
-			slideNumber: true
-		});
-	</script>
+		<script src="config.js"></script>
+		<script>
+			Reveal.initialize(config);
+		</script>
 
 </body>
 
