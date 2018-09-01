@@ -15,6 +15,11 @@
 	<link rel="stylesheet" href="css/theme/white.css">
 	<!-- For syntax highlighting -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
+	<style>
+		.lcode{
+			font-family: 'Courier New', Courier, monospace !important
+		}
+	</style>
 
 </head>
 
@@ -26,8 +31,8 @@
 		<div class="slides">
 			<section>
 				<div style="width: 350px; font-size: 50%; text-align: center; float: right; margin-left: 10px;margin-bottom:1000px">
-					<img src="images/couverture.jpg" style="width: 250px; margin: 0px" />
-					<br/>Source https://m.xkcd.com/1597/
+					<img src="images/couverture.png" style="width: 250px; margin: 0px" />
+					<br/>Source https://m.xkcd.com/1296/
 				</div>
 				<h2>La gestion de versions</h2>
 				<p>IUT de Nantes – Département Informatique</p>
@@ -41,6 +46,7 @@
 						<a href='http://www.florat.net/contact'>contact</a>)</p>
 					<p>
 						<a style="font-size:0.5em" href="http://florat.net/cours_vcs/cours.html">http://florat.net/cours_vcs/cours.html</a>
+						-
 						<a style="font-size:0.5em" href='tp.html'>Feuille de TP</a>
 					</p>
 					<p style="font-size: 0.5em">
@@ -142,18 +148,19 @@
 			<section>
 				<h4>Quels fichiers gérer en configuration ou pas ?</h4>
 				<p>
-					<b>Regle no 1 : le projet doit être auto-porteur</b>
+					<b>Régle no 1 : le projet doit être auto-porteur</b>
 				</p>
 				<p>
-					<b>Regle no 2 : on ne commit pas de fichiers dérivés</b>
+					<b>Régle no 2 : on ne commit pas de fichiers dérivés</b>
 				</p>
+				<p>A commiter</p>
 				<ul>
 					<li>Fichiers source (.java, .c, .html, .css...)</li>
 					<li>Fichiers binaires non dérivés des sources, images par exemple</li>
 					<li>Fichiers de build (maven: pom.xml, npm: package.json, Jenkinsfile ...)</li>
 				</ul>
 				<br />
-				<p>Pas en configuration :</p>
+				<p>A ne pas commiter :</p>
 				<ul>
 					<li>Fichiers temporaires, générés ou compilés</li>
 					<li>Librairies (utiliser un dépot Maven)</li>
@@ -231,7 +238,7 @@
 					<tr>
 						<td>
 							<b>Branche</b> [branch]</td>
-						<td>Une ligne de développement d'un projet. Sert par exemple à :
+						<td>Une ligne de développement d'un projet. Sert par exemple à
 							<ul>
 								<li>Gérer une version spécifique pour un client</li>
 								<li>Gérer des branches de maintenance corrective</li>
@@ -310,20 +317,24 @@ int j=0;
 				<ul>
 					<li>Le code commité doit toujours compiler</li>
 					<li>Commiter et merger souvent, mettre à jour régulièrement</li>
-					<li>Utiliser avec un outil de gestion de tickets (Trac, Mantis, GitHub...)</li>
+					<li>Utiliser avec un outil de gestion de tickets (Trac, Mantis, Jira, GitLab, GitHub...)</li>
 					<li>Grouper les modifications en commits cohérents</li>
 					<li>Ne jamais commiter du code mort (en commentaire ou pas)</li>
 					<li>Formatage coersitif des sources ASAP</li>
+			</section>
+			<section>
+				<h5>Bonne pratiques / numéros de versions</h5>
+				<ul>
 					<li>Version scheme :
 						<span class='lcode'>[X].[Y].[Z]</span>, exemple :
 						<span class='lcode'>1.2.3</span>
 					</li>
-					<ul>
-						<li>Programme : [major (refonte complète)].[minor (évolution)].[no fix (correction) en partant de zéro]</li>
-						<li>Librairie : [compatibilite API].[évolution].[fix], voir le semantic versionning
-							<a href="http://semver.org/">http://semver.org/</a>
-						</li>
-					</ul>
+					<li>Programme : [major (refonte complète)].[minor (évolution)].[no fix (correction) en partant de zéro]</li>
+					<li>Librairie : [compatibilite API].[évolution].[fix]</li>
+					<li>Voir le semantic versionning
+						<a href="http://semver.org/">http://semver.org/</a>
+					</li>
+				</ul>
 				</ul>
 			</section>
 
@@ -380,34 +391,15 @@ Voir aussi le bug #1674.
 			</section>
 			<section>
 				<h4>Quelques interfaces Git</h4>
-				<img style="float: right; margin: 5px" src="images/egit.png" width="300px" />
-				<ul>
-					<li>Tous OS
-						<ul>
-							<li>egit/jgit (plugin Eclipse, de base)</li>
-							<li>IDEA (de base)</li>
-							<li>ATOM</li>
-							<li>ungit (node.js)</li>
-						</ul>
-					</li>
-					<li>Gnu/Linux</li>
-					<ul>
-						<li>git (ligne de commande) + gitk (GUI pour l'historique)</li>
-						<li>tig : navigateur Git en ncurses</li>
-					</ul>
-					<li>Microsoft Windows
-						<ul>
-							<li>Git for Windows : git en ligne de commande + un éditeur graphique d'historique
-								<li>TurtoiseGit : éditeur graphique intégré dans l'OS</li>
-						</ul>
-						</li>
-						<li>Mac OSX
-							<ul>
-								<li>Tower</li>
-								<li>GitBox</li>
-							</ul>
-						</li>
+				<img style="float: right !important; margin: 5px" src="images/egit.png" width="300px" />
+				<ul style="display:inline">
+					<li><b>Tous OS</b>: egit/jgit, IDEA, ATOM, Visual Studio Code, ungit (node.js)...</li>
+					<li><b>Linux</b>: git (ligne de commande) + gitk (GUI pour l'historique), tig (ncurses), </li>
+					<li><b>Microsoft Windows</b>: Git for Windows (git en ligne de commande),TurtoiseGit (éditeur graphique intégré dans l'OS)</li>
+					<li><b>Mac OSX</b> : Tower, GitBox </li>
+					<li><b>Web</b> : GitHub, GitLab </li>
 				</ul>
+
 			</section>
 			<section>
 				<h4>Configurer git</h4>
@@ -556,7 +548,7 @@ $ git branch mabranche
 $ git checkout mabranche
 ou : $ git checkout -b mabranche</pre>
 					</li>
-					<li>Note : si changement de branche avec des modifications non commitées, git merge les copies locales sauf si conflit detecté
+					<li>Note : si changement de branche avec des modifications non commitées, git fusionne le contenu des copies locales sauf si conflit detecté
 						(dans ce cas, on peut forcer tout de même le merge avec
 						<span class='lcode'>checkout
 							<b>-m</b>
@@ -618,7 +610,7 @@ ou : $ git checkout -b mabranche</pre>
 
 			<section>
 				<h4>Branches remote</h4>
-				<ul style="font-size: large;">
+				<ul>
 					<li>Branche remote (distante) : branche locale cache d'une branche d'un dépôt distant
 						<p>
 							<b>Attention ! ce n'est qu'une
@@ -628,7 +620,7 @@ ou : $ git checkout -b mabranche</pre>
 							</b>
 					</li>
 					<li>Exemples :
-						<pre style="font-size: medium;">
+						<pre>
 remotes/origin/HEAD -&gt; origin/master
 remotes/origin/develop
 remotes/origin/master
@@ -644,7 +636,7 @@ remotes/bob/feature300</pre>
 			</section>
 			<section>
 				<h4>Branches remote (suite)</h4>
-				<ul style="font-size: large;">
+				<ul>
 					<li>Par défaut, push refusé si la branche distante a divergé</li>
 					<li>
 						<span class='lcode'>git pull</span> =
@@ -654,7 +646,7 @@ remotes/bob/feature300</pre>
 					</li>
 					<li>Tracking remote branch : branche remote avec refspec, push/fetch/pull sans arguments (le '+' signifie qu'on met à jour
 						la référence même si ce n'est pas un ff)
-						<pre style="font-size: medium; width: 100%">
+						<pre>
 [remote "origin"]
 url=git@gitorious.org:/my-app.git
 fetch=+refs/heads/*:refs/remotes/origin/*
@@ -1157,8 +1149,8 @@ git flow hotfix [start|finish|publish|pull] bug123
 			theme: 'simple', // available themes are in /css/theme
 			transition: 'fade',
 			width: '100%',
-			height: '100%'
-
+			height: '100%',
+			slideNumber: true
 		});
 	</script>
 
