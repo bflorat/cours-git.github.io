@@ -15,11 +15,9 @@
 	<link rel="stylesheet" href="css/theme/white.css">
 	<!-- For syntax highlighting -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
-	<style>
-		.lcode{
-			font-family: 'Courier New', Courier, monospace !important
-		}
-	</style>
+	<!-- Nos styles-->
+	<link rel="stylesheet" href="css/custom.css">
+
 
 </head>
 
@@ -393,11 +391,16 @@ Voir aussi le bug #1674.
 				<h4>Quelques interfaces Git</h4>
 				<img style="float: right !important; margin: 5px" src="images/egit.png" width="300px" />
 				<ul style="display:inline">
-					<li><b>Tous OS</b>: egit/jgit, IDEA, ATOM, Visual Studio Code, ungit (node.js)...</li>
-					<li><b>Linux</b>: git (ligne de commande) + gitk (GUI pour l'historique), tig (ncurses), </li>
-					<li><b>Microsoft Windows</b>: Git for Windows (git en ligne de commande),TurtoiseGit (éditeur graphique intégré dans l'OS)</li>
-					<li><b>Mac OSX</b> : Tower, GitBox </li>
-					<li><b>Web</b> : GitHub, GitLab </li>
+					<li>
+						<b>Tous OS</b>: egit/jgit, IDEA, ATOM, Visual Studio Code, ungit (node.js)...</li>
+					<li>
+						<b>Linux</b>: git (ligne de commande) + gitk (GUI pour l'historique), tig (ncurses), </li>
+					<li>
+						<b>Microsoft Windows</b>: Git for Windows (git en ligne de commande),TurtoiseGit (éditeur graphique intégré dans l'OS)</li>
+					<li>
+						<b>Mac OSX</b> : Tower, GitBox </li>
+					<li>
+						<b>Web</b> : GitHub, GitLab </li>
 				</ul>
 
 			</section>
@@ -548,8 +551,8 @@ $ git branch mabranche
 $ git checkout mabranche
 ou : $ git checkout -b mabranche</pre>
 					</li>
-					<li>Note : si changement de branche avec des modifications non commitées, git fusionne le contenu des copies locales sauf si conflit detecté
-						(dans ce cas, on peut forcer tout de même le merge avec
+					<li>Note : si changement de branche avec des modifications non commitées, git fusionne le contenu des copies locales sauf
+						si conflit detecté (dans ce cas, on peut forcer tout de même le merge avec
 						<span class='lcode'>checkout
 							<b>-m</b>
 						</span>).</li>
@@ -688,7 +691,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 			<section>
 				<h4>Cycle de vie d'un fichier dans la copie locale</h4>
 				<ul>
-					<li>Index/staging area : sas (facultatif) de "pré-commit"</li>
+					<li>Index (ou "staging area") : sas (facultatif) de "pré-commit"</li>
 					<li>Permet de sélectionner les modifications à commiter</li>
 					<li>Débrayable avec l'option
 						<span class='lcode'>-a</span>
@@ -817,6 +820,9 @@ git diff origin/hotfix/release-1_0</pre>
 				<h5>Merging</h5>
 				<img src="images/git-merge1.png" width="250px" />
 				<img src="images/git-merge2.png" width="250px" />
+				<p style="font-size: small;">
+					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
+				</p>
 				<pre>
 $ git checkout master
 $ git merge iss53</pre>
@@ -846,18 +852,18 @@ $ git merge iss53</pre>
 						</ul>
 						</li>
 				</ul>
-				<p style="font-size: medium !important;" class='note'>
+				<p class='note'>
 					Bonne pratique : option
 					<span class='lcode'>--no-ff</span> pour créer un commit de merge même en cas de FF
-				</p>
-				<p style="font-size: small;">
-					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
 				</p>
 			</section>
 			<section>
 				<h5>Rebasing</h5>
 				<img src="images/git-rebase1.png" width="250px" />
 				<img src="images/git-rebase2.png" width="250px" />
+				<p style="font-size: small;">
+					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
+				</p>
 				<ul>
 					<li>
 						<pre>
@@ -867,7 +873,6 @@ $ git checkout master; git merge experiment (ff)
 					</li>
 					<li>Sérialise deux branches, nos commits à la fin, rend l'historique beaucoup plus lisible (linéaire)</li>
 					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>
-					<li>Se positionne sur la branche cible puis applique chez commit de notre branche comme un patch</li>
 					<li>
 						<span class='lcode'>rebase -i</span> : rebase interactif, permet au passage de modifier l'historique (squashing, spliting, modification
 						messages, changement d'ordre ...)
@@ -883,9 +888,7 @@ $ git checkout master; git merge experiment (ff)
 								<span class='lcode'>develop</span> uniquement, pas depuis.</p>
 						</li>
 				</ul>
-				<p style="font-size: small;">
-					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
-				</p>
+
 			</section>
 
 			<section>

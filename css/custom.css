@@ -1,0 +1,12 @@
+.lcode {
+		font-family: 'Courier New', Courier, monospace !important
+}
+
+.note {
+	display: compact !important;
+	border: 1px solid !important;
+	font-size: 0.5em !important;
+	padding: 5px !important;
+	margin: 5px 0px 5px 0px !important;
+	width: 90%;
+}
