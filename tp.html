@@ -6,365 +6,387 @@
 
     <title>Feuille de travaux pratiques - Gestion de version</title>
 
-    <meta name="description"
-          content="Feuille de travaux pratiques génie logiciel Licence Pro 2017, la gestion de versions">
+    <meta name="description" content="Feuille de travaux pratiques génie logiciel Licence Pro 2018, la gestion de versions">
     <meta name="author" content="Bertrand Florat">
 
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
-
+	<link rel="stylesheet" href="css/theme/white.css">
+    
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
-    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
-    <script>
-	document.write('<link rel="stylesheet" href="css/print/'
-			+ (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper')
-			+ '.css" type="text/css" media="print">');
-
-    </script>
-
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
 </head>
 
 <body>
 
-<div class="reveal">
+    <div class="reveal">
 
-    <!-- Any section element inside of this container is displayed as a slide -->
-    <div class="slides">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
 
-        <section>
-            <h2 style="text-align: left;">Feuille de travaux pratiques -
-                Gestion de version</h2>
-            <p>
-                <b>Concepts/ Git</b>
-            </p>
-            <p>IUT de Nantes – Département Informatique</p>
-            <p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
-            <p><b>Cours de Licence professionnelle 2017</b></p>
-            <p class="sp">
-                <img style="margin-top: 5px" src="images/cc.png"> Copyright (C) 2017 Bertrand
-                FLORAT (bertrand@florat.net)
-            </p>
-            <p class="sp">
-                <i>Version 2.0 du 03 septembre 2017</i> / <a href="http://florat.net/cours_vcs/tp.html">http://florat.net/cours_vcs/tp.html</a>
-                / <a href='cours.html'>Cours</a>
-            </p>
-            <p>Naviguer avec les fléches ou la molette de la souris</p>
-        </section>
-        <section>
-            <h5>Notes importantes</h5>
-            <ul>
-                <li>Le travail se fera en binôme. Les présentiels se grouperont en binômes <span class='lcode'>preXX</span> et
-                les alternants en binômes  <span class='lcode'>altXX</span>. Chaque binôme est doté d'un
-                    dépôt Git dédié. 'A' et 'B' désignent respectivement
-                    l'un et l'autre membre du binôme. Si un étudiant est seul, il
-                        devra simuler A et B dans deux consoles différentes et avec deux utilisateurs
-                        différents, ex : pre12a et pre12b.</li>
-                <li>On utilise en général Git depuis un IDE comme IDEA, Atom ou Eclipse
-                    via des plugins, néanmoins dans le cadre de ce TP, il vous est
-                    demandé de n'utiliser que la ligne de commande
-                </li>
-                <li>Veuillez vous référer aux pages 'man' et aux documents
-                    référencés à la fin du support de cours
-                </li>
-                <li>Inutile d'écrire du vrai code Java pour les exemples</li>
-                <li>Pour répondre aux questions du TP, écrivez dans un (unique) fichier <span class='lcode'>~/reponses.txt</span> (un seul étudiant du binôme)</li>
-                <li>Tous les exercices se feront sous Gnu/Linux avec vi comme éditeur de texte.
-                    <p style="font-size: small !important;" class="note">
-                        Commandes de base: <span class='lcode'>:i</span> insérer, <span
-                            class='lcode'>:o</span> insérer à la ligne, <span class='lcode'>:q!</span>
-                        quitter sans enregistrer, <span class='lcode'>:x</span> quitter
-                        en enregistrant, <span class='lcode'>shift J</span> (ligne n) :
-                        remonte la ligne n+1, <span class='lcode'>y</span> : copier, <span
-                            class='lcode'>p</span> : coller, <span class='lcode'>dd</span> :
-                        supprimer toute une ligne, <span class='lcode'>u</span> : undo .
-                        Voir [6] au besoin.
-                    </p>
-                </li>
-            </ul>
-            <br/>
-        </section>
+            <section>
+                <h2 style="text-align: lcenter;">Feuille de travaux pratiques - Gestion de version</h2>
+                <p>IUT de Nantes – Département Informatique</p>
+                <p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
+                <p>
+                    <b>Cours de Licence professionnelle 2018</b>
+                </p>
+                <div>
+					<img src="images/cc.png" />
+					<p style="font-size:0.5em;text-align: center;">Copyright (C) 2012-2018 Bertrand Florat (
+						<a href='http://www.florat.net/contact'>contact</a>)</p>
+					<p>
+						<a style="font-size:0.5em" href="http://florat.net/cours_vcs/tp.html">http://florat.net/cours_vcs/tp.html</a>
+						<a style="font-size:0.5em" href='cours.html'>Cours</a>
+					</p>
+					<p style="font-size: 0.5em">
+						<i>Naviguer avec les fléches</i>
+					</p>
+				</div>
+            </section>
+            <section>
+                <h5>Notes importantes</h5>
+                <ul>
+                    <li>Le travail se fera en binôme. Les présentiels se grouperont en binômes
+                        <span class='lcode'>preXX</span> et les alternants en binômes
+                        <span class='lcode'>altXX</span>. Chaque binôme est doté d'un dépôt Git dédié. 'A' et 'B' désignent respectivement l'un
+                        et l'autre membre du binôme. Si un étudiant est seul, il devra simuler A et B dans deux consoles
+                        différentes et avec deux utilisateurs différents, ex : pre12a et pre12b.</li>
+                    <li>On utilise en général Git depuis un IDE comme IDEA, Atom ou Eclipse via des plugins, néanmoins dans le
+                        cadre de ce TP, il vous est demandé de n'utiliser que la ligne de commande
+                    </li>
+                    <li>Veuillez vous référer aux pages 'man' et aux documents référencés à la fin du support de cours
+                    </li>
+                    <li>Inutile d'écrire du vrai code Java pour les exemples</li>
+                    <li>Pour répondre aux questions du TP, écrivez dans un (unique) fichier
+                        <span class='lcode'>~/reponses.txt</span> (un seul étudiant du binôme)</li>
+                    <li>Tous les exercices se feront sous Gnu/Linux avec vi comme éditeur de texte.
+                        <p style="font-size: small !important;" class="note">
+                            Commandes de base:
+                            <span class='lcode'>:i</span> insérer,
+                            <span class='lcode'>:o</span> insérer à la ligne,
+                            <span class='lcode'>:q!</span>
+                            quitter sans enregistrer,
+                            <span class='lcode'>:x</span> quitter en enregistrant,
+                            <span class='lcode'>shift J</span> (ligne n) : remonte la ligne n+1,
+                            <span class='lcode'>y</span> : copier,
+                            <span class='lcode'>p</span> : coller,
+                            <span class='lcode'>dd</span> : supprimer toute une ligne,
+                            <span class='lcode'>u</span> : undo . Voir [6] au besoin.
+                        </p>
+                    </li>
+                </ul>
+                <br/>
+            </section>
 
-        <section>
-            <h4>TP1 Motivations gestion de configuration</h4>
-            <p><i>Echanges en séance</i></p>
-        </section>
+            <section>
+                <h4>TP1 Motivations gestion de configuration</h4>
+                <p>
+                    <i>Echanges en séance</i>
+                </p>
+            </section>
 
-		<section>
-             <h4>TP2: Exercice concepts Git</h4>
-             <ul>
-                <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
-                <li><i>Commandes utiles : <span	class='lcode'>undo</span>,<span	class='lcode'>reset</span></i></li>
-      		    <li>Créer une branche <span class='lcode'>develop</span> et y faire un commit</li>
-                <li>Fusionner ce commit dans la branche <span class='lcode'>master</span></li>
-                <li>Poser un tag <span	class='lcode'>1.0.0</span> sur la branche master</li>
-                <li>Depuis la branche <span	class='lcode'>master</span>, créer une branche <span class='lcode'>1.0</span>,
-                y faire deux commits, tagger ce dernier commit <span class='lcode'>1.0.1</span></li>
-                <li>Faire deux commits sur develop</li>
-                <li>Fusionner ces deux commits dans la branche <span class='lcode'>master</span> puis tagger <span class='lcode'>2.0.0</span></li>
-                <li>Créer depuis <span	class='lcode'>develop</span> une branche <span class='lcode'>bug123</span>,
-                	y faire un commit puis fusionner le commit dans la branche <span class='lcode'>develop</span></li>
-                <li>Supprimer la branche bug123</li>
-                <li>Fusionner develop dans master puis tagger <span class='lcode'>2.0.1</span></li>
-            </ul>
-        </section>
+            <section>
+                <h4>TP2: Exercice concepts Git</h4>
+                <ul>
+                    <li>Aller sur
+                        <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a>
+                    </li>
+                    <li>
+                        <i>Commandes utiles :
+                            <span class='lcode'>undo</span>,
+                            <span class='lcode'>reset</span>
+                        </i>
+                    </li>
+                    <li>Créer une branche
+                        <span class='lcode'>develop</span> et y faire un commit</li>
+                    <li>Fusionner ce commit dans la branche
+                        <span class='lcode'>master</span>
+                    </li>
+                    <li>Poser un tag
+                        <span class='lcode'>1.0.0</span> sur la branche master</li>
+                    <li>Depuis la branche
+                        <span class='lcode'>master</span>, créer une branche
+                        <span class='lcode'>1.0</span>, y faire deux commits, tagger ce dernier commit
+                        <span class='lcode'>1.0.1</span>
+                    </li>
+                    <li>Faire deux commits sur develop</li>
+                    <li>Fusionner ces deux commits dans la branche
+                        <span class='lcode'>master</span> puis tagger
+                        <span class='lcode'>2.0.0</span>
+                    </li>
+                    <li>Créer depuis
+                        <span class='lcode'>develop</span> une branche
+                        <span class='lcode'>bug123</span>, y faire un commit puis fusionner le commit dans la branche
+                        <span class='lcode'>develop</span>
+                    </li>
+                    <li>Supprimer la branche bug123</li>
+                    <li>Fusionner develop dans master puis tagger
+                        <span class='lcode'>2.0.1</span>
+                    </li>
+                </ul>
+            </section>
 
-        <section>
-            <h4>TP3 Commandes Git de base</h4>
-            <h5>Exercice 3.1 : Clonage d'un dépot</h5>
-            <p>Chaque binôme dispose d'un dépôt Git (local) et situé à l'URL</p>
-            <pre>/var/cours/depots_git/<i>code_binôme</i>/my-app.git</pre>
-            <ul>
-                <li>A et B clonent dans leur $HOME le dépôt distant affecté au binôme</li>
-                <li>Afficher les branches avec <span class='lcode'>git
-							branch -a</span></li>
-                <li>Consultez votre répertoire <span class='lcode'>.git</span> (commande: <span class='lcode'>find .git</span>). Que contient-il ?</li>
-            </ul>
-        </section>
-        <section>
-            <h5>Exercice 3.2 : Commit d'une modification</h5>
-            <p class="note">Cet exercice se fait simultanément par A et B</p>
-            <ol>
-                <li>Configurer correctement son nom et e-mail Git (voir support
-                    de cours)</li>
-                <li>Créez quelques alias, au moins 'ci' pour commit et 'st' pour status</li>
-                <li>Vérifier que vous vous trouvez dans la branche <span
-                        class='lcode'>master</span>, s'y positionner si ce n'est pas le
-                    cas.
-                </li>
-                <li>Modifier le source <span class='lcode'>Calcul.java</span>
-                    et ajouter un fichier source <span class='lcode'>CalculAlternatif.java</span>
-                    dans le même package
-                </li>
-                <li>Afficher le statut de la copie locale à ce stade</li>
-                <li>Commiter (en un seul commit) cette modification et cet ajout
-                    de nouveau fichier en utilisant un message de commit dans les
-                    règles de l'art.</li>
-                <li>Afficher le commit dans l'historique et les différences
-                    qu'il a introduites (commande <span
-                            class='lcode'>git show</span>).</li>
-            </ol>
-        </section>
-        <section>
-            <h5>Exercice 3.3.1 : Merge fast-forward</h5>
-            <p class="note">Cet exercice se fait simultanément par A et B</p>
-            <ol>
-                <li>Créer une branche nommée <span class='lcode'>bug42</span> et s'y positionner
-                </li>
-                <li>Effectuer des modifications sur <span
-                        class='lcode'>Calcul.java</span> et les commiter
-                </li>
-                <li>Positionnez vous dans la branche <span
-                        class='lcode'>master</span></li>
-                <li>Fusionner (par merge) les modifications de la branche
-                    <span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de
-                    merge ?</li>
-                <li>Supprimer cette branche</li>
-            </ol>
-        </section>
-        <section>
-            <h5>Exercice 3.3.2 : Merge non fast-forward</h5>
-            <p class="note">Cet exercice se fait simultanément par A et B</p>
-            <ol>
-                <li>Créer une branche nommée <span class='lcode'>bug43</span> et s'y positionner
-                </li>
-                <li>Effectuer des modifications <b>au début</b> du fichier <span
-                        class='lcode'>Calcul.java</span> et les commiter
-                </li>
-                <li>Positionnez vous dans la branche <span
-                        class='lcode'>master</span></li>
-                <li>Effectuer des modifications <b>à la fin</b> du fichier <span
-                        class='lcode'>Calcul.java</span> et les commiter
-                </li>
-                <li>Fusionner (par merge) les modifications de la branche
-                    <span class='lcode'>bug43</span> dans la branche master. Comment git qualifie ce type de
-                    merge ?</li>
-                <li>Supprimer cette branche</li>
-            </ol>
-        </section>
-        <section>
-            <h5>Exercice 3.4 : Gestion d'un conflit</h5>
-            <p class="note">Cet exercice se fait simultanément par A et B</p>
-            <ol>
-                <li>Créer une branche nommée <span class='lcode'>bug44</span> et s'y positionner
-                </li>
-                <li>Effectuer des modifications dans le fichier <span
-                        class='lcode'>Calcul.java</span> et les commiter
-                </li>
-                <li>Positionnez vous dans la branche <span
-                        class='lcode'>master</span></li>
-                <li>Effectuer des modifications (differentes) <b>sur les mêmes lignes</b> du fichier <span
-                        class='lcode'>Calcul.java</span> et les commiter
-                </li>
-                <li>Fusionner (par merge) les modifications de la branche
-                    <span class='lcode'>bug44</span> dans la branche master. Que se produit-il ?</li>
-                <li>Ouvrir le fichier, que remarquez vous à l'emplacement des modifications ?</li>
-                <li>Afficher le statut de la copie locale.</li>
-                <li>Resoudre le problème en ne gardant que les modifications de la branche <span class='lcode'>master</span></li>
-                <li>Supprimer cette branche</li>
-            </ol>
-        </section>
+            <section>
+                <h4>TP3 Commandes Git de base</h4>
+                <h5>Exercice 3.1 : Clonage d'un dépot</h5>
+                <p>Chaque binôme dispose d'un dépôt Git (local) et situé à l'URL</p>
+                <pre>/var/cours/depots_git/<i>code_binôme</i>/my-app.git</pre>
+                <ul>
+                    <li>A et B clonent dans leur $HOME le dépôt distant affecté au binôme</li>
+                    <li>Afficher les branches avec
+                        <span class='lcode'>git branch -a</span>
+                    </li>
+                    <li>Consultez votre répertoire
+                        <span class='lcode'>.git</span> (commande:
+                        <span class='lcode'>find .git</span>). Que contient-il ?</li>
+                </ul>
+            </section>
+            <section>
+                <h5>Exercice 3.2 : Commit d'une modification</h5>
+                <p class="note">Cet exercice se fait simultanément par A et B</p>
+                <ol>
+                    <li>Configurer correctement son nom et e-mail Git (voir support de cours)</li>
+                    <li>Créez quelques alias, au moins 'ci' pour commit et 'st' pour status</li>
+                    <li>Vérifier que vous vous trouvez dans la branche
+                        <span class='lcode'>master</span>, s'y positionner si ce n'est pas le cas.
+                    </li>
+                    <li>Modifier le source
+                        <span class='lcode'>Calcul.java</span>
+                        et ajouter un fichier source
+                        <span class='lcode'>CalculAlternatif.java</span>
+                        dans le même package
+                    </li>
+                    <li>Afficher le statut de la copie locale à ce stade</li>
+                    <li>Commiter (en un seul commit) cette modification et cet ajout de nouveau fichier en utilisant un message
+                        de commit dans les règles de l'art.</li>
+                    <li>Afficher le commit dans l'historique et les différences qu'il a introduites (commande
+                        <span class='lcode'>git show</span>).</li>
+                </ol>
+            </section>
+            <section>
+                <h5>Exercice 3.3.1 : Merge fast-forward</h5>
+                <p class="note">Cet exercice se fait simultanément par A et B</p>
+                <ol>
+                    <li>Créer une branche nommée
+                        <span class='lcode'>bug42</span> et s'y positionner
+                    </li>
+                    <li>Effectuer des modifications sur
+                        <span class='lcode'>Calcul.java</span> et les commiter
+                    </li>
+                    <li>Positionnez vous dans la branche
+                        <span class='lcode'>master</span>
+                    </li>
+                    <li>Fusionner (par merge) les modifications de la branche
+                        <span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de merge ?</li>
+                    <li>Supprimer cette branche</li>
+                </ol>
+            </section>
+            <section>
+                <h5>Exercice 3.3.2 : Merge non fast-forward</h5>
+                <p class="note">Cet exercice se fait simultanément par A et B</p>
+                <ol>
+                    <li>Créer une branche nommée
+                        <span class='lcode'>bug43</span> et s'y positionner
+                    </li>
+                    <li>Effectuer des modifications
+                        <b>au début</b> du fichier
+                        <span class='lcode'>Calcul.java</span> et les commiter
+                    </li>
+                    <li>Positionnez vous dans la branche
+                        <span class='lcode'>master</span>
+                    </li>
+                    <li>Effectuer des modifications
+                        <b>à la fin</b> du fichier
+                        <span class='lcode'>Calcul.java</span> et les commiter
+                    </li>
+                    <li>Fusionner (par merge) les modifications de la branche
+                        <span class='lcode'>bug43</span> dans la branche master. Comment git qualifie ce type de merge ?</li>
+                    <li>Supprimer cette branche</li>
+                </ol>
+            </section>
+            <section>
+                <h5>Exercice 3.4 : Gestion d'un conflit</h5>
+                <p class="note">Cet exercice se fait simultanément par A et B</p>
+                <ol>
+                    <li>Créer une branche nommée
+                        <span class='lcode'>bug44</span> et s'y positionner
+                    </li>
+                    <li>Effectuer des modifications dans le fichier
+                        <span class='lcode'>Calcul.java</span> et les commiter
+                    </li>
+                    <li>Positionnez vous dans la branche
+                        <span class='lcode'>master</span>
+                    </li>
+                    <li>Effectuer des modifications (differentes)
+                        <b>sur les mêmes lignes</b> du fichier
+                        <span class='lcode'>Calcul.java</span> et les commiter
+                    </li>
+                    <li>Fusionner (par merge) les modifications de la branche
+                        <span class='lcode'>bug44</span> dans la branche master. Que se produit-il ?</li>
+                    <li>Ouvrir le fichier, que remarquez vous à l'emplacement des modifications ?</li>
+                    <li>Afficher le statut de la copie locale.</li>
+                    <li>Resoudre le problème en ne gardant que les modifications de la branche
+                        <span class='lcode'>master</span>
+                    </li>
+                    <li>Supprimer cette branche</li>
+                </ol>
+            </section>
 
-        <section>
-            <h5>Exercice 3.5 : Manipulation des branches distantes</h5>
-            <ol>
-                <li><b>A sauvegarde ses exercices précedents par la commande :   <span class='lcode'>mv ~/my-app ~/my-app~</span> (ne pas oublier !)</b></li>
-                <li>A réinitialise son dépot en le clonnant à nouveau (il refait l'ex 3.1)</li>
-                <li>A et B affichent le détail du dépôt <span class='lcode'>origin</span>
-                    et des branches remote via les commandes suivantes : <pre>$ git branch -r
+            <section>
+                <h5>Exercice 3.5 : Manipulation des branches distantes</h5>
+                <ol>
+                    <li>
+                        <b>A sauvegarde ses exercices précedents par la commande :
+                            <span class='lcode'>mv ~/my-app ~/my-app~</span> (ne pas oublier !)</b>
+                    </li>
+                    <li>A réinitialise son dépot en le clonnant à nouveau (il refait l'ex 3.1)</li>
+                    <li>A et B affichent le détail du dépôt
+                        <span class='lcode'>origin</span>
+                        et des branches remote via les commandes suivantes :
+                        <pre>$ git branch -r
 $ git remote show origin</pre>
-                </li>
-                <li>B pousse ses commits des exercices précédents dans la
-                    branche <span class='lcode'>origin/master</span>
-                </li>
-                <li>A compare sa branche <span class='lcode'>master</span> à
-                    la branche <span class='lcode'>origin/master</span>. Il y-a-t-il
-                    des différences? Pourquoi ?
-                </li>
-                <li>A intégre les modifications distantes soit via <span
-                        class='lcode'>fetch + merge</span> soit par un <span class='lcode'>pull</span>.
-                    Quelle est la différence ? quel est la méthode la plus prudente ?
-                </li>
-                <li>A fait un commit dans sa branche <span class='lcode'>master</span> puis le pousse vers son origin</span></li>
+                    </li>
+                    <li>B pousse ses commits des exercices précédents dans la branche
+                        <span class='lcode'>origin/master</span>
+                    </li>
+                    <li>A compare sa branche
+                        <span class='lcode'>master</span> à la branche
+                        <span class='lcode'>origin/master</span>. Il y-a-t-il des différences? Pourquoi ?
+                    </li>
+                    <li>A intégre les modifications distantes soit via
+                        <span class='lcode'>fetch + merge</span> soit par un
+                        <span class='lcode'>pull</span>. Quelle est la différence ? quel est la méthode la plus prudente ?
+                    </li>
+                    <li>A fait un commit dans sa branche
+                        <span class='lcode'>master</span> puis le pousse vers son origin</span>
+                    </li>
 
-            </ol>
-        </section>
+                </ol>
+            </section>
 
-        <section>
-            <h5>Exercice du soir no 1 (concepts)</h5>
-            <p>A faire avant le prochain cours ;</p>
-            <p>Exercice individuel ;</p>
-            <p><b>Présenter succinctement Git: ses spécificités, son fonctionnement, ses avantages</b></p>
-            <p>Laisser le texte sur le serveur <a href="https://cours.florat.net">https://cours.florat.net</a>
-                dans le fichier <span class='lcode'>~/soir1.txt</span></p>
-            <p>(merci de respecter le nom du fichier)</p>
-        </section>
+            <section>
+                <h5>Exercice du soir no 1 (concepts)</h5>
+                <p>A faire avant le prochain cours ;</p>
+                <p>Exercice individuel ;</p>
+                <p>
+                    <b>Présenter succinctement Git: ses spécificités, son fonctionnement, ses avantages</b>
+                </p>
+                <p>Laisser le texte sur le serveur
+                    <a href="https://cours.florat.net">https://cours.florat.net</a>
+                    dans le fichier
+                    <span class='lcode'>~/soir1.txt</span>
+                </p>
+                <p>(merci de respecter le nom du fichier)</p>
+            </section>
 
-        <section>
-            <h4>TP4 Utilitaires Git</h4>
-            <p class="note">Ce TP a comme prérequis le TP3</p>
-            <h5>Exercice 4.1 : Ignorer des fichiers</h5>
-            <ol>
-                <li>Créer un fichier (fictif) <span class='lcode'>.class</span>
-                    dans <span
-                            class='lcode'>src/main/java/com/mycompany/app</span>
-                </li>
-                <li>Configurer git pour qu'il ignore recurvivement tous les <span
-                        class='lcode'>.class</span></li>
-                <li>Utiliser <span class='lcode'>git status</span> pour
-                    vérifier l'opération avant et après
-                </li>
-                <li>Commiter le fichier <span
-                        class='lcode'>.gitignore</span> pour que le reste de l'équipe en profite
-                </li>
-            </ol>
-        </section>
-        <section>
-            <h5>Exercice 4.2 : Réécrire son historique</h5>
-            <ol>
-                <li>Effectuez trois commits</li>
-                <li>Renommez le dernier commit</li>
-                <li>Fusionnez le premier et le second</li>
-            </ol>
-        </section>
-        <section>
-            <h5>Exercice 4.3 : Rechercher une expression</h5>
-            Recherchez une expression de votre choix dans les différentes
-            révisions du dépôt avec la commande <span class='lcode'>git
-					log -G &lt;expression&gt;</span>
-        </section>
-        <section>
-            <h5>Exercice 4.4 : Utilisation de git-flow</h5>
-            <ol>
-                <li>Initialiser git-flow sur votre dépôt local</li>
-                <li>Créer une branche de fonctionnalité et y faire un commit</li>
-                <li>Finaliser la branche de fonctionnalité</li>
-                <li>Démarrer une release et y faire un commit, la publier</li>
-                <li>Finaliser la release en version 1.0.0</li>
-                <li>Créer puis fermer une branche hotfix</li>
-                <li>Créer une branche de maintenance 1.x</li>
-            </ol>
-        </section>
-        <section>
-            <h5>Exercice du soir no 2 (Git)</h5>
-            <p>Attentation: c'est un travail individuel à faire par chaque étudiant, délai: une semaine</p>
-             <ul>
-                <li>Aller sur <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a></li>
-                <li><i>Commandes utiles : <span	class='lcode'>undo</span>,<span	class='lcode'>reset</span></i></li>
-      		      <li>Créer une branche <span class='lcode'>develop</span> et y faire un commit</li>
-                <li>Créer une branche <span class='lcode'>evol1</span> depuis <span class='lcode'>develop</span> et y faire deux commits</li>
-                <li>Créer une branche <span class='lcode'>evol2</span> depuis <span class='lcode'>develop</span> et y faire deux commits</li>
-                <li>Dans la branche <span class='lcode'>develop</span>, ne récupérer que le premier commit de la branche <span class='lcode'>evol1</span></li>
-                <li>Dans la branche <span class='lcode'>develop</span>, récupérer les deux commits de la branche <span class='lcode'>evol2</span> mais en les inversant</li>
-                <li>Poser un tag <spanclass='lcode'>1.0.0</span> sur la branche develop</li>
-              </ul>
-              <p>Copier les commandes effectuées dans le simulateur et les coller dans un fichier <span	class='lcode'>~/soir2.txt</span> (merci de respecter le nom du fichier)</p>
-        	 <p>Note : en cas de difficuluté, faire les exercices d'entrainement à  <a href='http://pcottle.github.io/learnGitBranching'>http://pcottle.github.io/learnGitBranching</a></p>
-        </section>
+            <section>
+                <h4>TP4 Utilitaires Git</h4>
+                <p class="note">Ce TP a comme prérequis le TP3</p>
+                <h5>Exercice 4.1 : Ignorer des fichiers</h5>
+                <ol>
+                    <li>Créer un fichier (fictif)
+                        <span class='lcode'>.class</span>
+                        dans
+                        <span class='lcode'>src/main/java/com/mycompany/app</span>
+                    </li>
+                    <li>Configurer git pour qu'il ignore recurvivement tous les
+                        <span class='lcode'>.class</span>
+                    </li>
+                    <li>Utiliser
+                        <span class='lcode'>git status</span> pour vérifier l'opération avant et après
+                    </li>
+                    <li>Commiter le fichier
+                        <span class='lcode'>.gitignore</span> pour que le reste de l'équipe en profite
+                    </li>
+                </ol>
+            </section>
+            <section>
+                <h5>Exercice 4.2 : Réécrire son historique</h5>
+                <ol>
+                    <li>Effectuez trois commits</li>
+                    <li>Renommez le dernier commit</li>
+                    <li>Fusionnez le premier et le second</li>
+                </ol>
+            </section>
+            <section>
+                <h5>Exercice 4.3 : Rechercher une expression</h5>
+                Recherchez une expression de votre choix dans les différentes révisions du dépôt avec la commande
+                <span class='lcode'>git log -G &lt;expression&gt;</span>
+            </section>
+            <section>
+                <h5>Exercice 4.4 : Utilisation de git-flow</h5>
+                <ol>
+                    <li>Initialiser git-flow sur votre dépôt local</li>
+                    <li>Créer une branche de fonctionnalité et y faire un commit</li>
+                    <li>Finaliser la branche de fonctionnalité</li>
+                    <li>Démarrer une release et y faire un commit, la publier</li>
+                    <li>Finaliser la release en version 1.0.0</li>
+                    <li>Créer puis fermer une branche hotfix</li>
+                    <li>Créer une branche de maintenance 1.x</li>
+                </ol>
+            </section>
+            <section>
+                <h5>Exercice du soir no 2 (Git)</h5>
+                <p>Attentation: c'est un travail individuel à faire par chaque étudiant, délai: une semaine</p>
+                <ul>
+                    <li>Aller sur
+                        <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a>
+                    </li>
+                    <li>
+                        <i>Commandes utiles :
+                            <span class='lcode'>undo</span>,
+                            <span class='lcode'>reset</span>
+                        </i>
+                    </li>
+                    <li>Créer une branche
+                        <span class='lcode'>develop</span> et y faire un commit</li>
+                    <li>Créer une branche
+                        <span class='lcode'>evol1</span> depuis
+                        <span class='lcode'>develop</span> et y faire deux commits</li>
+                    <li>Créer une branche
+                        <span class='lcode'>evol2</span> depuis
+                        <span class='lcode'>develop</span> et y faire deux commits</li>
+                    <li>Dans la branche
+                        <span class='lcode'>develop</span>, ne récupérer que le premier commit de la branche
+                        <span class='lcode'>evol1</span>
+                    </li>
+                    <li>Dans la branche
+                        <span class='lcode'>develop</span>, récupérer les deux commits de la branche
+                        <span class='lcode'>evol2</span> mais en les inversant</li>
+                    <li>Poser un tag
+                        <spanclass='lcode'>1.0.0</span> sur la branche develop</li>
+                </ul>
+                <p>Copier les commandes effectuées dans le simulateur et les coller dans un fichier
+                    <span class='lcode'>~/soir2.txt</span> (merci de respecter le nom du fichier)</p>
+                <p>Note : en cas de difficuluté, faire les exercices d'entrainement à
+                    <a href='http://pcottle.github.io/learnGitBranching'>http://pcottle.github.io/learnGitBranching</a>
+                </p>
+            </section>
+        </div>
     </div>
-</div>
 
 
-<script src="lib/js/head.min.js"></script>
-<script src="js/reveal.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-<script>
-		// Full list of configuration options available here:
-		// https://github.com/hakimel/reveal.js#configuration
-		Reveal.initialize({
-			controls : false,
-			progress : true,
-			history : false,
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            progress: true,
+            loop: true,
+            mouseWheel: false,
+            theme: 'simple', // available themes are in /css/theme
+            transition: 'none',
+            width: '100%',
+            height: '100%'
 
-			theme : Reveal.getQueryHash().theme || 'simple', // available themes are in /css/theme
-			transition : Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/linear(2d)
-
-			// Optional libraries used to extend on reveal.js
-			dependencies : [ {
-				src : 'lib/js/highlight.js',
-				async : true,
-				callback : function() {
-					window.hljs.initHighlightingOnLoad();
-				}
-			}, {
-				src : 'lib/js/classList.js',
-				condition : function() {
-					return !document.body.classList;
-				}
-			}, {
-				src : 'lib/js/showdown.js',
-				condition : function() {
-					return !!document.querySelector('[data-markdown]');
-				}
-			}, {
-				src : 'lib/js/data-markdown.js',
-				condition : function() {
-					return !!document.querySelector('[data-markdown]');
-				}
-			}, {
-				src : '/socket.io/socket.io.js',
-				async : true,
-				condition : function() {
-					return window.location.host === 'localhost:1947';
-				}
-			}, {
-				src : 'plugin/speakernotes/client.js',
-				async : true,
-				condition : function() {
-					return window.location.host === 'localhost:1947';
-				}
-			} ]
-		});
-
-</script>
+        });
+    </script>
 
 </body>
+
 </html>
