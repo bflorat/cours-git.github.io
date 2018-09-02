@@ -30,7 +30,7 @@
 			<section>
 				<div style="width: 350px; font-size: 50%; text-align: center; float: right; margin-left: 10px;margin-bottom:1000px">
 					<img src="images/couverture.png" />
-					<figcaption>Source https://m.xkcd.com/1296/<figcaption>
+					<figcaption>Source https://m.xkcd.com/1296/</figcaption>
 				</div>
 				<h2>La gestion de versions</h2>
 				<p>IUT de Nantes – Département Informatique</p>
@@ -61,7 +61,7 @@
 						<td>3- Pratique de Git</td>
 						<td>4- Travail collaboratif avec Git</td>
 					</tr>
-					<tr >
+					<tr>
 						<td>
 							<ul>
 								<li class="tp">TP1 : Motivations</li>
@@ -92,6 +92,7 @@
 
 							</ul>
 						</td>
+					</tr>
 				</table>
 			</section>
 
@@ -319,6 +320,7 @@ int j=0;
 					<li>Grouper les modifications en commits cohérents</li>
 					<li>Ne jamais commiter du code mort (en commentaire ou pas)</li>
 					<li>Formatage coersitif des sources ASAP</li>
+				</ul>
 			</section>
 			<section>
 				<h5>Bonne pratiques / numéros de versions</h5>
@@ -332,7 +334,6 @@ int j=0;
 					<li>Voir le semantic versionning
 						<a href="http://semver.org/">http://semver.org/</a>
 					</li>
-				</ul>
 				</ul>
 			</section>
 
@@ -420,17 +421,16 @@ Voir aussi le bug #1674.
 								<i>chemin dépôt</i>/.git/config
 							</span> : configuration du dépôt</li>
 					</ul>
-					<p>Configuration globale (multi-dépôts) de l'utilisateur courant :
-					</p>
+					<p>Configuration globale (multi-dépôts) de l'utilisateur courant :</p>
 					<pre>
 $ git config --global user.name "John Doe"  //<i>Obligatoire !</i>
 $ git config --global user.email johndoe@example.com   //<i>Obligatoire !</i>
-</pre>
-
-					<p class='note'>Autres exemples de confifuration :
-						<span class="lcode">core.editor</span> ou
-						<span class="lcode">merge.tool</span>
-					</p>
+					</pre>
+				</p>
+				<p class='note'>Autres exemples de confifuration :
+					<span class="lcode">core.editor</span> ou
+					<span class="lcode">merge.tool</span>
+				</p>
 			</section>
 
 			<section>
@@ -439,8 +439,9 @@ $ git config --global user.email johndoe@example.com   //<i>Obligatoire !</i>
 				<p>A mettre dans la section
 					<span class='lcode'>[alias]</span> de
 					<span class='lcode'>~/.gitconfig</span>
-					<p>Les plus courants :</p>
-					<pre>
+				</p>
+				<p>Les plus courants :</p>
+				<pre>
 cp = cherry-pick
 st = status -s
 cl = clone
@@ -476,6 +477,7 @@ $ git init</pre>
 								<b>.git</b>
 							</span>
 						</li>
+					</li>
 				</ul>
 
 			</section>
@@ -567,7 +569,6 @@ ou : $ git checkout -b mabranche</pre>
 					<p style="font-size: small;align='center">
 						<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
 					</p>
-					</li>
 					<li>Conventions :
 						<ul class="small">
 							<li>
@@ -621,6 +622,7 @@ ou : $ git checkout -b mabranche</pre>
 								<i>proxy</i> de la branche distante, elle n'est pas rafraichie tant qu'on n'a pas fait un
 								<span class='lcode'>git fetch</span>
 							</b>
+						</p>
 					</li>
 					<li>Exemples :
 						<pre>
@@ -709,6 +711,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 					</li>
 					<li>Commit interactif de partie de fichier avec l'option
 						<span class='lcode'>-p</span> (patch)
+					</li>
 				</ul>
 				<img src="images/lifecycle.png" width="450px" />
 			</section>
@@ -723,7 +726,6 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 				<p class="note">
 					Voir aussi la cheat sheet
 					<a href="http://ndpsoftware.com/git-cheatsheet.html">[5]</a>
-					</a>
 				</p>
 				<p class="note">
 					Référence par défaut :
@@ -773,21 +775,24 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 				<ul>
 					<li>Commande de base:
 						<span class='lcode'>git log</span>
-						<li>Voir les diff de chaque révision : option
-							<span <li>Spécifier des intervales de temps
-								<pre>git log --since=2.weeks</pre>
-						</li>
-						<li>Voir les diff de chaque révision : option
-							<span class='lcode'>git show</span>
-						</li>
-						<li>Voir un graphe des révisions : option
-							<span class='lcode'>git log --graph</span>
-						</li>
-						<li>
-							<span class='lcode'>git log branche1..branche2</span> : tous les nouveaux commits de la branche2 uniquement</li>
-						<li>Recherche multi-revisions :
-							<span class="lcode">git log -G [regexp]</span>
-						</li>
+					</li>
+					<li>Voir les diff de chaque révision : option
+						<span class='lcode'>git log -p</span>
+					</li>
+					<li>Spécifier des intervales de temps
+						<pre>git log --since=2.weeks</pre>
+					</li>
+					<li>Voir les diff de chaque révision : option
+						<span class='lcode'>git show</span>
+					</li>
+					<li>Voir un graphe des révisions : option
+						<span class='lcode'>git log --graph</span>
+					</li>
+					<li>
+						<span class='lcode'>git log branche1..branche2</span> : tous les nouveaux commits de la branche2 uniquement</li>
+					<li>Recherche multi-revisions :
+						<span class="lcode">git log -G [regexp]</span>
+					</li>
 				</ul>
 			</section>
 
@@ -808,6 +813,7 @@ git diff origin/hotfix/release-1_0</pre>
 					<li>Seulement les différences de la branche2 avec le dernier commit commun entre branche1 et branch2 (qu'ai-je fait dans
 						la branche2 depuis que mes deux branches ont divergées ?) :
 						<pre>$ git diff branche1...branche2</pre>
+					</li>
 				</ul>
 				<p class='note'>
 					Attention !
@@ -815,6 +821,7 @@ git diff origin/hotfix/release-1_0</pre>
 				</p>
 				<p>Liste des commits pas encore poussés :
 					<pre>git cherry -v</pre>
+				</p>
 			</section>
 			<section>
 				<h5>Merging</h5>
@@ -849,8 +856,9 @@ $ git merge iss53</pre>
 								<li>Revenir à l'état antérieur :
 									<span class='lcode'>git reset --merge</span>
 								</li>
+							</li>
 						</ul>
-						</li>
+					</li>
 				</ul>
 				<p class='note'>
 					Bonne pratique : option
@@ -887,6 +895,7 @@ $ git checkout master; git merge experiment (ff)
 								<span class='lcode'>master</span> ou
 								<span class='lcode'>develop</span> uniquement, pas depuis.</p>
 						</li>
+					</li>
 				</ul>
 
 			</section>
@@ -929,12 +938,11 @@ $ git checkout master; git merge experiment (ff)
 							</li>
 							son
 							<span class='lcode'>.bashrc</span>
+						</ul>
 					</li>
 					<li>Templates de messages de commit
 						<pre>git config --global commit.template <i>fichier</i>
 									</pre>
-					</li>
-					</ul>
 					</li>
 				</ul>
 			</section>
@@ -990,6 +998,7 @@ build
 							<span class='lcode'>-no-ff</span>
 						</li>
 						<li>N'utiliser rebase que sur des commits pas encore poussés</li>
+					</li>
 				</ul>
 			</section>
 			<section>
@@ -1054,14 +1063,14 @@ git flow feature [start|finish|publish|pull] panierachat
 git flow release [start|finish|publish|pull] 1.2.0
 git flow hotfix [start|finish|publish|pull] bug123
 						</pre>
-								<br/>
-								<p>Voir
-									<a href="#/100">[1]</a>
-								</p>
-								<p class='note'>
-									Voir aussi
-									<span class='lcode'>man gitworkflows</span>
-								</p>
+							</div>
+							<p>Voir
+								<a href="#/100">[1]</a>
+							</p>
+							<p class='note'>
+								Voir aussi
+								<span class='lcode'>man gitworkflows</span>
+							</p>
 						</td>
 					</tr>
 				</table>
@@ -1120,41 +1129,42 @@ git flow hotfix [start|finish|publish|pull] bug123
 				<ul>
 					<li>[1] Git-flow :
 						<a href="https://danielkummer.github.io/git-flow-cheatsheet/">https://danielkummer.github.io/git-flow-cheatsheet/</a>
-						</i>
-						<li>[4] Pro-git :
-							<a href="http://git-scm.com/book">http://git-scm.com/book</a>. Version fr :
-							<a href="http://git-scm.com/book/fr">http://git-scm.com/book/fr/</a>.
-						</li>
-						<li>[5] Git cheat sheet :
-							<a href="http://ndpsoftware.com/git-cheatsheet.html">http://ndpsoftware.com/git-cheatsheet.html</a>
-							<li>[7] Script d'autocomplétion git :
-								<a href="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash">https://raw.github.com/git/git/master/contrib/completion/git-completion.bash</a>
-							</li>
-							<li>[10] A Visual Git Reference :
-								<a href="http://marklodato.github.io/visual-git-guide/index-en.html">http://marklodato.github.io/visual-git-guide/index-en.html</a>
-							</li>
-							<li>[11] Git Ready (astuces et références vers docs) :
-								<a href="http://gitready.com/">http://gitready.com/</a>
-							</li>
-							<li>[12] Typologies de workfow par Atlassian :
-								<a href="https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch">https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch</a>
-							</li>
-							<li>[13] Tutorial interactif sur les branches avec Git :
-								<a href="http://pcottle.github.io/learnGitBranching/">http://pcottle.github.io/learnGitBranching/</a>
-							</li>
+					</li>
+					<li>[4] Pro-git :
+						<a href="http://git-scm.com/book">http://git-scm.com/book</a>. Version fr :
+						<a href="http://git-scm.com/book/fr">http://git-scm.com/book/fr/</a>.
+					</li>
+					<li>[5] Git cheat sheet :
+						<a href="http://ndpsoftware.com/git-cheatsheet.html">http://ndpsoftware.com/git-cheatsheet.html</a>
+					</li>
+					<li>[7] Script d'autocomplétion git :
+						<a href="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash">https://raw.github.com/git/git/master/contrib/completion/git-completion.bash</a>
+					</li>
+					<li>[10] A Visual Git Reference :
+						<a href="http://marklodato.github.io/visual-git-guide/index-en.html">http://marklodato.github.io/visual-git-guide/index-en.html</a>
+					</li>
+					<li>[11] Git Ready (astuces et références vers docs) :
+						<a href="http://gitready.com/">http://gitready.com/</a>
+					</li>
+					<li>[12] Typologies de workfow par Atlassian :
+						<a href="https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch">https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch</a>
+					</li>
+					<li>[13] Tutorial interactif sur les branches avec Git :
+						<a href="http://pcottle.github.io/learnGitBranching/">http://pcottle.github.io/learnGitBranching/</a>
+					</li>
 				</ul>
 			</section>
-			</div>
 		</div>
+	</div>
 
 
 
-		<script src="js/reveal.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script src="config.js"></script>
-		<script>
-			Reveal.initialize(config);
-		</script>
+	<script src="config.js"></script>
+	<script>
+		Reveal.initialize(config);
+	</script>
 
 </body>
 
