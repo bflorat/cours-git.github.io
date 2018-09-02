@@ -4,7 +4,7 @@
 
 const config = {
     progress: true,
-    loop: true,
+    loop: false,
     mouseWheel: false,
     theme: 'simple', // available themes are in /css/theme
     transition: 'none',
