@@ -241,12 +241,14 @@
 					<tr>
 						<td>
 							<b>Branche</b> [branch]</td>
-						<td>Une ligne de développement d'un projet. Sert par exemple à
+						<td>
+							<p>Une ligne de développement d'un projet. Sert par exemple à</p>
 							<ul>
 								<li>Gérer une version spécifique pour un client</li>
 								<li>Gérer des branches de maintenance corrective</li>
 								<li>Tester une idée, un refactoring sans risques</li>
 							</ul>
+							<span class='note'>Une alternative aux branches se développe : <a href='https://martinfowler.com/articles/feature-toggles.html'>les feature flags / feature toggles</a>.<br/>Peut remplacer les branches de maintenance dans certains cas.</span>
 						</td>
 					</tr>
 					<tr>
@@ -1067,7 +1069,27 @@ git flow hotfix [start|finish|publish|pull] bug123
 					</tr>
 				</table>
 			</section>
+			<section>
+				<h4>Le workflow par pull requests (PR)</h4>
+				<ul>
+					<li>GitHub supporte
+						<a href='https://help.github.com/enterprise/2.7/user/articles/types-of-collaborative-development-models/'>deux modèles de dévelopement collaboratif</a> (supportant toutes les deux les PR): 
+						<ul>
+							<li>Model Fork and Pull (projets Open Source typiquement)</li>
+							<li>Shared repository (pour projets internes)</li>
+						</ul>
+					</li>
 
+					<li>On créé une branche et on y commit ses modification</li>
+					<li>On pousse les commits vers notre dépot personnel ou le dépot central sur la nouvelle branche</li>
+					<li>On créé une PR (Pull Request)</li>
+					<li>On en discute, si besoin on pousse de nouveaux commits. La PR continue à être alimentée.</li>
+					<li>La PR est acceptée manuellement ou automatiquement (CI) dans le dépot de référence</li>
+					<li>Voir
+						<a ref='https://guides.github.com/introduction/flow/'>ce manuel Github</a>
+					</li>
+				</ul>
+			</section>
 			<section>
 				<h4>Les forges Git</h4>
 				<ul>
