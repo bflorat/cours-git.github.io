@@ -4,7 +4,7 @@
 
 const config = {
     progress: true,
-    loop: false,
+    loop: false, // si true, la touche end marche plus
     mouseWheel: false,
     theme: 'simple', // available themes are in /css/theme
     transition: 'none',

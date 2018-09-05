@@ -52,7 +52,7 @@
 					</p>
 				</div>
 			</section>
-			<section>
+			<section style="font-size: 0.5em">
 				<h3>Agenda</h3>
 				<table>
 					<tr class="title">
@@ -65,7 +65,7 @@
 						<td>
 							<ul>
 								<li class="tp">TP1 : Motivations</li>
-								<li>Historique</li>
+								<li>Contexte de l'usine logicielle</li>
 								<li>Notions et terminologie</li>
 								<li>Règles de l'art</li>
 							</ul>
@@ -87,7 +87,7 @@
 							<ul>
 								<li>Outils</li>
 								<li>Règles de l'art</li>
-								<li>Les différents types de workflow</li>
+								<li>Les différents types de workflows</li>
 								<li class="tp">TP4 : utilitaires Git</li>
 
 							</ul>
@@ -112,7 +112,7 @@
 					<li class="fragment">Comment conserver l’historique et revenir en arrière ?</li>
 					<li class="fragment">Comment partager le développement entre plusieurs personnes ? </li>
 					<ul>
-						<li class="fragment">avec des contributeurs Open Source ?</li>
+						<li class="fragment">avec des contributeurs externes ?</li>
 					</ul>
 					<li class="fragment">Comment gérer plusieurs variantes à la fois ?
 						<aside class="notes">Versions de maintenance, experimentation de nouvelles fonctionnailités, plusieurs clients...
@@ -151,31 +151,33 @@
 				<p>
 					<b>Régle no 2 : on ne commit pas de fichiers dérivés</b>
 				</p>
-				<p>A commiter</p>
-				<ul>
-					<li>Fichiers source (.java, .c, .html, .css...)</li>
-					<li>Fichiers binaires non dérivés des sources, images par exemple</li>
-					<li>Jeux de données des tests</li>
-					<li>Fichiers de build (maven: pom.xml, npm: package.json, Jenkinsfile ...)</li>
-				</ul>
-				<br />
-				<p>A ne pas commiter :</p>
-				<ul>
-					<li>Fichiers temporaires, générés ou compilés</li>
-					<li>Librairies (utiliser un dépot Maven)</li>
-				</ul>
-				<br/>
-				<p>Selon les politiques :</p>
-				<ul>
-					<li>Fichiers projets de l'IDE (.project, .idea ...)</li>
-					<li>Personnalisation et historique de l'IDE</li>
-				</ul>
+				<div style="font-size: 0.5em">
+					<p style="font-weight: bold">A commiter</p>
+					<ul>
+						<li>Fichiers source (.java, .c, .html, .css...)</li>
+						<li>Fichiers binaires non dérivés des sources, images par exemple</li>
+						<li>Jeux de données des tests</li>
+						<li>Fichiers de build (maven: pom.xml, npm: package.json, Jenkinsfile ...)</li>
+					</ul>
+					<br />
+					<p style="font-weight: bold">A ne pas commiter :</p>
+					<ul>
+						<li>Fichiers temporaires, générés ou compilés</li>
+						<li>Librairies (utiliser un dépot Maven)</li>
+					</ul>
+					<br/>
+					<p style="font-weight: bold">Selon les politiques :</p>
+					<ul>
+						<li>Fichiers projets de l'IDE (.project, .idea ...)</li>
+						<li>Personnalisation et historique de l'IDE</li>
+					</ul>
+				</div>
 			</section>
 
 			<section>
 				<h3>Modeles centralisés / client-serveur</h3>
-				<div style="width: 300px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
-					<img src="images/modele_central.png"  />
+				<div style="width: 500px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
+					<img src="images/modele_central.png" />
 					<figcaption>Copyright CC-BY-NC-SA Mathieu Nebra (M@teo21)</figcaption>
 				</div>
 				<p>Exemples : CVS, SVN, ClearCase, Perforce</p>
@@ -184,8 +186,8 @@
 			</section>
 			<section>
 				<h3>Modeles distribués</h3>
-				<div style="width: 400px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
-					<img src="images/modele_distribue.png"  />
+				<div style="width: 500px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
+					<img src="images/modele_distribue.png" />
 					<figcaption>Copyright CC-BY-NC-SA Mathieu Nebra (M@teo21)</figcaption>
 				</div>
 				<p>Exemples : Git, Mercurial, Baazar, BitKeeper</p>
@@ -219,7 +221,7 @@
 							<b>Copie locale</b>, espace de travail [working copy/directory/workspace]
 						</td>
 						<td>Copie locale éditable d'une révision du dépôt et dont les modifications peuvent ensuite être validées (commitées) dans
-							le dépôt</td>
+							le dépôt. Sert de 'bac à sable'.</td>
 					</tr>
 					<tr>
 						<td>
@@ -262,7 +264,7 @@
 						<td>
 							<b>Merge</b>, fusion [merge]</td>
 						<td>Fusion des modifications de deux branches
-							<img src="images/branches.png" style="width: 350px; margin: 0px" />
+							<img src="images/branches.png" />
 						</td>
 					</tr>
 					<tr>
@@ -284,8 +286,9 @@
 						</td>
 						<td>
 							<p>Tentative de mise à jour de sources ayant divergées</p>
-							<div style="width: 350px; font-size: 50%; text-align: left; margin: 0px 5px 0px 5px;">
-								<img src="images/collision.png" style="width: 350px; margin: 0px" />Copyright CC-BY-SA Ben Collins-Sussman, Brian W. Fitzpatrick, C. Michael Pilato
+							<div>
+								<img src="images/collision.png" width="700px" />
+								<figcaption>CC-BY-SA Ben Collins-Sussman, Brian W. Fitzpatrick, C. Michael Pilato</figcaption>
 							</div>
 						</td>
 					</tr>
@@ -353,8 +356,10 @@ int j=0;
 					<pre>
 Corrige #1456 problème fichier bootstrap vide
 
-Corrige une NPE se produisant quand le fichier bootstrap existe mais est vide.
-Reproduit uniquement par TU, non reporté par les utilisateurs à ce point.
+Corrige une NPE se produisant quand le fichier bootstrap existe 
+mais est vide. Reproduit uniquement par TU, non reporté par les 
+utilisateurs à ce point. 
+
 Voir aussi le bug #1674.
 						</pre>
 				</ul>
@@ -366,7 +371,7 @@ Voir aussi le bug #1674.
 				<img src="images/git-logo.svg.png" height="50px" />
 
 				<ul>
-					<blockquote>I'm an egotistical bastard, and I name all my projects after myself. First Linux, now git</blockquote>
+					<blockquote>I'm an egotistical bastard, and I name all my projects after myself. First Linux, now Git. (Linus Torvalds)</blockquote>
 					<li>Linus Torvalds + 3 semaines = Git (utilisé pour le kernel Linux dès avril 2005)
 					</li>
 					<li>VCS le plus puissant et le plus performant mais non trivial
@@ -392,19 +397,19 @@ Voir aussi le bug #1674.
 			</section>
 			<section>
 				<h4>Quelques clients Git</h4>
-				<img style="float: right !important; margin: 5px" src="images/egit.png" width="300px" />
-				<ul style="display:inline">
+				<ul>
 					<li>
 						<b>Tous OS</b>: egit/jgit, IDEA, ATOM, Visual Studio Code, ungit (node.js)...</li>
 					<li>
 						<b>Linux</b>: git (ligne de commande) + gitk (GUI pour l'historique), tig (ncurses), </li>
 					<li>
-						<b>Microsoft Windows</b>: Git for Windows (git en ligne de commande),TurtoiseGit (éditeur graphique intégré dans l'OS)</li>
+						<b>Microsoft Windows</b>: Git for Windows (git en ligne de commande), TurtoiseGit (éditeur graphique intégré dans l'OS)</li>
 					<li>
 						<b>Mac OSX</b> : Tower, GitBox </li>
 					<li>
 						<b>Web</b> : GitHub, GitLab </li>
 				</ul>
+				<img src="images/egit.png" width="300px" />
 
 			</section>
 			<section>
@@ -416,7 +421,7 @@ Voir aussi le bug #1674.
 						<li>
 							<span class='lcode'>/etc/gitconfig</span> : configuration multi-dépôt pour tous les utilisateurs de la machine</li>
 						<li>
-							<span class='lcode'>~/.gitconfig</span> : configuration multi-dépôt pour l'utilisateur (en général, seul ce fichier est à modifié)
+							<span class='lcode' style="font-weight: bold">~/.gitconfig</span> : configuration multi-dépôt pour l'utilisateur (en général, seul ce fichier est à modifié)
 						</li>
 						<li>
 							<span class='lcode'>/
@@ -429,7 +434,7 @@ $ git config --global user.name "John Doe"  //<i>Obligatoire !</i>
 $ git config --global user.email johndoe@example.com   //<i>Obligatoire !</i>
 					</pre>
 				</p>
-				<p class='note'>Autres exemples de confifuration :
+				<p class='note'>Autres exemples de configuration :
 					<span class="lcode">core.editor</span> ou
 					<span class="lcode">merge.tool</span>
 				</p>
@@ -515,7 +520,7 @@ file:///path/to/repo.git/  =  /path/to/repo.git/
 					</li>
 					<li>Les références (refs) sont des noms symboliques (signets) des hashs des commits</li>
 				</ul>
-				<img src="images/tree.png" width="350px" />
+				<img src="images/tree.png" width="700px" />
 				<p style="font-size: small; text-align: center">
 					<i>Copyright CC BY-SA-NC Scott Chacon</i>
 				</p>
@@ -540,10 +545,10 @@ file:///path/to/repo.git/  =  /path/to/repo.git/
 							<i>n</i>
 						</span> (nième premier père)</li>
 				</ul>
-				<img src="images/dag.png" />
-				<p style="font-size: small; text-align: center">
-					<i>Copyright CC BY-SA-NC Scott Chacon</i>
-				</p>
+				<img src="images/dag.png" width="600px" />
+				<figcaption>Copyright CC BY-SA-NC Scott Chacon</figcaption>
+
+
 			</section>
 			<section>
 				<h4>Branching</h4>
@@ -567,7 +572,7 @@ ou : $ git checkout -b mabranche</pre>
 				<h4>Branching (suite)</h4>
 				<ul>
 					<li>Branche 'HEAD' = ref vers branche courante</li>
-					<img src="images/git-branching.png"  />
+					<img src="images/git-branching.png" width="600px" />
 					<figcaption>Images Copyright CC BY-SA-NC Scott Chacon</figcaption>
 					<li>Conventions :
 						<ul class="small">
@@ -601,14 +606,16 @@ ou : $ git checkout -b mabranche</pre>
 								</li>
 							</ul>
 						</td>
-						<td style="border-style: none !important;">
-							<img src="images/branch-ff.png"  />
-							<img src="images/branch-non-ff.png"  />
-							<figcaption>Images Copyright CC BY-SA-NC Scott Chacon</figcaption>
+						<td style="border-style: none !important">
+							<div style="display: table-cell;vertical-align:top !important">
+								<img src="images/branch-ff.png" width="600px" />
+								<img src="images/branch-non-ff.png" width="600px" />
+								<figcaption>Images Copyright CC BY-SA-NC Scott Chacon</figcaption>
+							</div>
 						</td>
 					</tr>
 				</table>
-				
+
 			</section>
 
 			<section>
@@ -668,7 +675,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 			</section>
 			<section>
 				<h4>Branches remote</h4>
-				<img src="images/remotes.png" width="600px" />
+				<img src="images/remotes.png" width="800px" />
 			</section>
 			<section>
 				<h4>Tags</h4>
@@ -686,7 +693,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 						<pre>git tag -l</pre>
 					</li>
 				</ul>
-				<p class='note'>Git supporte aussi des tags légers locaux (lightweight) qui sont simplement des branches en lecture seule. Peu utiles.</p>
+				<p class='note'>Git supporte aussi des tags légers locaux (lightweight) qui sont simplement des branches en lecture seule. Peu utile.</p>
 
 			</section>
 			<section>
@@ -712,7 +719,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 						<span class='lcode'>-p</span> (patch)
 					</li>
 				</ul>
-				<img src="images/lifecycle.png" width="450px" />
+				<img src="images/lifecycle.png" width="800px" />
 			</section>
 			<section>
 				<h5>TP2 Exercice concepts Git</h5>
@@ -726,11 +733,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 					Voir aussi la cheat sheet
 					<a href="http://ndpsoftware.com/git-cheatsheet.html">[5]</a>
 				</p>
-				<p class="note">
-					Référence par défaut :
-					<span class='lcode'>HEAD</span>, branche par défaut :
-					<span class='lcode'>master</span>
-				</p>
+				<br/>
 				<ul>
 					<li>Commandes de changement de statut de la copie locale :
 						<span class='lcode'>checkout [-m]</span>,
@@ -824,11 +827,6 @@ git diff origin/hotfix/release-1_0</pre>
 			</section>
 			<section>
 				<h5>Merging</h5>
-				<img src="images/git-merge1.png" width="250px" />
-				<img src="images/git-merge2.png" width="250px" />
-				<p style="font-size: small;">
-					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
-				</p>
 				<pre>
 $ git checkout master
 $ git merge iss53</pre>
@@ -866,18 +864,13 @@ $ git merge iss53</pre>
 			</section>
 			<section>
 				<h5>Rebasing</h5>
-				<img src="images/git-rebase1.png" width="250px" />
-				<img src="images/git-rebase2.png" width="250px" />
-				<p style="font-size: small;">
-					<i>Images Copyright CC BY-SA-NC Scott Chacon</i>
-				</p>
-				<ul>
-					<li>
-						<pre>
+				<img src="images/git-rebase1.png" width="400px" />
+				<img src="images/git-rebase2.png" width="400px" />
+				<figcaption>Images Copyright CC BY-SA-NC Scott Chacon</figcaption>
+				<pre>
 $ git checkout experiment; git rebase master
-$ git checkout master; git merge experiment (ff)
-</pre>
-					</li>
+$ git checkout master; git merge experiment (ff)</pre>
+				<ul>
 					<li>Sérialise deux branches, nos commits à la fin, rend l'historique beaucoup plus lisible (linéaire)</li>
 					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>
 					<li>
