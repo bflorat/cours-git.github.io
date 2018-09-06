@@ -17,16 +17,15 @@
 	<link rel="stylesheet" href="lib/css/zenburn.css">
 	<!-- Nos styles-->
 	<link rel="stylesheet" href="css/custom.css">
-
-
 </head>
 
 <body>
 
 	<div class="reveal">
-
 		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides">
+
+			<!-- Introduction -->
 			<section>
 				<div style="width: 350px; font-size: 50%; text-align: center; float: right; margin-left: 10px;margin-bottom:1000px">
 					<img src="images/couverture.png" />
@@ -65,28 +64,28 @@
 						<td>
 							<ul>
 								<li class="tp">TP1 : Motivations</li>
-								<li>Contexte de l'usine logicielle</li>
+								<li>Rôle dans l'usine logicielle</li>
 								<li>Notions et terminologie</li>
-								<li>Règles de l'art</li>
+								<li>Règles de l'art VCS</li>
 							</ul>
 						</td>
 						<td>
 							<ul>
-								<li>Présentation des concepts</li>
+								<li>Concepts Git</li>
 								<li class="tp">TP2: Exercice concepts Git</li>
 							</ul>
 						</td>
 
 						<td>
 							<ul>
-								<li>Présentation des commandes de base</li>
+								<li>Commandes de base</li>
+								<li>Règles de l'art Git</li>
 								<li class="tp">TP3 : commandes de base en équipe</li>
 							</ul>
 						</td>
 						<td>
 							<ul>
 								<li>Outils</li>
-								<li>Règles de l'art</li>
 								<li>Les différents types de workflows</li>
 								<li class="tp">TP4 : utilitaires Git</li>
 
@@ -96,7 +95,6 @@
 				</table>
 			</section>
 
-			<!-- Slot 1 -->
 			<section>
 				<h3>Note sur Subversion</h3>
 				<p>Ce cours a intégré SVN en plus de Git de 2012 à 2016. En cas de besoin,
@@ -137,14 +135,12 @@
 				<ul>
 					<li>Utilisateurs : les développeurs et les intégrateurs</li>
 					<li>Le VCS est avec l'IDE l'outil principal du développeur</li>
-					<li>Principalement stockage de fichiers
-						<b>texte</b>
-					</li>
+					<li>Principalement stockage de fichiers <b>texte</b></li>
 				</ul>
 			</section>
 
 			<section>
-				<h4>Quels fichiers gérer en configuration ou pas ?</h4>
+				<h4>Quels fichiers dans le dépot ?</h4>
 				<p>
 					<b>Régle no 1 : le projet doit être auto-porteur</b>
 				</p>
@@ -289,7 +285,7 @@
 						<td>
 							<p>Tentative de mise à jour de sources ayant divergées</p>
 							<div>
-								<img src="images/collision.png" width="700px" />
+								<img src="images/collision.png" width="500px" />
 								<figcaption>CC-BY-SA Ben Collins-Sussman, Brian W. Fitzpatrick, C. Michael Pilato</figcaption>
 							</div>
 						</td>
@@ -323,7 +319,7 @@ int j=0;
 				<ul>
 					<li>Le code commité doit toujours compiler</li>
 					<li>Commiter et merger souvent, mettre à jour régulièrement</li>
-					<li>Utiliser avec un outil de gestion de tickets (Trac, Mantis, Jira, GitLab, GitHub...)</li>
+					<li>Utiliser avec un outil de gestion de tickets (Issues GitLab / GitHub, Jira, Trac, Mantis...)</li>
 					<li>Grouper les modifications en commits cohérents</li>
 					<li>Ne jamais commiter du code mort (en commentaire ou pas)</li>
 					<li>Formatage coersitif des sources ASAP</li>
@@ -563,11 +559,7 @@ $ git checkout mabranche
 ou : $ git checkout -b mabranche</pre>
 					</li>
 					<li>Note : si changement de branche avec des modifications non commitées, git fusionne le contenu des copies locales sauf
-						si conflit detecté (dans ce cas, on peut forcer tout de même le merge avec
-						<span class='lcode'>checkout
-							<b>-m</b>
-						</span>).</li>
-
+						si conflit detecté.</li>
 				</ul>
 			</section>
 			<section>
@@ -903,6 +895,15 @@ $ git checkout master; git merge experiment (ff)</pre>
 					<li>Applique les commits selectionnés comme des patchs sur la branche courante</li>
 				</ul>
 			</section>
+			<section>
+				<h4>Bonnes pratiques Git, à éviter</h4>
+				<ul>
+					<li>Pas de merge avec modifications non commitées (retour arrière difficile)</li>
+					<li>Ne pas forcer les push (avec push -f ou via l'option + des refspecs), risque de perte de commits</li>
+					<li>Ne pas pousser des branches privées</li>
+					<li>Ne pas modifier un commit publié</li>
+				</ul>
+			</section>
 
 
 			<!-- Slot 5  -->
@@ -995,16 +996,7 @@ build
 					</li>
 				</ul>
 			</section>
-			<section>
-				<h4>Bonnes pratiques Git, à éviter</h4>
-				<ul>
-					<li>Pas de merge avec modifications non commitées (retour arrière difficile)</li>
-					<li>Ne pas forcer les push (avec push -f ou via l'option + des refspecs), risque de perte de commits</li>
-					<li>Ne pas pousser des branches privées</li>
-					<li>Ne pas modifier un commit publié</li>
-				</ul>
-			</section>
-
+			
 			<section>
 				<h5>TP3 Commandes Git de base</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
@@ -1075,7 +1067,7 @@ git flow hotfix [start|finish|publish|pull] bug123
 					<li>GitHub supporte
 						<a href='https://help.github.com/enterprise/2.7/user/articles/types-of-collaborative-development-models/'>deux modèles de dévelopement collaboratif</a> (supportant toutes les deux les PR): 
 						<ul>
-							<li>Model Fork and Pull (projets Open Source typiquement)</li>
+							<li>Fork and Pull (projets Open Source typiquement)</li>
 							<li>Shared repository (pour projets internes)</li>
 						</ul>
 					</li>
