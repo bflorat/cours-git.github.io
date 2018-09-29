@@ -97,8 +97,9 @@
 
 			<section>
 				<h3>Note sur Subversion</h3>
-				<p>Ce cours a intégré SVN en plus de Git de 2012 à 2016. En cas de besoin,
-					<a href='https://florat.net/cours_vcs_2016/cours.html'>l'ancien cours</a> est toujours disponible</p>
+				<p>Ce cours a intégré SVN en plus de Git de 2012 à 2016.</p>
+				<p>En cas de besoin,
+					<a href='https://florat.net/cours_vcs_2016/cours.html'>l'ancien cours</a> est toujours disponible.</p>
 			</section>
 
 			<!-- Slot 1 -->
@@ -119,7 +120,7 @@
 					<li class="fragment">Comment tracer les modifications ?</li>
 					<li class="fragment">Comment fusionner les modifications ?</li>
 				</ul>
-				<br/>
+				<br />
 				<p class="fragment">
 					<b>En utilisant un VCS !</b>
 				</p>
@@ -163,7 +164,7 @@
 						<li>Fichiers temporaires, générés ou compilés</li>
 						<li>Librairies (utiliser un dépot Maven)</li>
 					</ul>
-					<br/>
+					<br />
 					<p style="font-weight: bold">Selon les politiques :</p>
 					<ul>
 						<li>Fichiers projets de l'IDE (.project, .idea ...)</li>
@@ -179,7 +180,8 @@
 					<figcaption>Copyright CC-BY-NC-SA Mathieu Nebra (M@teo21)</figcaption>
 				</div>
 				<p>Exemples : CVS, SVN, ClearCase, Perforce</p>
-				<p>Un serveur gère l'intégralité des révisions (le dépôt), les développeurs récupèrent les modifications des autres et y
+				<p>Un serveur gère l'intégralité des révisions (le dépôt), les développeurs récupèrent les modifications des autres
+					et y
 					ajoutent les leurs</p>
 			</section>
 			<section>
@@ -204,7 +206,8 @@
 					<tr>
 						<td>
 							<b>dépôt</b>, référentiel [repository, depot]</td>
-						<td>Un dépôt est une sortie de base de données de sources contenant toutes les révisions (tout l'historique) des fichiers
+						<td>Un dépôt est une sortie de base de données de sources contenant toutes les révisions (tout l'historique) des
+							fichiers
 							ainsi que des données de gestion (méta-données) associées.
 							<b>On ne peut rien perdre dans un dépot.</b>
 						</td>
@@ -218,7 +221,8 @@
 						<td>
 							<b>Copie locale</b>, espace de travail [working copy/directory/workspace]
 						</td>
-						<td>Copie locale éditable d'une révision du dépôt et dont les modifications peuvent ensuite être validées (commitées) dans
+						<td>Copie locale éditable d'une révision du dépôt et dont les modifications peuvent ensuite être validées
+							(commitées) dans
 							le dépôt. Sert de 'bac à sable'.</td>
 					</tr>
 					<tr>
@@ -248,7 +252,7 @@
 							</ul>
 							<span class='note'>Une alternative aux branches se développe :
 								<a href='https://martinfowler.com/articles/feature-toggles.html'>les feature flags / feature toggles</a>.
-								<br/>Peut remplacer les branches de maintenance dans certains cas.</span>
+								<br />Peut remplacer les branches de maintenance dans certains cas.</span>
 						</td>
 					</tr>
 					<tr>
@@ -347,14 +351,15 @@ int j=0;
 			<section>
 				<h5>Bonnes pratiques / Convention message de commit</h5>
 				<ul>
-					<li>Une ligne de contexte (max 50 caractères) commencant par une majuscule. Pas de point. Réference le numéro de ticket
+					<li>Une ligne de contexte (max 50 caractères) commencant par une majuscule. Pas de point. Réference le numéro de
+						ticket
 						s'il existe.</li>
 					<li>Une ligne vide (options -m " et retour charriot)</li>
 					<li>Un paragraphe détaillé (largeur 72 caractères max)</li>
 					<li>Présent : "corrige", pas "a été corrigé"</li>
 					<li>Donner toute information importante à destination d'un futur mainteneur</li>
 					<li>Exemple :</li>
-					<br/>
+					<br />
 					<pre>
 Corrige #1456 problème fichier bootstrap vide
 
@@ -373,7 +378,8 @@ Voir aussi le bug #1674.
 				<img src="images/git-logo.svg.png" height="50px" />
 
 				<ul>
-					<blockquote>I'm an egotistical bastard, and I name all my projects after myself. First Linux, now Git. (Linus Torvalds)</blockquote>
+					<blockquote>I'm an egotistical bastard, and I name all my projects after myself. First Linux, now Git. (Linus
+						Torvalds)</blockquote>
 					<li>Linus Torvalds + 3 semaines = Git (utilisé pour le kernel Linux dès avril 2005)
 					</li>
 					<li>VCS le plus puissant et le plus performant mais non trivial
@@ -405,7 +411,8 @@ Voir aussi le bug #1674.
 					<li>
 						<b>Linux</b>: git (ligne de commande) + gitk (GUI pour l'historique), tig (ncurses), </li>
 					<li>
-						<b>Microsoft Windows</b>: Git for Windows (git en ligne de commande), TurtoiseGit (éditeur graphique intégré dans l'OS)</li>
+						<b>Microsoft Windows</b>: Git for Windows (git en ligne de commande), TurtoiseGit (éditeur graphique intégré dans
+						l'OS)</li>
 					<li>
 						<b>Mac OSX</b> : Tower, GitBox </li>
 					<li>
@@ -416,14 +423,16 @@ Voir aussi le bug #1674.
 			</section>
 			<section>
 				<h4>Configurer git</h4>
-				<p class='note'>Attention! ne surtout pas oublier de configurer Git avant tout commit, plus possible ensuite de changer nom/e-mail (sauf
+				<p class='note'>Attention! ne surtout pas oublier de configurer Git avant tout commit, plus possible ensuite de
+					changer nom/e-mail (sauf
 					perte historique)</p>
 				<p>Trois niveaux de configuration :
 					<ul>
 						<li>
 							<span class='lcode'>/etc/gitconfig</span> : configuration multi-dépôt pour tous les utilisateurs de la machine</li>
 						<li>
-							<span class='lcode' style="font-weight: bold">~/.gitconfig</span> : configuration multi-dépôt pour l'utilisateur (en général, seul ce fichier est à modifié)
+							<span class='lcode' style="font-weight: bold">~/.gitconfig</span> : configuration multi-dépôt pour l'utilisateur
+							(en général, seul ce fichier est à modifié)
 						</li>
 						<li>
 							<span class='lcode'>/
@@ -476,16 +485,16 @@ $ git init</pre>
                    /src/main/java
                    /...
 </pre>
-				<br/>
+				<br />
 				<p>Dépôt nu (sans copie locale) :</p>
 				<ul>
 					<li>Créé avec :
 						<span class="lcode">git init --bare</span>
-						<li>Convention nommage : repertoire
-							<span class="lcode">my-app
-								<b>.git</b>
-							</span>
-						</li>
+					<li>Convention nommage : repertoire
+						<span class="lcode">my-app
+							<b>.git</b>
+						</span>
+					</li>
 					</li>
 				</ul>
 
@@ -564,7 +573,8 @@ $ git branch mabranche
 $ git checkout mabranche
 ou : $ git checkout -b mabranche</pre>
 					</li>
-					<li>Note : si changement de branche avec des modifications non commitées, git fusionne le contenu des copies locales sauf
+					<li>Note : si changement de branche avec des modifications non commitées, git fusionne le contenu des copies
+						locales sauf
 						si conflit detecté.</li>
 				</ul>
 			</section>
@@ -655,7 +665,8 @@ remotes/bob/feature300</pre>
 						</span> +
 						<span class='lcode'>git merge</span>
 					</li>
-					<li>Tracking remote branch : branche remote avec refspec, push/fetch/pull sans arguments (le '+' signifie qu'on met à jour
+					<li>Tracking remote branch : branche remote avec refspec, push/fetch/pull sans arguments (le '+' signifie qu'on
+						met à jour
 						la référence même si ce n'est pas un ff)
 						<pre>
 [remote "origin"]
@@ -693,7 +704,8 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 						<pre>git tag -l</pre>
 					</li>
 				</ul>
-				<p class='note'>Git supporte aussi des tags légers locaux (lightweight) qui sont simplement des branches en lecture seule. Peu utile.</p>
+				<p class='note'>Git supporte aussi des tags légers locaux (lightweight) qui sont simplement des branches en lecture
+					seule. Peu utile.</p>
 
 			</section>
 			<section>
@@ -721,6 +733,27 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 				</ul>
 				<img src="images/lifecycle.png" width="800px" />
 			</section>
+
+			<section>
+				<h4>Un worflow pré-cablé très populaire : git-flow</h4>
+
+				<pre>
+	git flow init
+	git flow feature [start|finish|publish|pull] panierachat
+	git flow release [start|finish|publish|pull] 1.2.0
+	git flow hotfix [start|finish|publish|pull] bug123
+							</pre>
+				<p>Voir
+					<a href="#/100">[1]</a>
+				</p>
+				<p class='note'>
+					Voir aussi
+					<span class='lcode'>man gitworkflows</span>
+				</p>
+				<img src="images/git-flow.png" style="width: 400px; margin: 5px" />
+				<p style="font-size:0.5em">Copyright CC-BY-SA Vincent Driessen</p>
+			</section>
+
 			<section>
 				<h5>TP2 Exercice concepts Git</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
@@ -733,7 +766,7 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 					Voir aussi la cheat sheet
 					<a href="http://ndpsoftware.com/git-cheatsheet.html">[5]</a>
 				</p>
-				<br/>
+				<br />
 				<ul>
 					<li>Commandes de changement de statut de la copie locale :
 						<span class='lcode'>checkout [-m]</span>,
@@ -813,7 +846,8 @@ git diff origin/hotfix/release-1_0</pre>
 					<li>Toutes les différences entre deux branches :
 						<pre>$ git diff branche1..branche2</pre>
 					</li>
-					<li>Seulement les différences de la branche2 avec le dernier commit commun entre branche1 et branch2 (qu'ai-je fait dans
+					<li>Seulement les différences de la branche2 avec le dernier commit commun entre branche1 et branch2 (qu'ai-je
+						fait dans
 						la branche2 depuis que mes deux branches ont divergées ?) :
 						<pre>$ git diff branche1...branche2</pre>
 					</li>
@@ -851,12 +885,12 @@ $ git merge iss53</pre>
 								<span class='lcode'>add</span>
 								et
 								<span class='lcode'>commit</span>
-								<li>Revenir à l'état antérieur :
-									<span class='lcode'>git reset --merge</span>
-								</li>
+							<li>Revenir à l'état antérieur :
+								<span class='lcode'>git reset --merge</span>
 							</li>
-						</ul>
 					</li>
+				</ul>
+				</li>
 				</ul>
 				<p class='note'>
 					Bonne pratique : option
@@ -875,19 +909,21 @@ $ git checkout master; git merge experiment (ff)</pre>
 					<li>Sérialise deux branches, nos commits à la fin, rend l'historique beaucoup plus lisible (linéaire)</li>
 					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>
 					<li>
-						<span class='lcode'>rebase -i</span> : rebase interactif, permet au passage de modifier l'historique (squashing, spliting, modification
+						<span class='lcode'>rebase -i</span> : rebase interactif, permet au passage de modifier l'historique (squashing,
+						spliting, modification
 						messages, changement d'ordre ...)
-						<li>Utiliser avec
-							<span class='lcode'>git pull</span> :
-							<pre>$ git pull --rebase</pre>
-						</li>
-						<li>Permet de réécrire son historique (rebase interactif)
-							<p class="note">Attention : n'utiliser rebase qu'avec ses branches locales, ne jamais rebaser un commit qui a déjà été poussé. Rebaser
-								depuis des branches feature ou hotfix
-								<b>vers</b>
-								<span class='lcode'>master</span> ou
-								<span class='lcode'>develop</span> uniquement, pas depuis.</p>
-						</li>
+					<li>Utiliser avec
+						<span class='lcode'>git pull</span> :
+						<pre>$ git pull --rebase</pre>
+					</li>
+					<li>Permet de réécrire son historique (rebase interactif)
+						<p class="note">Attention : n'utiliser rebase qu'avec ses branches locales, ne jamais rebaser un commit qui a
+							déjà été poussé. Rebaser
+							depuis des branches feature ou hotfix
+							<b>vers</b>
+							<span class='lcode'>master</span> ou
+							<span class='lcode'>develop</span> uniquement, pas depuis.</p>
+					</li>
 					</li>
 				</ul>
 
@@ -995,11 +1031,11 @@ build
 						<span class='lcode'>receive.denyNonFastForwards=true</span>
 						et
 						<span class='lcode'>receive.denyDeletes</span>=true
-						<li>Nettoyer son historique avant de le pousser si confus</li>
-						<li>Utiliser l'option merge
-							<span class='lcode'>-no-ff</span>
-						</li>
-						<li>N'utiliser rebase que sur des commits pas encore poussés</li>
+					<li>Nettoyer son historique avant de le pousser si confus</li>
+					<li>Utiliser l'option merge
+						<span class='lcode'>-no-ff</span>
+					</li>
+					<li>N'utiliser rebase que sur des commits pas encore poussés</li>
 					</li>
 				</ul>
 			</section>
@@ -1036,65 +1072,6 @@ build
 			</section>
 
 			<section>
-				<h4>Les types d'organisations</h4>
-				<ol>
-					<li>Centralisé (SVN/CVS like) avec un "blessed server"</li>
-					<li>Hiérarchisé, par exemple à 3 grades : contributeur, vérificateur, intégrateur</li>
-					<li>Open Source classique : un dépot de référence + des contributeurs externes par PR</li>
-				</ol>
-				<p>Voir
-					<a href="#/100">[12]</a>
-				</p>
-			</section>
-
-			<section>
-				<h4>Un worflow pré-cablé très populaire : git-flow</h4>
-				<table>
-					<tr>
-						<td>
-							<div>
-								<img src="images/git-flow.png" style="width: 400px; margin: 5px" />
-								<p style="font-size:0.5em">Copyright CC-BY-SA Vincent Driessen</p>
-							</div>
-						</td>
-						<td style="vertical-align: top">
-							<div style="margin:10px;">
-								<pre>
-git flow init
-git flow feature [start|finish|publish|pull] panierachat
-git flow release [start|finish|publish|pull] 1.2.0
-git flow hotfix [start|finish|publish|pull] bug123
-						</pre>
-							</div>
-							<p>Voir
-								<a href="#/100">[1]</a>
-							</p>
-							<p class='note'>
-								Voir aussi
-								<span class='lcode'>man gitworkflows</span>
-							</p>
-						</td>
-					</tr>
-				</table>
-			</section>
-
-			<section>
-				<h4>Le coding social</h4>
-				<ul>
-					<li>Réseaux sociaux de code comme
-						<ul>
-							<li>GitHub</li>
-							<li>GitLab</li>
-							<li>Bitbucket</li>
-						</ul>
-					</li>
-					<li>"Zone grise" entre l'équipe et les utilisateurs</li>
-					<li>Discussions sur le code (mode wiki)</li>
-					<li>Les PR (Pull Requests)</li>
-					<img src="images/pr.png" />
-				</ul>
-			</section>
-			<section>
 				<h4>Les forges Git</h4>
 				<ul>
 					<li>GitHub (
@@ -1111,10 +1088,50 @@ git flow hotfix [start|finish|publish|pull] bug123
 			</section>
 
 			<section>
+				<h4>Les types d'organisations principales</h4>
+				<ul>
+					<li>Centralisé (SVN/CVS like) avec un "blessed server"
+						<ul>
+							<li>Exemple : Github en mode Shared Repository</li>
+						</ul>
+					</li>
+					<li>Hiérarchisé
+						<ul>
+							<li>Exemple à 3 grades : contributeur, vérificateur, intégrateur</li>
+						</ul>
+					</li>
+					<li>Open Source classique : un dépot de référence et des contributeurs externes par PR</li>
+				</ul>
+				<p>Voir
+					<a href="#/100">[12]</a>
+				</p>
+			</section>
+
+			<section>
+				<h4>Le coding social</h4>
+				<p>...ou comment les VCS distribués ont révolutionné l'Open Source</p>
+				<ul>
+					<li>Réseaux sociaux de code comme
+						<ul>
+							<li>GitHub</li>
+							<li>GitLab</li>
+							<li>Bitbucket</li>
+						</ul>
+					</li>
+					<li>"Zone grise" entre l'équipe et les utilisateurs</li>
+					<li>Discussions sur le code (mode wiki)</li>
+					<li>Les PR (Pull Requests)</li>
+					<img src="images/pr.png" />
+				</ul>
+			</section>
+
+
+			<section>
 				<h4>Le workflow par pull requests (PR)</h4>
 				<ul>
 					<li>GitHub supporte
-						<a href='https://help.github.com/enterprise/2.7/user/articles/types-of-collaborative-development-models/'>deux modèles de dévelopement collaboratif</a> (supportant toutes les deux les PR):
+						<a href='https://help.github.com/enterprise/2.7/user/articles/types-of-collaborative-development-models/'>deux
+							modèles de dévelopement collaboratif</a> (supportant toutes les deux les PR):
 						<ul>
 							<li>Fork and Pull (projets Open Source typiquement)</li>
 							<li>Shared repository (pour projets internes)</li>
