@@ -135,7 +135,9 @@
 				<ul>
 					<li>Utilisateurs : les développeurs et les intégrateurs</li>
 					<li>Le VCS est avec l'IDE l'outil principal du développeur</li>
-					<li>Principalement stockage de fichiers <b>texte</b></li>
+					<li>Principalement stockage de fichiers
+						<b>texte</b>
+					</li>
 				</ul>
 			</section>
 
@@ -244,7 +246,9 @@
 								<li>Gérer des branches de maintenance corrective</li>
 								<li>Tester une idée, un refactoring sans risques</li>
 							</ul>
-							<span class='note'>Une alternative aux branches se développe : <a href='https://martinfowler.com/articles/feature-toggles.html'>les feature flags / feature toggles</a>.<br/>Peut remplacer les branches de maintenance dans certains cas.</span>
+							<span class='note'>Une alternative aux branches se développe :
+								<a href='https://martinfowler.com/articles/feature-toggles.html'>les feature flags / feature toggles</a>.
+								<br/>Peut remplacer les branches de maintenance dans certains cas.</span>
 						</td>
 					</tr>
 					<tr>
@@ -488,8 +492,10 @@ $ git init</pre>
 			</section>
 			<section>
 				<h5>Récupération d'un dépôt existant</h5>
-				<pre>$ git clone <i>url</i>
-				</pre>
+				<pre>$ git clone <i>url</i></pre>
+				<p>Juste le dernier commit de chaque branche :
+					<span class='lcode'>--depth 1</span>
+				</p>
 				<p>Format des URLs :</p>
 				<pre>
 ssh://[user@]host.xz[:port]/path/to/repo.git/
@@ -740,7 +746,8 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 					<li>Commandes de correction :
 						<span class='lcode'>revert</span>,
 						<span class='lcode'>reset (soft|mixed|hard)</span>,
-						<span class='lcode'>commit --amend</span>
+						<span class='lcode'>commit --amend</span>,
+						<span class='lcode'>clean</span> (supprime aussi les fichiers untracked)
 					</li>
 					<li>Commandes de branching :
 						<span class='lcode'>branch</span>,
@@ -996,26 +1003,35 @@ build
 					</li>
 				</ul>
 			</section>
-			
+
 			<section>
 				<h5>TP3 Commandes Git de base</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
 			</section>
 
 			<section>
-				<h4>Le coding social avec les Pull Request</h4>
+				<h4>Non abordé dans ce cours</h4>
+				<p class="note">
+					Voir
+					<a href="#/100">[4]</a> pour approfondir
+				</p>
 				<ul>
-					<li>Réseaux sociaux de code comme
-						<ul>
-							<li>GitHub</li>
-							<li>Bitbucket</li>
-						</ul>
+					<li>Détail des différents types de protocoles</li>
+					<li>Les commandes plumbing</li>
+					<li>L'administration server-side (gitolite, gitweb etc.)</li>
+					<li>Les hooks client et serveur</li>
+					<li>La gestion des contributions exterieures (
+						<span class='lcode'>git format-patch</span>,
+						<span class='lcode'>git request-pull
+						</span> et
+						<span class='lcode'>git am</span>)
 					</li>
-					<li>"Zone grise" entre l'équipe et les utilisateurs</li>
-					<li>Discussions sur le code (mode wiki)</li>
-					<li>Les PR (Pull Requests)</li>
-					<img src="images/pr.png" />
-
+					<li>Les attributs (comportement spécifique par chemin)</li>
+					<li>Les sous-modules</li>
+					<li>L'adaptateur
+						<span class='lcode'>git-svn</span>
+					</li>
+					<li>...</li>
 				</ul>
 			</section>
 
@@ -1061,25 +1077,21 @@ git flow hotfix [start|finish|publish|pull] bug123
 					</tr>
 				</table>
 			</section>
+
 			<section>
-				<h4>Le workflow par pull requests (PR)</h4>
+				<h4>Le coding social</h4>
 				<ul>
-					<li>GitHub supporte
-						<a href='https://help.github.com/enterprise/2.7/user/articles/types-of-collaborative-development-models/'>deux modèles de dévelopement collaboratif</a> (supportant toutes les deux les PR): 
+					<li>Réseaux sociaux de code comme
 						<ul>
-							<li>Fork and Pull (projets Open Source typiquement)</li>
-							<li>Shared repository (pour projets internes)</li>
+							<li>GitHub</li>
+							<li>GitLab</li>
+							<li>Bitbucket</li>
 						</ul>
 					</li>
-
-					<li>On créé une branche et on y commit ses modification</li>
-					<li>On pousse les commits vers notre dépot personnel ou le dépot central sur la nouvelle branche</li>
-					<li>On créé une PR (Pull Request)</li>
-					<li>On en discute, si besoin on pousse de nouveaux commits. La PR continue à être alimentée.</li>
-					<li>La PR est acceptée manuellement ou automatiquement (CI) dans le dépot de référence</li>
-					<li>Voir
-						<a ref='https://guides.github.com/introduction/flow/'>ce manuel Github</a>
-					</li>
+					<li>"Zone grise" entre l'équipe et les utilisateurs</li>
+					<li>Discussions sur le code (mode wiki)</li>
+					<li>Les PR (Pull Requests)</li>
+					<img src="images/pr.png" />
 				</ul>
 			</section>
 			<section>
@@ -1099,30 +1111,27 @@ git flow hotfix [start|finish|publish|pull] bug123
 			</section>
 
 			<section>
-				<h4>Non abordé dans ce cours</h4>
-				<p class="note">
-					Voir
-					<a href="#/100">[4]</a> pour approfondir
-				</p>
+				<h4>Le workflow par pull requests (PR)</h4>
 				<ul>
-					<li>Détail des différents types de protocoles</li>
-					<li>Les commandes plumbing</li>
-					<li>L'administration server-side (gitolite, gitweb etc.)</li>
-					<li>Les hooks client et serveur</li>
-					<li>La gestion des contributions exterieures (
-						<span class='lcode'>git format-patch</span>,
-						<span class='lcode'>git request-pull
-						</span> et
-						<span class='lcode'>git am</span>)
+					<li>GitHub supporte
+						<a href='https://help.github.com/enterprise/2.7/user/articles/types-of-collaborative-development-models/'>deux modèles de dévelopement collaboratif</a> (supportant toutes les deux les PR):
+						<ul>
+							<li>Fork and Pull (projets Open Source typiquement)</li>
+							<li>Shared repository (pour projets internes)</li>
+						</ul>
 					</li>
-					<li>Les attributs (comportement spécifique par chemin)</li>
-					<li>Les sous-modules</li>
-					<li>L'adaptateur
-						<span class='lcode'>git-svn</span>
+
+					<li>On créé une branche et on y commit ses modification</li>
+					<li>On pousse les commits vers notre dépot personnel ou le dépot central sur la nouvelle branche</li>
+					<li>On créé une PR (Pull Request)</li>
+					<li>On en discute, si besoin on pousse de nouveaux commits. La PR continue à être alimentée.</li>
+					<li>La PR est acceptée manuellement ou automatiquement (CI) dans le dépot de référence</li>
+					<li>Voir
+						<a ref='https://guides.github.com/introduction/flow/'>ce manuel Github</a>
 					</li>
-					<li>...</li>
 				</ul>
 			</section>
+
 			<section>
 				<h5>TP4 Utilitaires Git</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
