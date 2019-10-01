@@ -3,9 +3,9 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Cours Génie Logiciel Licence Pro 2018, la gestion de versions
+	<title>Cours Génie Logiciel Licence Pro 2019-2020, la gestion de versions
 	</title>
-	<meta name="description" content="Cours génie logiciel Licence Pro 2018, la gestion de versions">
+	<meta name="description" content="Cours génie logiciel Licence Pro 2019-2020, la gestion de versions">
 	<meta name="author" content="Bertrand Florat">
 
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -27,7 +27,8 @@
 
 			<!-- Introduction -->
 			<section>
-				<div style="width: 350px; font-size: 50%; text-align: center; float: right; margin-left: 10px;margin-bottom:1000px">
+				<div
+					style="width: 350px; font-size: 50%; text-align: center; float: right; margin-left: 10px;margin-bottom:1000px">
 					<img src="images/couverture.png" />
 					<figcaption>Source https://m.xkcd.com/1296/</figcaption>
 				</div>
@@ -35,14 +36,15 @@
 				<p>IUT de Nantes – Département Informatique</p>
 				<p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
 				<p>
-					<b>Cours de Licence professionnelle 2018, V2.1</b>
+					<b>Cours de Licence professionnelle 2019-2020, V2.2</b>
 				</p>
 				<div>
 					<img src="images/cc.png" />
-					<p style="font-size:0.5em;text-align: center;">Copyright (C) 2012-2018 Bertrand Florat (
+					<p style="font-size:0.5em;text-align: center;">Copyright (C) 2012-2019 Bertrand Florat (
 						<a href='http://www.florat.net/contact'>contact</a>)</p>
 					<p>
-						<a style="font-size:0.5em" href="http://florat.net/cours_vcs/cours.html">http://florat.net/cours_vcs/cours.html</a>
+						<a style="font-size:0.5em"
+							href="http://florat.net/cours_vcs/cours.html">http://florat.net/cours_vcs/cours.html</a>
 						-
 						<a style="font-size:0.5em" href='tp.html'>Feuille de TP</a>
 					</p>
@@ -99,14 +101,16 @@
 				<h3>Note sur Subversion</h3>
 				<p>Ce cours a intégré SVN en plus de Git de 2012 à 2016.</p>
 				<p>En cas de besoin,
-					<a href='https://florat.net/cours_vcs_2016/cours.html'>l'ancien cours</a> est toujours disponible.</p>
+					<a href='https://florat.net/cours_vcs_2016/cours.html'>l'ancien cours</a> est toujours disponible.
+				</p>
 			</section>
 
 			<!-- Slot 1 -->
 			<section>
 				<h3>Motivations</h3>
 				<p class="note" style="color: green">TP1 : Que serait notre vie sans VCS ?</p>
-				<p>Vous faites partie d’une équipe de développement qui intervient sur la réalisation d’une application</p>
+				<p>Vous faites partie d’une équipe de développement qui intervient sur la réalisation d’une application
+				</p>
 				<ul>
 					<li class="fragment">Comment s'assurer de ne pas perdre de sources ?</li>
 					<li class="fragment">Comment conserver l’historique et revenir en arrière ?</li>
@@ -115,7 +119,8 @@
 						<li class="fragment">avec des contributeurs externes ?</li>
 					</ul>
 					<li class="fragment">Comment gérer plusieurs variantes à la fois ?
-						<aside class="notes">Versions de maintenance, experimentation de nouvelles fonctionnailités, plusieurs clients...
+						<aside class="notes">Versions de maintenance, experimentation de nouvelles fonctionnailités,
+							plusieurs clients...
 						</aside>
 					</li>
 					<li class="fragment">Comment tracer les modifications ?</li>
@@ -176,18 +181,21 @@
 
 			<section>
 				<h3>Modeles centralisés / client-serveur</h3>
-				<div style="width: 500px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
+				<div
+					style="width: 500px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
 					<img src="images/modele_central.png" />
 					<figcaption>Copyright CC-BY-NC-SA Mathieu Nebra (M@teo21)</figcaption>
 				</div>
 				<p>Exemples : CVS, SVN, ClearCase, Perforce</p>
-				<p>Un serveur gère l'intégralité des révisions (le dépôt), les développeurs récupèrent les modifications des autres
+				<p>Un serveur gère l'intégralité des révisions (le dépôt), les développeurs récupèrent les modifications
+					des autres
 					et y
 					ajoutent les leurs</p>
 			</section>
 			<section>
 				<h3>Modeles distribués</h3>
-				<div style="width: 500px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
+				<div
+					style="width: 500px; font-size: 50%; text-align: left; float: left !important; margin-right: 20px !important; margin-top: 0px !important;">
 					<img src="images/modele_distribue.png" />
 					<figcaption>Copyright CC-BY-NC-SA Mathieu Nebra (M@teo21)</figcaption>
 				</div>
@@ -202,12 +210,14 @@
 						<td>SCM,
 							<b>VCS</b>, outil de versioning, GCL
 						</td>
-						<td>Source Control Management, Version Control System : outils permettant de gérer plusieurs versions de sources</td>
+						<td>Source Control Management, Version Control System : outils permettant de gérer plusieurs
+							versions de sources</td>
 					</tr>
 					<tr>
 						<td>
 							<b>dépôt</b>, référentiel [repository, depot]</td>
-						<td>Un dépôt est une sortie de base de données de sources contenant toutes les révisions (tout l'historique) des
+						<td>Un dépôt est une sortie de base de données de sources contenant toutes les révisions (tout
+							l'historique) des
 							fichiers
 							ainsi que des données de gestion (méta-données) associées.
 							<b>On ne peut rien perdre dans un dépot.</b>
@@ -222,7 +232,8 @@
 						<td>
 							<b>Copie locale</b>, espace de travail [working copy/directory/workspace]
 						</td>
-						<td>Copie locale éditable d'une révision du dépôt et dont les modifications peuvent ensuite être validées
+						<td>Copie locale éditable d'une révision du dépôt et dont les modifications peuvent ensuite être
+							validées
 							(commitées) dans
 							le dépôt. Sert de 'bac à sable'.</td>
 					</tr>
@@ -252,8 +263,9 @@
 								<li>Tester une idée, un refactoring sans risques</li>
 							</ul>
 							<span class='note'>Une alternative aux branches se développe :
-								<a href='https://martinfowler.com/articles/feature-toggles.html'>les feature flags / feature toggles</a>.
-								<br/>Peut remplacer les branches de maintenance dans certains cas.</span>
+								<a href='https://martinfowler.com/articles/feature-toggles.html'>les feature flags /
+									feature toggles</a>.
+								<br />Peut remplacer les branches de maintenance dans certains cas.</span>
 						</td>
 					</tr>
 					<tr>
@@ -295,7 +307,8 @@
 							<p>Tentative de mise à jour de sources ayant divergées</p>
 							<div>
 								<img src="images/collision.png" width="500px" />
-								<figcaption>CC-BY-SA Ben Collins-Sussman, Brian W. Fitzpatrick, C. Michael Pilato</figcaption>
+								<figcaption>CC-BY-SA Ben Collins-Sussman, Brian W. Fitzpatrick, C. Michael Pilato
+								</figcaption>
 							</div>
 						</td>
 					</tr>
@@ -328,7 +341,8 @@ int j=0;
 				<ul>
 					<li>Le code commité doit toujours compiler</li>
 					<li>Commiter et merger souvent, mettre à jour régulièrement</li>
-					<li>Utiliser avec un outil de gestion de tickets (Issues GitLab / GitHub, Jira, Trac, Mantis...)</li>
+					<li>Utiliser avec un outil de gestion de tickets (Issues GitLab / GitHub, Jira, Trac, Mantis...)
+					</li>
 					<li>Grouper les modifications en commits cohérents</li>
 					<li>Ne jamais commiter du code mort (en commentaire ou pas)</li>
 					<li>Formatage coersitif des sources ASAP</li>
@@ -341,7 +355,8 @@ int j=0;
 						<span class='lcode'>[X].[Y].[Z]</span>, exemple :
 						<span class='lcode'>1.2.3</span>
 					</li>
-					<li>Programme : [major (refonte complète)].[minor (évolution)].[no fix (correction) en partant de zéro]</li>
+					<li>Programme : [major (refonte complète)].[minor (évolution)].[no fix (correction) en partant de
+						zéro]</li>
 					<li>Librairie : [compatibilite API].[évolution].[fix]</li>
 					<li>Voir le semantic versionning
 						<a href="http://semver.org/">http://semver.org/</a>
@@ -352,7 +367,8 @@ int j=0;
 			<section>
 				<h5>Bonnes pratiques / Convention message de commit</h5>
 				<ul>
-					<li>Une ligne de contexte (max 50 caractères) commencant par une majuscule. Pas de point. Réference le numéro de
+					<li>Une ligne de contexte (max 50 caractères) commencant par une majuscule. Pas de point. Réference
+						le numéro de
 						ticket
 						s'il existe.</li>
 					<li>Une ligne vide (options -m " et retour charriot)</li>
@@ -379,7 +395,8 @@ Voir aussi le bug #1674.
 				<img src="images/git-logo.svg.png" height="50px" />
 
 				<ul>
-					<blockquote>I'm an egotistical bastard, and I name all my projects after myself. First Linux, now Git. (Linus
+					<blockquote>I'm an egotistical bastard, and I name all my projects after myself. First Linux, now
+						Git. (Linus
 						Torvalds)</blockquote>
 					<li>Linus Torvalds + 3 semaines = Git (utilisé pour le kernel Linux dès avril 2005)
 					</li>
@@ -387,7 +404,8 @@ Voir aussi le bug #1674.
 					</li>
 					<li>Open Source (licence GPL)</li>
 					<li>VCS de type distribué et contrôle optimiste uniquement</li>
-					<li>Programme "Unix-like" : commandes de haut niveau (porcelain) utilisant commandes bas niveau (plumbing)</li>
+					<li>Programme "Unix-like" : commandes de haut niveau (porcelain) utilisant commandes bas niveau
+						(plumbing)</li>
 				</ul>
 			</section>
 			<section>
@@ -412,7 +430,8 @@ Voir aussi le bug #1674.
 					<li>
 						<b>Linux</b>: git (ligne de commande) + gitk (GUI pour l'historique), tig (ncurses), </li>
 					<li>
-						<b>Microsoft Windows</b>: Git for Windows (git en ligne de commande), TurtoiseGit (éditeur graphique intégré dans
+						<b>Microsoft Windows</b>: Git for Windows (git en ligne de commande), TurtoiseGit (éditeur
+						graphique intégré dans
 						l'OS)</li>
 					<li>
 						<b>Mac OSX</b> : Tower, GitBox </li>
@@ -424,15 +443,18 @@ Voir aussi le bug #1674.
 			</section>
 			<section>
 				<h4>Configurer git</h4>
-				<p class='note'>Attention! ne surtout pas oublier de configurer Git avant tout commit, plus possible ensuite de
+				<p class='note'>Attention! ne surtout pas oublier de configurer Git avant tout commit, plus possible
+					ensuite de
 					changer nom/e-mail (sauf
 					perte historique)</p>
 				<p>Trois niveaux de configuration :
 					<ul>
 						<li>
-							<span class='lcode'>/etc/gitconfig</span> : configuration multi-dépôt pour tous les utilisateurs de la machine</li>
+							<span class='lcode'>/etc/gitconfig</span> : configuration multi-dépôt pour tous les
+							utilisateurs de la machine</li>
 						<li>
-							<span class='lcode' style="font-weight: bold">~/.gitconfig</span> : configuration multi-dépôt pour l'utilisateur
+							<span class='lcode' style="font-weight: bold">~/.gitconfig</span> : configuration
+							multi-dépôt pour l'utilisateur
 							(en général, seul ce fichier est à modifié)
 						</li>
 						<li>
@@ -539,7 +561,8 @@ file:///path/to/repo.git/  =  /path/to/repo.git/
 					<i>Copyright CC BY-SA-NC Scott Chacon</i>
 				</p>
 				<p class='note' style="font-size: 0.5em !important;">
-					SHA-1 transforme une suite de caractères de 1 à 2^64 bits en un nombre de 160 bits. Non réversible. Exemple :
+					SHA-1 transforme une suite de caractères de 1 à 2^64 bits en un nombre de 160 bits. Non réversible.
+					Exemple :
 					<span class='lcode'>a6e757a90e389270e75428473858e04f8c71121b</span>. Versions réduites :
 					<span class='lcode'>a6e757a</span>. Risque collisions infinitésimaux.
 				</p>
@@ -574,7 +597,8 @@ $ git branch mabranche
 $ git checkout mabranche
 ou : $ git checkout -b mabranche</pre>
 					</li>
-					<li>Note : si changement de branche avec des modifications non commitées, git fusionne le contenu des copies
+					<li>Note : si changement de branche avec des modifications non commitées, git fusionne le contenu
+						des copies
 						locales sauf
 						si conflit detecté.</li>
 				</ul>
@@ -636,7 +660,8 @@ ou : $ git checkout -b mabranche</pre>
 						<p>
 							<b>Attention ! ce n'est qu'une
 								<i>image</i>, un
-								<i>proxy</i> de la branche distante, elle n'est pas rafraichie tant qu'on n'a pas fait un
+								<i>proxy</i> de la branche distante, elle n'est pas rafraichie tant qu'on n'a pas fait
+								un
 								<span class='lcode'>git fetch</span>
 							</b>
 						</p>
@@ -666,7 +691,8 @@ remotes/bob/feature300</pre>
 						</span> +
 						<span class='lcode'>git merge</span>
 					</li>
-					<li>Tracking remote branch : branche remote avec refspec, push/fetch/pull sans arguments (le '+' signifie qu'on
+					<li>Tracking remote branch : branche remote avec refspec, push/fetch/pull sans arguments (le '+'
+						signifie qu'on
 						met à jour
 						la référence même si ce n'est pas un ff)
 						<pre>
@@ -692,7 +718,8 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 			<section>
 				<h4>Tags</h4>
 				<ul>
-					<li>Un tag est une référence sur un commit + un auteur + un message + une signature numérique optionnelle</li>
+					<li>Un tag est une référence sur un commit + un auteur + un message + une signature numérique
+						optionnelle</li>
 					<li>Vrai élement du dépôt</li>
 					<li>Créer un tag (option
 						<span class='lcode'>-a</span> : "annoted"):
@@ -705,7 +732,8 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 						<pre>git tag -l</pre>
 					</li>
 				</ul>
-				<p class='note'>Git supporte aussi des tags légers locaux (lightweight) qui sont simplement des branches en lecture
+				<p class='note'>Git supporte aussi des tags légers locaux (lightweight) qui sont simplement des branches
+					en lecture
 					seule. Peu utile.</p>
 
 			</section>
@@ -826,7 +854,8 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 						<span class='lcode'>git log --graph</span>
 					</li>
 					<li>
-						<span class='lcode'>git log branche1..branche2</span> : tous les nouveaux commits de la branche2 uniquement</li>
+						<span class='lcode'>git log branche1..branche2</span> : tous les nouveaux commits de la branche2
+						uniquement</li>
 					<li>Recherche multi-revisions :
 						<span class="lcode">git log -G [regexp]</span>
 					</li>
@@ -847,7 +876,8 @@ git diff origin/hotfix/release-1_0</pre>
 					<li>Toutes les différences entre deux branches :
 						<pre>$ git diff branche1..branche2</pre>
 					</li>
-					<li>Seulement les différences de la branche2 avec le dernier commit commun entre branche1 et branch2 (qu'ai-je
+					<li>Seulement les différences de la branche2 avec le dernier commit commun entre branche1 et branch2
+						(qu'ai-je
 						fait dans
 						la branche2 depuis que mes deux branches ont divergées ?) :
 						<pre>$ git diff branche1...branche2</pre>
@@ -907,10 +937,12 @@ $ git merge iss53</pre>
 $ git checkout experiment; git rebase master
 $ git checkout master; git merge experiment (ff)</pre>
 				<ul>
-					<li>Sérialise deux branches, nos commits à la fin, rend l'historique beaucoup plus lisible (linéaire)</li>
+					<li>Sérialise deux branches, nos commits à la fin, rend l'historique beaucoup plus lisible
+						(linéaire)</li>
 					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>
 					<li>
-						<span class='lcode'>rebase -i</span> : rebase interactif, permet au passage de modifier l'historique (squashing,
+						<span class='lcode'>rebase -i</span> : rebase interactif, permet au passage de modifier
+						l'historique (squashing,
 						spliting, modification
 						messages, changement d'ordre ...)
 					<li>Utiliser avec
@@ -918,7 +950,8 @@ $ git checkout master; git merge experiment (ff)</pre>
 						<pre>$ git pull --rebase</pre>
 					</li>
 					<li>Permet de réécrire son historique (rebase interactif)
-						<p class="note">Attention : n'utiliser rebase qu'avec ses branches locales, ne jamais rebaser un commit qui a
+						<p class="note">Attention : n'utiliser rebase qu'avec ses branches locales, ne jamais rebaser un
+							commit qui a
 							déjà été poussé. Rebaser
 							depuis des branches feature ou hotfix
 							<b>vers</b>
@@ -943,7 +976,8 @@ $ git checkout master; git merge experiment (ff)</pre>
 				<h4>Bonnes pratiques Git, à éviter</h4>
 				<ul>
 					<li>Pas de merge avec modifications non commitées (retour arrière difficile)</li>
-					<li>Ne pas forcer les push (avec push -f ou via l'option + des refspecs), risque de perte de commits</li>
+					<li>Ne pas forcer les push (avec push -f ou via l'option + des refspecs), risque de perte de commits
+					</li>
 					<li>Ne pas pousser des branches privées</li>
 					<li>Ne pas modifier un commit publié</li>
 				</ul>
@@ -989,7 +1023,8 @@ $ git checkout master; git merge experiment (ff)</pre>
 				<h4>Ignorer des fichiers</h4>
 				<ul>
 					<li>Fichier
-						<span class='lcode'>.gitignore</span> à la racine de la copie locale (lui-même commité). Exemples :
+						<span class='lcode'>.gitignore</span> à la racine de la copie locale (lui-même commité).
+						Exemples :
 						<pre>
 # a comment - this is ignored
 # no .a files
@@ -1131,23 +1166,25 @@ build
 				<h4>Le workflow par pull requests (PR)</h4>
 				<ul>
 					<li>GitHub supporte
-						<a href='https://help.github.com/enterprise/2.7/user/articles/types-of-collaborative-development-models/'>deux
+						<a
+							href='https://help.github.com/enterprise/2.7/user/articles/types-of-collaborative-development-models/'>deux
 							modèles de dévelopement collaboratif</a> (supportant toutes les deux les PR):
 						<ul>
-								<li>Fork and Pull (projets Open Source typiquement)</li>
-                                <li>Shared repository (pour projets internes)</li>
-								
+							<li>Fork and Pull (projets Open Source typiquement)</li>
+							<li>Shared repository (pour projets internes)</li>
+
 						</ul>
 					</li>
 					<li>On créé une branche et on y commit ses modification</li>
-                    <li>On pousse les commits vers notre dépot personnel (Fork and pull) ou le dépot central (shared repository) sur la nouvelle branche</li>
-                    <li>On créé une PR (Pull Request)</li>
-                    <li>On en discute, si besoin on pousse de nouveaux commits. La PR continue à être alimentée.</li>
-                    <li>La PR est acceptée manuellement ou automatiquement (CI) dans le dépot de référence</li>
-                    <li>Voir
-                           <a ref='https://guides.github.com/introduction/flow/'>ce manuel Github</a>
-                   </li>
-					
+					<li>On pousse les commits vers notre dépot personnel (Fork and pull) ou le dépot central (shared
+						repository) sur la nouvelle branche</li>
+					<li>On créé une PR (Pull Request)</li>
+					<li>On en discute, si besoin on pousse de nouveaux commits. La PR continue à être alimentée.</li>
+					<li>La PR est acceptée manuellement ou automatiquement (CI) dans le dépot de référence</li>
+					<li>Voir
+						<a ref='https://guides.github.com/introduction/flow/'>ce manuel Github</a>
+					</li>
+
 				</ul>
 			</section>
 
@@ -1162,29 +1199,35 @@ build
 				<h4>Références</h4>
 				<ul>
 					<li>[1] Git-flow :
-						<a href="https://danielkummer.github.io/git-flow-cheatsheet/">https://danielkummer.github.io/git-flow-cheatsheet/</a>
+						<a
+							href="https://danielkummer.github.io/git-flow-cheatsheet/">https://danielkummer.github.io/git-flow-cheatsheet/</a>
 					</li>
 					<li>[4] Pro-git :
 						<a href="http://git-scm.com/book">http://git-scm.com/book</a>. Version fr :
 						<a href="http://git-scm.com/book/fr">http://git-scm.com/book/fr/</a>.
 					</li>
 					<li>[5] Git cheat sheet :
-						<a href="http://ndpsoftware.com/git-cheatsheet.html">http://ndpsoftware.com/git-cheatsheet.html</a>
+						<a
+							href="http://ndpsoftware.com/git-cheatsheet.html">http://ndpsoftware.com/git-cheatsheet.html</a>
 					</li>
 					<li>[7] Script d'autocomplétion git :
-						<a href="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash">https://raw.github.com/git/git/master/contrib/completion/git-completion.bash</a>
+						<a
+							href="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash">https://raw.github.com/git/git/master/contrib/completion/git-completion.bash</a>
 					</li>
 					<li>[10] A Visual Git Reference :
-						<a href="http://marklodato.github.io/visual-git-guide/index-en.html">http://marklodato.github.io/visual-git-guide/index-en.html</a>
+						<a
+							href="http://marklodato.github.io/visual-git-guide/index-en.html">http://marklodato.github.io/visual-git-guide/index-en.html</a>
 					</li>
 					<li>[11] Git Ready (astuces et références vers docs) :
 						<a href="http://gitready.com/">http://gitready.com/</a>
 					</li>
 					<li>[12] Typologies de workfow par Atlassian :
-						<a href="https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch">https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch</a>
+						<a
+							href="https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch">https://www.atlassian.com/fr/git/workflows#!workflow-feature-branch</a>
 					</li>
 					<li>[13] Tutorial interactif sur les branches avec Git :
-						<a href="http://pcottle.github.io/learnGitBranching/">http://pcottle.github.io/learnGitBranching/</a>
+						<a
+							href="http://pcottle.github.io/learnGitBranching/">http://pcottle.github.io/learnGitBranching/</a>
 					</li>
 				</ul>
 			</section>

@@ -6,7 +6,8 @@
 
     <title>Feuille de travaux pratiques - Gestion de version</title>
 
-    <meta name="description" content="Feuille de travaux pratiques génie logiciel Licence Pro 2018, la gestion de versions">
+    <meta name="description"
+        content="Feuille de travaux pratiques génie logiciel Licence Pro 2019-2020, la gestion de versions">
     <meta name="author" content="Bertrand Florat">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -36,14 +37,15 @@
                 <p>IUT de Nantes – Département Informatique</p>
                 <p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
                 <p>
-                    <b>Cours de Licence professionnelle 2018</b>
+                    <b>Cours de Licence professionnelle 2019-2020</b>
                 </p>
                 <div>
                     <img src="images/cc.png" />
-                    <p style="font-size:0.5em;text-align: center;">Copyright (C) 2012-2018 Bertrand Florat (
+                    <p style="font-size:0.5em;text-align: center;">Copyright (C) 2012-2019 Bertrand Florat (
                         <a href='http://www.florat.net/contact'>contact</a>)</p>
                     <p>
-                        <a style="font-size:0.5em" href="http://florat.net/cours_vcs/tp.html">http://florat.net/cours_vcs/tp.html</a> -
+                        <a style="font-size:0.5em"
+                            href="http://florat.net/cours_vcs/tp.html">http://florat.net/cours_vcs/tp.html</a> -
                         <a style="font-size:0.5em" href='cours.html'>Cours</a>
                     </p>
                     <p style="font-size: 0.5em">
@@ -56,12 +58,14 @@
                 <ul>
                     <li>Le travail se fera en binôme. Les présentiels se grouperont en binômes
                         <span class='lcode'>preXX</span> et les alternants en binômes
-                        <span class='lcode'>altXX</span>. Chaque binôme est doté d'un dépôt Git dédié. 'A' et 'B' désignent respectivement l'un
+                        <span class='lcode'>altXX</span>. Chaque binôme est doté d'un dépôt Git dédié. 'A' et 'B'
+                        désignent respectivement l'un
                         et l'autre membre du binôme. Si un étudiant est seul, il devra simuler A et B dans deux consoles
                         différentes et avec deux utilisateurs différents, ex :
                         <span class='lcode'>pre12a</span> et
                         <span class='lcode'>pre12b</span>.</li>
-                    <li>On utilise en général Git depuis un IDE comme IDEA, Atom ou Eclipse via des plugins, néanmoins dans le
+                    <li>On utilise en général Git depuis un IDE comme IDEA, Atom ou Eclipse via des plugins, néanmoins
+                        dans le
                         cadre de ce TP, il vous est demandé de n'utiliser que la ligne de commande
                     </li>
                     <li>Veuillez vous référer aux pages 'man' et aux documents référencés à la fin du support de cours
@@ -86,7 +90,7 @@
                         </p>
                     </li>
                 </ul>
-                <br/>
+                <br />
             </section>
 
             <section>
@@ -100,7 +104,8 @@
                 <h4>TP2: Exercice concepts Git</h4>
                 <ul>
                     <li>Aller sur
-                        <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a>
+                        <a
+                            href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a>
                     </li>
                     <li>
                         <i>Commandes utiles :
@@ -186,7 +191,8 @@
                         dans le même package
                     </li>
                     <li>Afficher le statut de la copie locale à ce stade</li>
-                    <li>Commiter (en un seul commit) cette modification et cet ajout de nouveau fichier en utilisant un message
+                    <li>Commiter (en un seul commit) cette modification et cet ajout de nouveau fichier en utilisant un
+                        message
                         de commit dans les règles de l'art.</li>
                     <li>Afficher le commit dans l'historique et les différences qu'il a introduites (commande
                         <span class='lcode'>git show</span>).</li>
@@ -206,7 +212,8 @@
                         <span class='lcode'>master</span>
                     </li>
                     <li>Fusionner (par merge) les modifications de la branche
-                        <span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de merge ?</li>
+                        <span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de merge ?
+                    </li>
                     <li>Supprimer cette branche</li>
                 </ol>
             </section>
@@ -229,7 +236,8 @@
                         <span class='lcode'>Calcul.java</span> et les commiter
                     </li>
                     <li>Fusionner (par merge) les modifications de la branche
-                        <span class='lcode'>bug43</span> dans la branche master. Comment git qualifie ce type de merge ?</li>
+                        <span class='lcode'>bug43</span> dans la branche master. Comment git qualifie ce type de merge ?
+                    </li>
                     <li>Supprimer cette branche</li>
                 </ol>
             </section>
@@ -280,12 +288,12 @@ $ git remote show origin</pre>
                     </li>
                     <li>A compare sa branche
                         <span class='lcode'>master</span> à la branche
-                        <span class='lcode'>origin/master</span>. Il y-a-t-il des différences? Pourquoi ? 
-                        Que faut-il faire pour voir les modifications des autres dans sa branche remote 
+                        <span class='lcode'>origin/master</span>. Il y-a-t-il des différences? Pourquoi ?
+                        Que faut-il faire pour voir les modifications des autres dans sa branche remote
                         <span class='lcode'>origin/master</span>?
                     </li>
                     <li>A intégre les modifications distantes via
-                        <span class='lcode'>pull</span>. 
+                        <span class='lcode'>pull</span>.
                     </li>
                     <li>A fait un commit dans sa branche
                         <span class='lcode'>master</span> puis le pousse vers son origin</span>
@@ -299,7 +307,8 @@ $ git remote show origin</pre>
                 <p>A faire avant le prochain cours ;</p>
                 <p>Exercice individuel ;</p>
                 <p>
-                    <b>Présenter succinctement Git: ses spécificités, son fonctionnement, ses avantages (texte entre 500 et
+                    <b>Présenter succinctement Git: ses spécificités, son fonctionnement, ses avantages (texte entre 500
+                        et
                         2000 caractères).</b>
                 </p>
                 <p>Laisser le texte sur le serveur
@@ -361,7 +370,8 @@ $ git remote show origin</pre>
                 <p>Attentation: c'est un travail individuel à faire par chaque étudiant, délai: une semaine</p>
                 <ul>
                     <li>Aller sur
-                        <a href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a>
+                        <a
+                            href='http://pcottle.github.io/learnGitBranching/?NODEMO'>http://pcottle.github.io/learnGitBranching/?NODEMO</a>
                     </li>
                     <li>
                         <i>Commandes utiles :
