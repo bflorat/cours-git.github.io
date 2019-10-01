@@ -848,10 +848,14 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 				<h4>Historique</h4>
 				<ul>
 					<li>Commande de base:
-						<span class='lcode'>git log</span>
+						<span class='lcode'>git log</span> ou souvent (avec le sha) <span class='lcode'>git log
+							--oneline</span>
 					</li>
 					<li>Voir les diff de chaque révision : option
 						<span class='lcode'>git log -p</span>
+					</li>
+					<li>Visualiser le contenu complet d'un fichier f dans une ref x :
+						<span class='lcode'>git show x:f</span>
 					</li>
 					<li>Spécifier des intervales de temps
 						<pre>git log --since=2.weeks</pre>
