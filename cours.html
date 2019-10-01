@@ -365,20 +365,25 @@ int j=0;
 			</section>
 
 			<section>
-				<h5>Bonnes pratiques / Convention message de commit</h5>
+				<h5>Bonnes pratiques / convention message de commit</h5>
 				<ul>
-					<li>Une ligne de contexte (max 50 caractères) commencant par une majuscule. Pas de point. Réference
-						le numéro de
-						ticket
-						s'il existe.</li>
-					<li>Une ligne vide (options -m " et retour charriot)</li>
+					<li>Un titre (max 50 caractères) sous la forme <a
+							href='https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type'>type de
+							commit</a>: contenu</li>
 					<li>Un paragraphe détaillé (largeur 72 caractères max)</li>
+				</ul>
+
+				<p>Rédaction du contenu:</p>
+				<ul>
+					<li>Lignes vides entre paragraphes</li>
+					<li>Si clos un ticket, l'indiquer, exemple : <span class='lcode'>Closes #1234</span></li>
 					<li>Présent : "corrige", pas "a été corrigé"</li>
 					<li>Donner toute information importante à destination d'un futur mainteneur</li>
 					<li>Exemple :</li>
-					<br />
 					<pre>
-Corrige #1456 problème fichier bootstrap vide
+fix: problème fichier bootstrap vide
+
+Closes #1456
 
 Corrige une NPE se produisant quand le fichier bootstrap existe 
 mais est vide. Reproduit uniquement par TU, non reporté par les 
@@ -387,6 +392,10 @@ utilisateurs à ce point.
 Voir aussi le bug #1674.
 						</pre>
 				</ul>
+
+				<p class='note'>Note: pour faire un message de commit multiligne sous Linux/OSX en ligne de commande :
+					utiliser
+					l'options -m " et retours charriot puis " pour clore la dernière ligne)</p>
 			</section>
 
 			<!--  Slot 3 -->
