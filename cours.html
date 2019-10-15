@@ -773,26 +773,6 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 			</section>
 
 			<section>
-				<h4>Un worflow pré-cablé très populaire : git-flow</h4>
-
-				<pre>
-	git flow init
-	git flow feature [start|finish|publish|pull] panierachat
-	git flow release [start|finish|publish|pull] 1.2.0
-	git flow hotfix [start|finish|publish|pull] bug123
-							</pre>
-				<p>Voir
-					<a href="#/100">[1]</a>
-				</p>
-				<p class='note'>
-					Voir aussi
-					<span class='lcode'>man gitworkflows</span>
-				</p>
-				<img src="images/git-flow.png" style="width: 400px; margin: 5px" />
-				<p style="font-size:0.5em">Copyright CC-BY-SA Vincent Driessen</p>
-			</section>
-
-			<section>
 				<h5>TP2 Exercice concepts Git</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
 			</section>
@@ -1095,32 +1075,6 @@ build
 			</section>
 
 			<section>
-				<h4>Non abordé dans ce cours</h4>
-				<p class="note">
-					Voir
-					<a href="#/100">[4]</a> pour approfondir
-				</p>
-				<ul>
-					<li>Détail des différents types de protocoles</li>
-					<li>Les commandes plumbing</li>
-					<li>L'administration server-side (gitolite, gitweb etc.)</li>
-					<li>Les hooks client et serveur</li>
-					<li>La gestion des contributions exterieures (
-						<span class='lcode'>git format-patch</span>,
-						<span class='lcode'>git request-pull
-						</span> et
-						<span class='lcode'>git am</span>)
-					</li>
-					<li>Les attributs (comportement spécifique par chemin)</li>
-					<li>Les sous-modules</li>
-					<li>L'adaptateur
-						<span class='lcode'>git-svn</span>
-					</li>
-					<li>...</li>
-				</ul>
-			</section>
-
-			<section>
 				<h4>Les forges Git</h4>
 				<ul>
 					<li>GitHub (
@@ -1174,6 +1128,30 @@ build
 				</ul>
 			</section>
 
+			<section>
+				<h3>Les workflows les plus courants</h3>
+				<ul>
+					<li>Gitflow</li>
+					<li>GitHub Flow</li>
+					<li>Gitlab Flow</li>
+				</ul>
+				<p class='note'>
+					Voir aussi
+					<span class='lcode'>man gitworkflows</span>
+				</p>
+			</section>
+
+
+			<section>
+				<h4>Un worflow pré-cablé très populaire : git-flow</h4>
+				<pre>
+				git flow init
+				git flow feature [start|finish|publish|pull] panierachat
+				git flow release [start|finish|publish|pull] 1.2.0
+				git flow hotfix [start|finish|publish|pull] bug123</pre>
+				<img src="images/git-flow.png" style="width: 400px; margin: 5px" />
+				<p style="font-size:0.5em">Copyright CC-BY-SA Vincent Driessen</p>
+			</section>
 
 			<section>
 				<h4>Le workflow par pull requests (PR)</h4>
@@ -1205,6 +1183,32 @@ build
 				<h5>TP4 Utilitaires Git</h5>
 				<p class="note">Voir la feuille de travaux pratiques</p>
 				<br />
+			</section>
+
+			<section>
+				<h4>Non abordé dans ce cours</h4>
+				<p class="note">
+					Voir
+					<a href="#/100">[4]</a> pour approfondir
+				</p>
+				<ul>
+					<li>Détail des différents types de protocoles</li>
+					<li>Les commandes plumbing</li>
+					<li>L'administration server-side (gitolite, gitweb etc.)</li>
+					<li>Les hooks client et serveur</li>
+					<li>La gestion des contributions exterieures (
+						<span class='lcode'>git format-patch</span>,
+						<span class='lcode'>git request-pull
+						</span> et
+						<span class='lcode'>git am</span>)
+					</li>
+					<li>Les attributs (comportement spécifique par chemin)</li>
+					<li>Les sous-modules</li>
+					<li>L'adaptateur
+						<span class='lcode'>git-svn</span>
+					</li>
+					<li>...</li>
+				</ul>
 			</section>
 
 			<!-- References, doit être la dernière page pour que les ancres fonctionnent -->
