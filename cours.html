@@ -33,7 +33,6 @@
 					<b>Cours de Licence professionnelle 2019-2020, V2.2</b>
 				</p>
 				<div>
-					
 					<p style="font-size:0.5em;text-align: center;">Copyright (C) 2012-2019 Bertrand Florat (<a href='http://www.florat.net/contact'>contact</a>), licence <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA V4</a></p>
 					<p>
 						<a style="font-size:0.5em"
@@ -1085,44 +1084,6 @@ build
 			</section>
 
 			<section>
-				<h4>Les types d'organisations principales</h4>
-				<ul>
-					<li>Centralisé (SVN/CVS like) avec un "blessed server"
-						<ul>
-							<li>Exemple : Github en mode Shared Repository</li>
-						</ul>
-					</li>
-					<li>Hiérarchisé
-						<ul>
-							<li>Exemple à 3 grades : contributeur, vérificateur, intégrateur</li>
-						</ul>
-					</li>
-					<li>Open Source classique : un dépot de référence et des contributeurs externes par PR</li>
-				</ul>
-				<p>Voir
-					<a href="#/100">[12]</a>
-				</p>
-			</section>
-
-			<section>
-				<h4>Le coding social</h4>
-				<p>...ou comment les VCS distribués ont révolutionné l'Open Source</p>
-				<ul>
-					<li>Réseaux sociaux de code comme
-						<ul>
-							<li>GitHub</li>
-							<li>GitLab</li>
-							<li>Bitbucket</li>
-						</ul>
-					</li>
-					<li>"Zone grise" entre l'équipe et les utilisateurs</li>
-					<li>Discussions sur le code (mode wiki)</li>
-					<li>Les PR (Pull Requests)</li>
-					<img src="images/pr.png" />
-				</ul>
-			</section>
-
-			<section>
 				<h3>Les workflows les plus courants</h3>
 				<ul>
 					<li>Gitflow</li>
@@ -1135,16 +1096,22 @@ build
 				</p>
 			</section>
 
+			<section>
+					<h4>Gitflow</h4>
+					<img src="images/git-flow.png" style="width: 400px; margin: 5px" />
+					<p style="font-size:0.5em">Copyright Vincent Driessen</p>
+			</section>
+	
+			<section>
+				<h4>Github flow</h4>
+				<img src="images/github-flow.png" style="width: 800px; margin: 5px" />
+				<p style="font-size:0.5em">Copyright Github</p>
+			</section>
 
 			<section>
-				<h4>Un worflow pré-cablé très populaire : git-flow</h4>
-				<pre>
-				git flow init
-				git flow feature [start|finish|publish|pull] panierachat
-				git flow release [start|finish|publish|pull] 1.2.0
-				git flow hotfix [start|finish|publish|pull] bug123</pre>
-				<img src="images/git-flow.png" style="width: 400px; margin: 5px" />
-				<p style="font-size:0.5em">Copyright CC-BY-SA Vincent Driessen</p>
+				<h4>Gitlab flow</h4>
+				<img src="images/gitlab-flow.png" style="width: 400px; margin: 5px" />
+				<p style="font-size:0.5em">Copyright Gitlab</p>
 			</section>
 
 			<section>
@@ -1169,7 +1136,6 @@ build
 					<li>Voir
 						<a ref='https://guides.github.com/introduction/flow/'>ce manuel Github</a>
 					</li>
-
 				</ul>
 			</section>
 
