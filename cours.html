@@ -820,8 +820,8 @@ push = refs/heads/master:refs/heads/qa/master</pre>
 					<li>
 						<span class='lcode'>git log branche1..branche2</span> : tous les nouveaux commits de la branche2 uniquement
 					</li>
-					<li>Recherche multi-revisions :
-						<span class="lcode">git log -G [regexp]</span>
+					<li>Recherche d'une chaîne de caractère dans tous les fichiers de tout l'historique :
+						<span class="lcode">git rev-list --all | xargs git grep [chaîne ou expression régulière]</span>						
 					</li>
 				</ul>
 			</section>
