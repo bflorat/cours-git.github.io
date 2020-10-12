@@ -254,16 +254,13 @@
 								<li>Gérer des branches de maintenance corrective</li>
 								<li>Tester une idée, un refactoring sans risques</li>
 							</ul>
-							<span class='note'>Une alternative aux branches se développe :
-								<a href='https://martinfowler.com/articles/feature-toggles.html'>les feature flags / feature toggles</a>.
-								<br />Peut remplacer les branches de maintenance dans certains cas.</span>
+							<span class='note'>Attention, les branches ne sont pas toujours adaptées. 
+							<br/>Une alternative à certains types de branches se développe : Le Trunk-Based Developement 
+							<br/>dans lequel les developpeurs envoient tous leur code dans une seule et unique branche 
+							<br/>mais dont certaines fonctionnalités sont désactivées par
+								<a href='https://martinfowler.com/articles/feature-toggles.html'>feature flags (ou "feature toggles")</a>.								
 						</td>
-					</tr>
-					<tr>
-						<td>
-							<b>Fork</b> [fork]</td>
-						<td>Créer une nouvelle branche</td>
-					</tr>
+					</tr>					
 				</table>
 			</section>
 
@@ -393,8 +390,9 @@ Voir aussi le bug #1674.
 			<!--  Slot 3 -->
 			<section>
 				<h4>Introduction à Git</h4>
-				<img src="images/git-logo.svg.png" height="50px" />
-
+				<div>
+					<img src="images/git-logo.svg.png" height="150px" />
+				</div>
 				<ul>
 					<blockquote>I'm an egotistical bastard, and I name all my projects after myself. First Linux, now Git. (Linus Torvalds)
 					</blockquote>
