@@ -907,18 +907,17 @@ $ git checkout master; git merge experiment (ff)</pre>
 					</li>
 					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>
 					<li>
-						<span class='lcode'>rebase -i</span> : rebase interactif, permet au passage de modifier l'historique (squashing, spliting, modification
+						<span class='lcode'>rebase -i [commit]</span> : rebase interactif, permet au passage de modifier l'historique (squashing, spliting, modification
 						messages, changement d'ordre ...)
-						<li>Utiliser avec
-							<span class='lcode'>git pull</span> :
-							<pre>$ git pull --rebase</pre>
-						</li>
 						<li>Permet de réécrire son historique (rebase interactif)
 							<p class="note">Attention : n'utiliser rebase qu'avec ses branches locales, ne jamais rebaser un commit qui a déjà été poussé. Rebaser
 								depuis des branches feature ou hotfix
 								<b>vers</b>
 								<span class='lcode'>master</span> ou
 								<span class='lcode'>develop</span> uniquement, pas depuis.</p>
+							<p class="note">Le commit cible est le père du premier commit à modifier, 
+							il ne sera pas lui-même modifiable. Exemple: réorganiser les 5 derniers commits : 
+							<span class='lcode'>rebase -i HEAD~5</span>  (5éme ancêtre du commit où on se trouve= 6éme commit dans le passé)</p>
 						</li>
 					</li>
 				</ul>
