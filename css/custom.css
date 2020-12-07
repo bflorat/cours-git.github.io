@@ -1,28 +1,66 @@
+.admonition,.ad {
+    padding: 0 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin: 40px;
+    padding: 20px;
+  }
+  .title {
+    text-align: center;    
+    font-weight: bold;
+  }
+  .note{
+    color: #1d6fa5;
+    background-color: #a0cfee;
+    border-color: #3498db;
+  }
+  .warning,.warn{
+    color: #a85913;
+    background-color: #f3c195;
+    border-color: #e67e22;
+  }
+  
+  .danger {
+    color: #bf2718;
+    background-color: #f5b4ae;
+    border-color: #e74c3c;    
+  }
+
+smaller, .smaller{
+  font-size: 0.8em;
+}
+
+
+small, .small{
+  font-size: small;
+}
+  
 .lcode {
-		font-family: 'Courier New', Courier, monospace !important
+  font-family: 'Courier New', Courier, monospace !important
 }
 
 .note {
-	display: block !important;
-	border: 1px solid !important;
-	font-size: 0.5em !important;
-	font-style: italic !important;
-	padding: 10px !important;
-	margin: 5px 0px 5px 0px !important;
-	
+display: block !important;
+border: 1px solid !important;
+font-size: 0.5em !important;
+font-style: italic !important;
+padding: 10px !important;
+margin: 5px 0px 5px 0px !important;
+
 }
 
 figcaption{
-	font-size: 0.5em !important;
+font-size: 0.5em !important;
 }
 
 
 .title{
-  font-weight: bold !important;
+font-weight: bold !important;
 }
 
 .img{
-	display:block !important;
-	margin-left:auto !important;
-	margin-right:auto !important;
+display:block !important;
+margin-left:auto !important;
+margin-right:auto !important;
 }

@@ -1,25 +1,24 @@
 <!doctype html>
-<html lang="fr">
-
-<head>
-	<meta charset="utf-8">
-	<title>Cours Génie Logiciel Licence Pro 2020-2021, la gestion de versions
-	</title>
-	<meta name="description" content="Cours génie logiciel Licence Pro 2020-2021, la gestion de versions">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+                <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Cours génie logiciel Licence Pro 2020-2021, la gestion de versions">
 	<meta name="author" content="Bertrand Florat">
 
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Cours Génie Logiciel Licence Pro 2020-2021, la gestion de versions</title>
 
-	<link rel="stylesheet" href="css/reveal.css">
-	<link rel="stylesheet" href="css/theme/white.css">
-	<!-- For syntax highlighting -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
-	<!-- Nos styles-->
-	<link rel="stylesheet" href="css/custom.css">
-</head>
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme">
 
-<body>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    <link rel="stylesheet" href="css/custom.css" id="custom">
+	</head>
+
+	<body>
 
 	<div class="reveal">
 		<!-- Any section element inside of this container is displayed as a slide -->
@@ -37,12 +36,14 @@
 						<a href='http://www.florat.net/contact'>contact</a>), licence
 						<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA V4</a>
 					</p>
-					<p>
-						<a style="font-size:0.5em" href="https://cours-git.florat.net/">https://cours-git.florat.net/</a>
-						-
-						<a style="font-size:0.5em" href='tp.html'>Feuille de TP</a>
-						-
-						<a style="font-size:0.5em" href='https://github.com/bflorat/cours-git.github.io'>Sources</a> - 
+					<p style="font-size:0.5em">
+						<a href="https://cours-git.florat.net/">https://cours-git.florat.net/</a>
+						/
+						<a href='tp.html'>Feuille de TP</a>
+						/
+						<a href='https://github.com/bflorat/cours-git.github.io'>Sources</a>
+						/
+						<a href='index.html?print-pdf'>(version sur une page)</a>
 
 					</p>
 				</div>
@@ -1189,15 +1190,19 @@ build
 		</div>
 	</div>
 
-
-
-	<script src="js/reveal.js"></script>
-
-	<script src="config.js"></script>
-	<script>
-		Reveal.initialize(config);
-	</script>
-
-</body>
-
+<script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        width: 1400,
+        height: 1000,
+        progress: true,
+        slideNumber: true,
+        hash: true, 
+        center: false,        
+        plugins: [RevealHighlight]
+      });
+    </script>
+  </body>
 </html>
