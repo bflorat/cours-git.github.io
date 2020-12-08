@@ -56,11 +56,7 @@
                         différentes et avec deux utilisateurs différents, ex :
                         <span class='lcode'>pre12a</span> et
                         <span class='lcode'>pre12b</span>.</li>
-                    <li>On utilise en général Git depuis un IDE comme IDEA, Atom ou Eclipse via des plugins, néanmoins
-                        dans le
-                        cadre de ce TP, il vous est demandé de n'utiliser que la ligne de commande
-                    </li>
-                    <li>Veuillez vous référer aux pages 'man' et aux documents référencés à la fin du support de cours
+                    <li>On utilise souvent Git depuis un IDE. Il vous est ici demandé de n'utiliser que la ligne de commande
                     </li>
                     <li>Inutile d'écrire du vrai code Java pour les exemples</li>
                     <li>Pour répondre aux questions du TP, écrivez dans un fichier
@@ -141,7 +137,6 @@
                 <h4>TP3 Commandes Git de base</h4>
                 <p>Se connecter
                     <a href="https://cours.florat.net">au serveur</a> (client ssh en javascript)</p>
-                <p>NE PAS UTILISER DE FENETRE DE NAVIGATEUR PRIVEE</p>
                 <ul>
                     <li>User: votre login (exemple :
                         <span class='lcode'>pre04a</span>,
@@ -162,7 +157,7 @@
                     </li>
                     <li>Consultez votre répertoire
                         <span class='lcode'>.git</span> (commande:
-                        <span class='lcode'>find .git</span>). Que contient-il ?</li>
+                        <span class='lcode'>find .git</span>). Quelles types de données contient-il&nbsp?</li>
                 </ul>
             </section>
             <section>
@@ -170,9 +165,9 @@
                 <p class="note">Cet exercice se fait simultanément par A et B</p>
                 <ol>
                     <li>Configurer correctement son nom et e-mail Git (voir support de cours)</li>
-                    <li>Forcez vim comme éditeur de Git : 
+                    <li>Forcez vim comme éditeur de Git : <br/>
                         <span class='lcode'>git config --global core.editor "vim"</span></li>
-                    <li>Créez quelques alias, au moins 'ci' pour commit et 'st' pour status</li>
+                    <li>Créez quelques alias, au moins <span class='lcode'>ci</span> pour commit et <span class='lcode'>st</span> pour status</li>
                     <li>Vérifier que vous vous trouvez dans la branche
                         <span class='lcode'>master</span>, s'y positionner si ce n'est pas le cas.
                     </li>
@@ -183,7 +178,7 @@
                         dans le même package
                     </li>
                     <li>Afficher le statut de la copie locale à ce stade</li>
-                    <li>Commiter (en <u>un seul commit</u>) cette modification et cet ajout de nouveau fichier en
+                    <li>Commiter <u>en un seul commit</u> cette modification et cet ajout de nouveau fichier en
                         utilisant un message de commit dans les règles de l'art.</li>
                     <li>Afficher le commit dans l'historique et les différences qu'il a introduites (commande
                         <span class='lcode'>git show</span>).</li>
@@ -311,7 +306,6 @@ $ git remote show origin</pre>
 
             <section>
                 <h4>TP4 Utilitaires Git</h4>
-                <p class="note">Ce TP a comme prérequis le TP3</p>
                 <p class="note">Cet exercice se fait simultanément par A et B</p>
                 <h5>Exercice 4.1 : Ignorer des fichiers</h5>
                 <ol>
