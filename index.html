@@ -554,15 +554,15 @@ file:///path/to/repo.git/  =  /path/to/repo.git/
 			<section>
 				<h4>Les commits dans Git</h4>
 				<ul>
+					<li>Un commit est un <b>instantané de l'ensemble du dépot</b>
+						 (contrairement à certains VCS comme SVN où un commit est un diff depuis le commit précédent)</li>
 					<li>Chaque commit possède [1..n] parents</li>
 					<li>Donc l'historique forme un graphe (orienté et acyclique ou 'DAG')</li>
 					<li>Le commit est de niveau dépôt (pointe sur le tree racine)</li>
 					<li>Notation :
-						<span class='lcode'>ref^
-							<i>n</i>
+						<span class='lcode'>ref^<i>n</i>
 						</span> (nième parent) et
-						<span class='lcode'>ref~
-							<i>n</i>
+						<span class='lcode'>ref~<i>n</i>
 						</span> (nième premier parent)</li>
 				</ul>
 				<img src="images/dag.png" width="600px" />
@@ -671,8 +671,7 @@ remotes/bob/feature300</pre>
 					<li>
 						<span class='lcode'>git pull</span> =
 						<span class='lcode'>git fetch
-						</span> +
-						<span class='lcode'>git merge</span>
+						</span> + <span class='lcode'>git merge</span>
 					</li>
 					<li>
 						<span class='lcode'>git pull --rebase</span> =
