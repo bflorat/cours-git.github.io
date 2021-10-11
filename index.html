@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
                 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="description" content="Cours génie logiciel Licence Pro 2020-2021, la gestion de versions">
+    <meta name="description" content="Cours génie logiciel Licence Pro 2021-2022, la gestion de versions">
 	<meta name="author" content="Bertrand Florat">
 
-    <title>Cours Génie Logiciel Licence Pro 2020-2021, la gestion de versions</title>
+    <title>Cours Génie Logiciel Licence Pro 2021-2022, la gestion de versions</title>
 
     <link rel="stylesheet" href="dist/reveal.css">
     <link rel="stylesheet" href="dist/theme/moon.css" id="theme">
@@ -29,10 +29,10 @@
 				<h2>La gestion de versions</h2>
 				<p>IUT de Nantes – Département Informatique</p>
 				<p>
-					<b>Cours de Licence professionnelle 2020-2021, V2.2</b>
+					<b>Cours de Licence professionnelle 2021-2022, V2.3</b>
 				</p>
 				<div>
-					<p style="font-size:0.5em;text-align: center;">Copyright (C) 2012-2020 Bertrand Florat (
+					<p style="font-size:0.5em;text-align: center;">Copyright (C) 2012-2021 Bertrand Florat (
 						<a href='http://www.florat.net/contact'>contact</a>), licence
 						<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA V4</a>
 					</p>
@@ -48,8 +48,8 @@
 					</p>
 				</div>
 				<div>
-					<img src="http://turnoff.us/image/en/commitland.png" height='500px'/>
-					<figcaption>Source : <a href='http://turnoff.us/'>http://turnoff.us/</a></figcaption>
+					<img src="https://pbs.twimg.com/media/DPGRRKFWsAEuQh2?format=jpg&name=medium" height='500px'/>
+					<figcaption>Source : <a href='https://pbs.twimg.com'>https://pbs.twimg.com/</a></figcaption>
 				</div>
 			</section>
 			<section style="font-size: 0.5em">
@@ -916,27 +916,40 @@ $ git merge iss53</pre>
 				<figcaption>Images Copyright CC BY-SA-NC Scott Chacon</figcaption>
 				<pre>
 $ git checkout experiment; git rebase master
-$ git checkout master; git merge experiment (ff)</pre>
+$ git checkout master; git merge experiment</pre>
 				<ul>
-					<li>Sérialise deux branches, nos commits à la fin, rend l'historique beaucoup plus lisible (linéaire)
-					</li>
-					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>
-					<li>
-						<span class='lcode'>rebase -i [commit]</span> : rebase interactif, permet au passage de modifier l'historique (squashing, spliting, modification
-						messages, changement d'ordre ...)
-						<li>Permet de réécrire son historique (rebase interactif)
-							<p class="note">Attention : n'utiliser rebase qu'avec ses branches locales, ne jamais rebaser un commit qui a déjà été poussé. Rebaser
-								depuis des branches feature ou hotfix
-								<b>vers</b>
-								<span class='lcode'>master</span> ou
-								<span class='lcode'>develop</span> uniquement, pas depuis.</p>
-							<p class="note">Le commit cible est le père du premier commit à modifier, 
-							il ne sera pas lui-même modifiable. Exemple: réorganiser les 5 derniers commits : 
-							<span class='lcode'>rebase -i HEAD~5</span>  (5éme ancêtre du commit où on se trouve= 6éme commit dans le passé)</p>
-						</li>
+					<li>Sérialise deux branches, nos commits à la fin</li>
+					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>					
+					<li>Quels avantages sur merge ? 
+						<ul>
+						   <li>Rend l'historique beaucoup plus lisible (linéaire)</li>
+						   <li>La résolution de conflit se fait commit par commit</li>
+						   <li>Plus facile de debugguer en navigant sur un historique linéaire</li>
+						   <li>Tests plus fiables car on integre le code des autres dans nos tests</li>
+					    </ul>
 					</li>
 				</ul>
+				<p class="warn">Attention : n'utiliser rebase qu'avec ses branches locales, ne jamais rebaser un commit qui a déjà été poussé.</p>				
+			</section>
 
+			<section>
+				<h5>Rebase interactif</h5>
+				<span class='lcode'>rebase -i [commit]</span> 
+				<p><b>Permet au passage de modifier l'historique (squashing, spliting, modification
+						messages, changement d'ordre ...)</b></p>
+				
+				<li>Le commit cible est le parent du premier commit à modifier. Réorganiser les 5 derniers commits : 
+				<span class='lcode'>rebase -i HEAD~5</span>  (5éme ancêtre du commit où on se trouve= 6éme commit dans le passé)</p></li>
+				
+				<li>Actions courantes : 
+					<ul>
+						<li><span class='lcode'></span>reword (r)</span> : réécrire le message de commit</li>
+						<li><span class='lcode'></span>edit (e)</span> : modifier le commit</li>
+						<li><span class='lcode'></span>squash (s)</span> : fusionner le commit avec le précédent</li>
+						<li>Supprimer des commits/changer leur ordre en jouant sur les lignes <span class='lcode'></span>pick (p)</li><span></span></li>
+					</ul>
+				</li>
+				
 			</section>
 
 			<section>
