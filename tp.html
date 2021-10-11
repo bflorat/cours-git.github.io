@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
                 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
      <meta name="description"
-        content="Feuille de travaux pratiques génie logiciel Licence Pro 2020-2021, la gestion de versions">
+        content="Feuille de travaux pratiques génie logiciel Licence Pro 2021-2022, la gestion de versions">
 	<meta name="author" content="Bertrand Florat">
 
     <title>Feuille de travaux pratiques - Gestion de version</title>
@@ -33,10 +33,10 @@
                 <p>IUT de Nantes – Département Informatique</p>
                 <p>LINA - Laboratoire d’Informatique de Nantes Atlantique</p>
                 <p>
-                    <b>Cours de Licence professionnelle 2020-2021</b>
+                    <b>Cours de Licence professionnelle 2021-2022</b>
                 </p>
                 <div style="font-size:0.5em">
-                    <p style="text-align: center;">Copyright (C) 2012-2020 Bertrand Florat (<a href='http://www.florat.net/contact'>contact</a>), licence <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA V4</a></p>
+                    <p style="text-align: center;">Copyright (C) 2012-2021 Bertrand Florat (<a href='http://www.florat.net/contact'>contact</a>), licence <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA V4</a></p>
                     <p>
                         <a 
                             href="https://cours-git.florat.net/tp.html">https://cours-git.florat.net/tp.html</a>
@@ -48,14 +48,13 @@
             <section>
                 <h5>Notes importantes</h5>
                 <ul>
-                    <li>Le travail se fera en binôme. Les présentiels se grouperont en binômes
-                        <span class='lcode'>preXY</span> et les alternants en binômes
+                    <li>Le travail se fera en binôme. Les étudiants se grouperont en binômes
                         <span class='lcode'>altXY</span>. Chaque binôme est doté d'un dépôt Git dédié. 'A' et 'B'
                         désignent respectivement l'un
                         et l'autre membre du binôme. Si un étudiant est seul, il devra simuler A et B dans deux consoles
                         différentes et avec deux utilisateurs différents, ex :
-                        <span class='lcode'>pre12a</span> et
-                        <span class='lcode'>pre12b</span>.</li>
+                        <span class='lcode'>alt12a</span> et
+                        <span class='lcode'>alt12b</span>.</li>
                     <li>On utilise souvent Git depuis un IDE. Il vous est ici demandé de n'utiliser que la ligne de commande
                     </li>
                     <li>Inutile d'écrire du vrai code Java pour les exemples</li>
@@ -139,7 +138,7 @@
                     <a href="https://cours.florat.net">au serveur</a> (client ssh en javascript)</p>
                 <ul>
                     <li>User: votre login (exemple :
-                        <span class='lcode'>pre04a</span>,
+                        <span class='lcode'>alt04a</span>,
                         <span class='lcode'>alt10b</span>)</li>
                     <li>Password : fourni par l'enseignant</li>
                 </ul>
@@ -150,6 +149,9 @@
                     <span class='lcode'>code_binôme</span> par votre code binôme ):</p>
                 <pre>
 /var/cours/depots_git/<i>[code_binome]</i>/my-app.git</pre>
+
+                <p class="note">En condition rééelle, les URL sont en <span class='lcode'></span>https://...</span>. 
+                    Pour des raisons pratiques, nous utilisons ici une URL locale (sur le même serveur) mais qui reste tout à fait valide.
                 <ul>
                     <li>Les étudiant(e)s A et B clonent dans leur $HOME le dépôt distant affecté au binôme</li>
                     <li>Afficher les branches avec
@@ -157,7 +159,7 @@
                     </li>
                     <li>Consultez votre répertoire
                         <span class='lcode'>.git</span> (commande:
-                        <span class='lcode'>find .git</span>). Quelles types de données contient-il&nbsp?</li>
+                        <span class='lcode'>find .git</span>). A quoi sert son contenu &nbsp?</li>
                 </ul>
             </section>
             <section>
@@ -259,7 +261,7 @@
                 <h5>Exercice 3.5 : Manipulation des branches distantes</h5>
                 <ol>
                     <li>
-                        <b>L'étudiant(e) A sauvegarde ses exercices précedents par la commande (ne pas oublier !) :
+                        <b>L'étudiant(e) A sauvegarde ses exercices précedents par la commande :
                             <span class='lcode'>mv ~/my-app ~/my-app~</span> </b>
                     </li>
                     <li>L'étudiant(e) A réinitialise son dépot en le clonnant à nouveau (il refait l'ex 3.1). 
@@ -320,14 +322,15 @@ $ git remote show origin</pre>
                     <li>Utiliser
                         <span class='lcode'>git status</span> pour vérifier l'opération avant et après
                     </li>
-                    <li>Commiter le fichier
+                    <li>Commiter et pousser le fichier
                         <span class='lcode'>.gitignore</span> pour que le reste de l'équipe en profite
                     </li>
                 </ol>
             </section>
             <section>
                 <h5>Exercice 4.2 : Réécrire son historique</h5>
-                <p class="note">Cet exercice se fait simultanément par A et B</p>
+                <p class="note">Cet exercice se fait simultanément par A et B. 
+                    Notez les commandes effectuées dans le fichier tp4.txt</p>
                 <ol>
                     <li>Effectuez trois commits</li>
                     <li>Renommez le dernier commit</li>
@@ -336,14 +339,17 @@ $ git remote show origin</pre>
             </section>
             <section>
                 <h5>Exercice 4.3 : Rechercher une expression</h5>
-                <p class="note">Cet exercice se fait simultanément par A et B</p>
-                Recherchez une expression de votre choix dans les différentes révisions du dépôt 
+                <p class="note">Cet exercice se fait simultanément par A et B. 
+                    Notez les commandes effectuées dans le fichier tp4.txt</p>
+                Recherchez une expression de votre choix dans les différentes révisions du dépôt
                 (Voir commande dans le cours, page "Historique")
+                
                 
             </section>
             <section>
                 <h5>Exercice 4.4 : Utilisation de git-flow</h5>
-                <p class="note">Cet exercice se fait simultanément par A et B</p>
+                <p class="note">Cet exercice se fait simultanément par A et B. 
+                    Notez les commandes effectuées dans le fichier tp4.txt</p>
                 <ol>
                     <li>Initialiser git-flow sur votre dépôt local</li>
                     <li>Créer une branche de fonctionnalité et y faire un commit</li>
