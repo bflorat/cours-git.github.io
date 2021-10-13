@@ -595,7 +595,7 @@ ou (nouvelle commande) : $ git switch mabranche
 					<li>Conventions :
 						<ul class="small">
 							<li>
-								<span class='lcode'>master</span> : branche par défaut</li>
+								<span class='lcode'>main</span> : branche par défaut</li>
 							<li>
 								<span class='lcode'>develop</span> : branche de développment (instable)</li>
 							<li><span class='lcode'>feat-ma-fonctionnalite</span> : une branche topic de nouvelle fonctionnalité</li>
@@ -612,13 +612,13 @@ ou (nouvelle commande) : $ git switch mabranche
 							<ul>
 								<li>Merge branche
 									<span class='lcode'> develop</span> dans la branche
-									<span class='lcode'> master</span> (courante):
+									<span class='lcode'> main</span> (courante):
 									<pre>$ git merge develop</pre>
 								</li>
 								<li>Applique tous les commits de
 									<span class='lcode'>develop</span>
 									dans
-									<span class='lcode'>master</span> depuis le dernier merge entre ces deux branches.
+									<span class='lcode'>main</span> depuis le dernier merge entre ces deux branches.
 								</li>
 								<li>Si la branche courante n'a pas évolué depuis dernier merge, fast-forward (ff)</li>
 								<li>Si divergence (non-ff), merge automatique. Conflits possibles
@@ -651,9 +651,9 @@ ou (nouvelle commande) : $ git switch mabranche
 					</li>
 					<li>Exemples :
 						<pre>
-remotes/origin/HEAD -&gt; origin/master
+remotes/origin/HEAD -&gt; origin/main
 remotes/origin/develop
-remotes/origin/master
+remotes/origin/main
 remotes/bob/feature300</pre>
 					</li>
 					<li>Lecture seule, se resynchronise avec son dépôt distant avec
@@ -686,7 +686,7 @@ remotes/bob/feature300</pre>
 url=git@gitorious.org:/my-app.git
 fetch=+refs/heads/*:refs/remotes/origin/*
 pull=refs/heads/*:refs/remotes/origin/*
-push = refs/heads/master:refs/heads/qa/master</pre>
+push = refs/heads/main:refs/heads/qa/main</pre>
 					</li>
 					<li>Après un
 						<span class='lcode'>git clone</span>, branches tracking remote automatiquement créées :
@@ -860,7 +860,7 @@ git diff origin/hotfix/release-1_0</pre>
 			<section>
 				<h5>Merging</h5>
 				<pre>
-$ git checkout master
+$ git checkout main
 $ git merge iss53</pre>
 				<ul>
 					<li>C'est la copie locale de la branche courante qui est modifiée
@@ -900,8 +900,8 @@ $ git merge iss53</pre>
 				<img src="images/git-rebase2.png" width="400px" />
 				<figcaption>Images Copyright CC BY-SA-NC Scott Chacon</figcaption>
 				<pre>
-$ git checkout experiment; git rebase master
-$ git checkout master; git merge experiment</pre>
+$ git checkout experiment; git rebase main
+$ git checkout main; git merge experiment</pre>
 				<ul>
 					<li>Sérialise deux branches, nos commits à la fin</li>
 					<li>Se "rebase" sur une référence, c'est à dire repart de cette ref</li>					
@@ -1033,7 +1033,7 @@ build
 					<li>... ou encore mieux : pusher un seul commit par branche (squash)</li>
 					<li>N'utiliser rebase que sur des commits pas encore poussés</li>
 					<li>Créer une branche topic (vie courte) pour chaque unité de travail (bug, évolution...)</li>
-					<li>Protéger (empècher les push directs sans MR) les branches à vie longue (<span class='lcode'>master</span>, <span class='lcode'>develop</span>...)</li>
+					<li>Protéger (empècher les push directs sans MR) les branches à vie longue (<span class='lcode'>main</span>, <span class='lcode'>develop</span>...)</li>
 					<li>Les branches topic ne doivent pas vivre plus de un à deux jours et doivent être supprimées dès que mergées</li>
 					<li>Travailler avec des Merge Requests si vous disposez d'une forge (ex: Gitlab)</li>
 					<li>Squasher les commits de MR (une MR = 1 commit)</li>					
@@ -1114,7 +1114,7 @@ build
 				<h4>Gitflow (2/2)</h4>
 				<ul>
 					<li>Feature branches + branche de release et hotfix</li>
-					<li>Chaque commit de master = une version de production</li>
+					<li>Chaque commit de main = une version de production</li>
 					<li>Puissant mais complexe</li>
 					<li>Pas adapté pour gérer les branches de maintenance</li>
 				</ul>

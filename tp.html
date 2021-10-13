@@ -104,18 +104,18 @@
                     <li>Créer une branche
                         <span class='lcode'>develop</span> et y faire un commit</li>
                     <li>Fusionner ce commit dans la branche
-                        <span class='lcode'>master</span>
+                        <span class='lcode'>main</span>
                     </li>
                     <li>Poser un tag
-                        <span class='lcode'>1.0.0</span> sur la branche master</li>
+                        <span class='lcode'>1.0.0</span> sur la branche main</li>
                     <li>Depuis la branche
-                        <span class='lcode'>master</span>, créer une branche
+                        <span class='lcode'>main</span>, créer une branche
                         <span class='lcode'>1.0</span>, y faire deux commits, tagger ce dernier commit
                         <span class='lcode'>1.0.1</span>
                     </li>
                     <li>Faire deux commits sur develop</li>
                     <li>Fusionner ces deux commits dans la branche
-                        <span class='lcode'>master</span> puis tagger
+                        <span class='lcode'>main</span> puis tagger
                         <span class='lcode'>2.0.0</span>
                     </li>
                     <li>Créer depuis
@@ -124,7 +124,7 @@
                         <span class='lcode'>develop</span>
                     </li>
                     <li>Supprimer la branche bug123</li>
-                    <li>Fusionner develop dans master puis tagger
+                    <li>Fusionner develop dans main puis tagger
                         <span class='lcode'>2.0.1</span>
                     </li>
                     <p>Copier les commandes effectuées dans le simulateur et les coller dans un fichier (selectionner les commandes en laissant CTRL appuyé puis faire CTRL-C)
@@ -171,7 +171,7 @@
                         <span class='lcode'>git config --global core.editor "vim"</span></li>
                     <li>Créez quelques alias, au moins <span class='lcode'>ci</span> pour commit et <span class='lcode'>st</span> pour status</li>
                     <li>Vérifier que vous vous trouvez dans la branche
-                        <span class='lcode'>master</span>, s'y positionner si ce n'est pas le cas.
+                        <span class='lcode'>main</span>, s'y positionner si ce n'est pas le cas.
                     </li>
                     <li>Modifier le source
                         <span class='lcode'>Calcul.java</span>
@@ -197,10 +197,10 @@
                         <span class='lcode'>Calcul.java</span> et les commiter
                     </li>
                     <li>Positionnez vous dans la branche
-                        <span class='lcode'>master</span>
+                        <span class='lcode'>main</span>
                     </li>
                     <li>Fusionner (par merge) les modifications de la branche
-                        <span class='lcode'>bug42</span> dans la branche master. Comment git qualifie ce type de merge ?
+                        <span class='lcode'>bug42</span> dans la branche main. Comment git qualifie ce type de merge ?
                     </li>
                     <li>Supprimer cette branche</li>
                 </ol>
@@ -217,14 +217,14 @@
                         <span class='lcode'>Calcul.java</span> et les commiter
                     </li>
                     <li>Positionnez vous dans la branche
-                        <span class='lcode'>master</span>
+                        <span class='lcode'>main</span>
                     </li>
                     <li>Effectuer des modifications
                         <b>à la fin</b> du fichier
                         <span class='lcode'>Calcul.java</span> et les commiter
                     </li>
                     <li>Fusionner (par merge) les modifications de la branche
-                        <span class='lcode'>bug43</span> dans la branche master. Comment git qualifie ce type de merge ?
+                        <span class='lcode'>bug43</span> dans la branche main. Comment git qualifie ce type de merge ?
                     </li>
                     <li>Supprimer cette branche</li>
                 </ol>
@@ -240,18 +240,18 @@
                         <span class='lcode'>Calcul.java</span> et les commiter
                     </li>
                     <li>Positionnez vous dans la branche
-                        <span class='lcode'>master</span>
+                        <span class='lcode'>main</span>
                     </li>
                     <li>Effectuer des modifications (differentes)
                         <b>sur les mêmes lignes</b> du fichier
                         <span class='lcode'>Calcul.java</span> et les commiter
                     </li>
                     <li>Fusionner (par merge) les modifications de la branche
-                        <span class='lcode'>bug44</span> dans la branche master. Que se produit-il ?</li>
+                        <span class='lcode'>bug44</span> dans la branche main. Que se produit-il ?</li>
                     <li>Ouvrir le fichier, que remarquez vous à l'emplacement des modifications ?</li>
                     <li>Afficher le statut de la copie locale.</li>
                     <li>Resoudre le problème en ne gardant que les modifications de la branche
-                        <span class='lcode'>master</span>
+                        <span class='lcode'>main</span>
                     </li>
                     <li>Supprimer cette branche</li>
                 </ol>
@@ -273,19 +273,19 @@
 $ git remote show origin</pre>
                     </li>
                     <li>L'étudiant(e) B pousse ses commits des exercices précédents dans la branche
-                        <span class='lcode'>origin/master</span>
+                        <span class='lcode'>origin/main</span>
                     </li>
                     <li>L'étudiant(e) A compare sa branche
-                        <span class='lcode'>master</span> à la branche
-                        <span class='lcode'>origin/master</span>. Il y-a-t-il des différences? Pourquoi ?
+                        <span class='lcode'>main</span> à la branche
+                        <span class='lcode'>origin/main</span>. Il y-a-t-il des différences? Pourquoi ?
                         Que faut-il faire pour voir les modifications des autres dans sa branche remote
-                        <span class='lcode'>origin/master</span>?
+                        <span class='lcode'>origin/main</span>?
                     </li>
                     <li>L'étudiant(e) A intégre les modifications distantes via
                         <span class='lcode'>pull</span>.
                     </li>
                     <li>L'étudiant(e) A fait un commit dans sa branche
-                        <span class='lcode'>master</span> puis le pousse vers son origin</span>
+                        <span class='lcode'>main</span> puis le pousse vers son origin</span>
                     </li>
 
                 </ol>
